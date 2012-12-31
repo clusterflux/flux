@@ -1,0 +1,22 @@
+C:\Users\Shasha\WandW\bin\classes.dex : \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\BuildConfig.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\Game2Activity.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\GameActivity$1.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\GameActivity.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\GameView.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\HudView.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\MapView.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\MenuActivity.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R$attr.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R$color.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R$drawable.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R$id.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R$layout.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R$string.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\R.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\StartActivity.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\World.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\WorldActivity.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\WorldSelectionActivity$1.class \
+C:\Users\Shasha\WandW\bin\classes\com\example\wandw\WorldSelectionActivity.class \
+C:\Users\Shasha\WandW\bin\dexedLibs\android-support-v4-67827bd42991f8283f62f0cd5b5c4ad5.jar \

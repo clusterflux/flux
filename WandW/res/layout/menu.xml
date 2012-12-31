@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<Button 
+		android:id="@+id/start_button"
+		android:background="@color/green"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:layout_centerInParent="true"
+		android:text="@string/start_game"
+		android:onClick="startGame"
+		android:textSize="20sp"/>
+<Button 
+		android:id="@+id/generate_world_button"
+		android:background="@color/blue"
+		android:layout_weight="1"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_centerInParent="true"
+		android:text="@string/generate_world"
+		android:onClick="newWorld"
+		android:textSize="20sp"/>
+</LinearLayout>
+

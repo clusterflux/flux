@@ -1,0 +1,18 @@
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+    android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+	<view
+		class="com.example.wandw.HudView"
+		android:id="@+id/hud_view"
+		android:layout_width="fill_parent"
+		android:layout_height=".3in" 
+		android:layout_alignParentBottom="true"/>
+	<view
+		class="com.example.wandw.MapView"
+		android:id="@+id/map_view"
+		android:layout_above="@id/hud_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+</RelativeLayout>

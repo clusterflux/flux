@@ -1,0 +1,24 @@
+C:\Users\Shasha\WandW\gen\com\example\wandw\R.java \
+ : C:\Users\Shasha\WandW\res\drawable-hdpi\dirt.png \
+C:\Users\Shasha\WandW\res\drawable-hdpi\game_map.png \
+C:\Users\Shasha\WandW\res\drawable-hdpi\grass.png \
+C:\Users\Shasha\WandW\res\drawable-hdpi\ic_launcher.png \
+C:\Users\Shasha\WandW\res\drawable-hdpi\stone.png \
+C:\Users\Shasha\WandW\res\drawable-ldpi\ic_launcher.png \
+C:\Users\Shasha\WandW\res\drawable-mdpi\ic_launcher.png \
+C:\Users\Shasha\WandW\res\drawable-xhdpi\ic_launcher.png \
+C:\Users\Shasha\WandW\res\layout\game.xml \
+C:\Users\Shasha\WandW\res\layout\menu.xml \
+C:\Users\Shasha\WandW\res\layout\world.xml \
+C:\Users\Shasha\WandW\res\layout\worldselection.xml \
+C:\Users\Shasha\WandW\res\values\color.xml \
+C:\Users\Shasha\WandW\res\values\strings.xml \
+C:\Users\Shasha\WandW\bin\res\drawable-hdpi\dirt.png \
+C:\Users\Shasha\WandW\bin\res\drawable-hdpi\game_map.png \
+C:\Users\Shasha\WandW\bin\res\drawable-hdpi\grass.png \
+C:\Users\Shasha\WandW\bin\res\drawable-hdpi\ic_launcher.png \
+C:\Users\Shasha\WandW\bin\res\drawable-hdpi\stone.png \
+C:\Users\Shasha\WandW\bin\res\drawable-ldpi\ic_launcher.png \
+C:\Users\Shasha\WandW\bin\res\drawable-mdpi\ic_launcher.png \
+C:\Users\Shasha\WandW\bin\res\drawable-xhdpi\ic_launcher.png \
+C:\Users\Shasha\WandW\bin\AndroidManifest.xml \

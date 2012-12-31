@@ -1,0 +1,107 @@
+day 1: game engine => no
+       basic tutorial => process
+	   game concept => too many, just write some classes
+	   no other testing method => figure out interface
+	   convert tutorial => start button, some pic
+	   some pic => use draw, custom view
+	   read => activity, view, thread?
+	   canvas? bitmap? tiled map next
+	   
+day 2:
+
+clean up filenames => compile successful
+
+draw a picture on the background => 
+    canvas, bitmap, view, drawable, surfaceview...wtf => accomplished. drew a canvas on a static? bitmap
+	lots of time spent getting bitmap to draw - using bitmap method since we need it for tiled map purposes
+	lot of time spent getting bitmap size correct (different screen sizes, thinking ahead) 
+	   => still not correct, but we are going to tile it anyway
+
+
+day 3:
+
+draw a tiled map into a bitmap using an array => hash for translation, array for map, draw using a for loop
+fuck drawing it into a bitmap, just draw many bitmaps into a canvas. then we can make a bitmap from it later for scrolling
+abstraction => break translation and map into methods, abstract all variables
+code cleanup => most of the static bitmap code and screen sizing is gone, fuck it, larger screen = see more game space. 
+needs more abstraction => need to move map generation into world object and just let view have the drawing methods. 
+end up will all my own code, cool!
+
+abstract world class
+add menu button for generating world, fuck with layout
+worldactivity for worldgeneration
+generate world on the fly text view
+read up on io functions
+loadWorld and saveWorld functions
+almost get it working
+read up on serializable
+
+
+day 4:
+finish file io, test test test
+move world functions to world class, break/fix break/fix
+look for other things to abstract. kill tile map, it's part of world generation code
+rename functions to make sense, comment as i go
+read up on memory leak, passing context
+consider convention => abstract abstract abstract test test test
+
+day 5:
+added world selection activity
+lots of trouble passing variable from activity -> activity -> view
+plenty of time spent on debugging. only getting exceptions, no debug messages (LOGCAT)
+can generate a world and load it too!
+read up on git versioning
+
+day 6:
+figure out debugging / LOGCAT
+set up github but dont use it
+set up cloud9io but dont use it
+learn about cameras vs canvas.translate
+get background scrolling based on player coordinate variables
+get background scrolling based on click = hardcoded player move
+more understanding of layouts, inflation, views, activities
+try to figure out structure of where to run code/logic
+cameras? still need to draw world tiles based on where player is
+thank you debugging!
+toast messages
+
+todo:
+abstract out player class
+make a map of all the current code => work on new code map
+rework existing code to provide a better framework for future code
+move everything to cloud9
+
+add 'world loading' toast message
+add 'world generating' toast message, pass object as result back to menu activity
+add canvas.translate to world drawing. only draw new tiles
+need a start up activity for tile translator - tested generating/loading a large world. need pop ups + change where it loads at
+abstract out the view for world activity. worldview = view the generated world, choose to save it
+rename world activity to worldgenerationactivity
+get world loading out of map view and into menu or game activity!
+rename startgame to worldselection
+
+read up on surface views, threads 
+read up on context, intent, activity vs view design. layout vs. classes, object passing / memory
+
+
+after tiled map, moving sprite, can work on game logic
+then back to interface/creative design
+user controls in there somewhere
+
+make sprite
+make sprite move
+
+outline control areas in gameview
+
+
+write:
+
+game engine or not?
+views, canvases, drawables, activity, threads - HURDLES!
+surfaceviews, tiled maps
+when to use xml?
+abstraction!
+do what's fun
+debugging!
+cloud dev
+github

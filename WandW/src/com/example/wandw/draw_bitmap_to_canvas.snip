@@ -1,0 +1,24 @@
+
+//make a bitmap
+Bitmap game_map = BitmapFactory.decodeResource(getResources(), R.drawable.game_map);
+	
+//scale the bitmap
+final int canvasWidth = getWidth();
+final int canvasHeight = getHeight();
+
+int imageWidth = game_map.getWidth();
+int imageHeight = game_map.getHeight();
+
+float scaleFactor = Math.min( (float)canvasWidth / imageWidth, 
+							  (float)canvasHeight / imageHeight );
+									  
+Bitmap scaled = Bitmap.createScaledBitmap(  game_map, (int)(scaleFactor * imageWidth), 
+											(int)(scaleFactor * imageHeight), true );
+											
+//draw the scaled bitmap onto the canvas
+canvas.drawBitmap(scaled, 0, 0, null);
+	
+//make the bitmap mutable
+Bitmap mutable = scaled.copy(scaled.getConfig(), true);
+		
+canvas.drawBitmap(mutable, 0, 0, null);

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+	<EditText 
+		android:id="@+id/world_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/world_name" />
+	<EditText 
+		android:id="@+id/world_width"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/world_height" />
+	<EditText 
+		android:id="@+id/world_height"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:hint="@string/world_width" />
+	<Button 
+		android:id="@+id/generate_send"
+		android:background="@color/green"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/send"
+		android:onClick="generateWorld"
+		android:textSize="20sp"/>
+</LinearLayout>

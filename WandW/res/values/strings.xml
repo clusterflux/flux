@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wands and Wizards</string>
+	<string name="start_game">START GAME</string>
+	<string name="game_activity">Game Activity</string>
+	<string name="world_activity">World Activity</string>
+	<string name="generate_world">Generate World</string>
+	<string name="world_name">World Name</string>
+	<string name="world_width">World Width</string>
+	<string name="world_height">World Height</string>
+	<string name="send">SEND</string>
+
+</resources>
