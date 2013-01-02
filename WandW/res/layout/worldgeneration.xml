@@ -23,7 +23,7 @@
 		android:background="@color/green"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="@string/send"
+		android:text="@string/generate_world"
 		android:onClick="generateWorld"
 		android:textSize="20sp"/>
 </LinearLayout>

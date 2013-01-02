@@ -34,8 +34,8 @@ public class WorldGenerationActivity extends Activity {
 		
 		context = this.context;
 		
-		
 		Log.d("LOGCAT", "WorldGenerationActivity started");
+		
 		
 	}
 	
@@ -51,12 +51,12 @@ public class WorldGenerationActivity extends Activity {
 		
 	}
 	
-	public void generateWorld (View view) { //create the view on the fly, 
-											//we don't need it very long
+	/**Called when user clicks the Generate World button*/
+	public void generateWorld (View view) { 
 											
 		Log.d("LOGCAT", "Getting World Information");
 		
-		//get the context so it can be passed to the World class
+		//get the context so it can be passed to the World class for file saving
 		Context context = getApplicationContext();
 		
 		//get the user input and convert it to string/int
@@ -69,18 +69,15 @@ public class WorldGenerationActivity extends Activity {
 		editText = (EditText) findViewById(R.id.world_height);
 		int world_height = Integer.parseInt(editText.getText().toString());
 		
-		//generate and save the World
-		
+		//generate and save the world
 		Log.d("LOGCAT", "Generating the World");
-		
 		World world = new World(world_name, world_width, world_height);
 		
 		Log.d("LOGCAT", "Saving the World");	
-		
 		try {
-		world.saveWorld(context, world_name, world);
+			world.saveWorld(context, world_name, world);
 		} catch (IOException e) {
-		//do nothing
+			//do nothing
 		}
 			
 		Toast.makeText(context, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();;

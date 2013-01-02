@@ -32,7 +32,7 @@ public class WorldSelectionActivity extends Activity {
 		setContentView(R.layout.worldselection);
 		
 		Log.d("LOGCAT", "WorldSelectionActivity started");
-
+		
 		//create view on the fly
 		worldListView = (ListView) findViewById(R.id.worldListView);
 		
@@ -51,14 +51,12 @@ public class WorldSelectionActivity extends Activity {
 		{
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
 			{
-				//get the world choice and start the game
+				//get the world choice and send it back to the parent activity
 				message = parent.getItemAtPosition(position).toString();
-				//message = "test_world";
 				sendSelection();
 			}
 		});
-		
-		
+			
 	}
 	
 	@Override
@@ -78,5 +76,5 @@ public class WorldSelectionActivity extends Activity {
 		setResult(Activity.RESULT_OK, intent);
 		finish();
 	}
-
-}	
+	
+}
