@@ -5,7 +5,6 @@ import android.view.View;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -22,10 +21,12 @@ import android.view.View.OnClickListener;
 
 public class MapView extends View implements OnClickListener {
 
-	private int tile_width = 50;
-	private int tile_height = 50;
 	protected Context context;
 	public World world;
+	public Map<Integer,Bitmap> tileTranslator;
+	
+	private int tile_width = 50;
+	private int tile_height = 50;
 	public int screen_width = 12;
 	public int screen_height = 6;
 	public int playerX = 4;
@@ -40,20 +41,21 @@ public class MapView extends View implements OnClickListener {
 		
 		setOnClickListener(this);
 		
+		//Create a TileMap object and get the tile translator hashmap
+		TileMap tileMap = new TileMap(context);	
+		tileTranslator = tileMap.getTileTranslator();
+		
 	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
-	Log.d("LOGCAT", "drawing canvas");
-	
-		//get the TileTranslator
-		Map<Integer,Bitmap> tile_translator = createTileTranslator();
-		Log.d("LOGCAT", "Tile Translator received");	
 		
 		//Hardcoded player movement
 		Log.d("LOGCAT", "Player moved to (" + playerX + ", " + playerY + ")");
 		
 		//Draw tiles onto canvas
+		Log.d("LOGCAT", "drawing canvas");
+			
 		int screenX = -1;	// why?
 		
 		for (int worldX = (playerX - screen_height/2); worldX < (playerX + screen_height/2 + 1); worldX += 1) {
@@ -66,8 +68,7 @@ public class MapView extends View implements OnClickListener {
 				//Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + 
 				//      ") [ world = (" + worldX + ", " + worldY + ") ]");
 			
-				canvas.drawBitmap(tile_translator.get(world.world_map[worldX][worldY]), 
-							      screenY*tile_height, screenX*tile_width, null);
+				canvas.drawBitmap(tileTranslator.get(world.world_map[worldX][worldY]), screenY*tile_height, screenX*tile_width, null);
 				screenY += 1;
 			}
 		}
@@ -96,20 +97,6 @@ public class MapView extends View implements OnClickListener {
 		
 		this.world = world;
 		
-	}
-	
-	public Map<Integer,Bitmap> createTileTranslator() {  //move to start up activity!
-	Log.d("LOGCAT", "getting TileTranslator");
-		//create hash for bitmap tiles
-		Map<Integer, Bitmap> tile_translator = new HashMap<Integer, Bitmap>();
-
-		//add integer keys and tiles to hash
-		tile_translator.put(0, BitmapFactory.decodeResource(getResources(), R.drawable.dirt));
-		tile_translator.put(1, BitmapFactory.decodeResource(getResources(), R.drawable.grass));
-		tile_translator.put(2, BitmapFactory.decodeResource(getResources(), R.drawable.stone));
-		
-		return tile_translator;
-
 	}
 	
 }

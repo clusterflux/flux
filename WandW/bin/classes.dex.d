@@ -15,6 +15,7 @@ C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\R$layo
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\R$string.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\R.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\StartActivity.class \
+C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\TileMap.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\World.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\WorldActivity.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\WorldGenerationActivity.class \
