@@ -20,30 +20,42 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import android.util.Log;
+import android.widget.Toast;
 
 public class WorldGenerationActivity extends Activity {
 
+	private Context context;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+	
 		super.onCreate(savedInstanceState);
-	Log.d("LOGCAT", "WorldGenerationActivity started");
 		setContentView(R.layout.worldgeneration);
+		
+		context = this.context;
+		
+		
+		Log.d("LOGCAT", "WorldGenerationActivity started");
 		
 	}
 	
 		@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+	
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+		
 	}
 	
 	public void generateWorld (View view) { //create the view on the fly, 
 											//we don't need it very long
-	Log.d("LOGCAT", "Getting World Information");
+											
+		Log.d("LOGCAT", "Getting World Information");
+		
 		//get the context so it can be passed to the World class
 		Context context = getApplicationContext();
 		
@@ -56,21 +68,25 @@ public class WorldGenerationActivity extends Activity {
 		
 		editText = (EditText) findViewById(R.id.world_height);
 		int world_height = Integer.parseInt(editText.getText().toString());
-	Log.d("LOGCAT", "Generating the World");	
+		
 		//generate and save the World
+		
+		Log.d("LOGCAT", "Generating the World");
+		
 		World world = new World(world_name, world_width, world_height);
-	Log.d("LOGCAT", "Saving the World");	
+		
+		Log.d("LOGCAT", "Saving the World");	
+		
 		try {
 		world.saveWorld(context, world_name, world);
 		} catch (IOException e) {
 		//do nothing
 		}
-	Log.d("LOGCAT", "Display World Generation Success");	
-		//create a text view to display the results
-		TextView textView = new TextView(this);
-		textView.setTextSize(40);
-		textView.setText("World Generated! Press back and load your world!");
-		setContentView(textView);
+			
+		Toast.makeText(context, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();;
+		
+		//end the activity
+		finish();
 
 	}
 		

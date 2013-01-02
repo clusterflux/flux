@@ -90,10 +90,10 @@ public class MapView extends View implements OnClickListener {
 			for(int worldY = (playerY - screen_width/2);  worldY < (playerY + screen_width/2 + 1); worldY += 1) {
 			
 			Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + 
-			  ") [ world = (" + worldX + ", " + worldY + ") ]");
+				  ") [ world = (" + worldX + ", " + worldY + ") ]");
 			
 				canvas.drawBitmap(tile_translator.get(world.world_map[worldX][worldY]), 
-							  screenY*tile_height, screenX*tile_width, null);
+							      screenY*tile_height, screenX*tile_width, null);
 				screenY += 1;
 			}
 		}

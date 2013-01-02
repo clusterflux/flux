@@ -69,15 +69,14 @@ day 7:
 break! git conceptual
 
 day 8:
+add 'world generating' toast message, pass object as result back to menu activity
 
 todo:
 abstract out player class
 make a map of all the current code => work on new code map
 rework existing code to provide a better framework for future code
-move everything to cloud9
 
 add 'world loading' toast message
-add 'world generating' toast message, pass object as result back to menu activity
 add canvas.translate to world drawing. only draw new tiles
 need a start up activity for tile translator - tested generating/loading a large world. need pop ups + change where it loads at
 abstract out the view for world activity. worldview = view the generated world, choose to save it

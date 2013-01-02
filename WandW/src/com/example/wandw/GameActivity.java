@@ -26,11 +26,15 @@ public class GameActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+	
 		super.onCreate(savedInstanceState);
-	Log.d("LOGCAT", "GameActivityStarted");
+		
+		Log.d("LOGCAT", "GameActivityStarted");
+		
 		Intent intent = getIntent();
 		world_name = intent.getStringExtra(MenuActivity.EXTRA_MESSAGE);
 		setContentView(R.layout.game);
+		
 	}
 	
 	@Override

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.util.Log;
+import android.widget.Toast;
 
 public class WorldSelectionActivity extends Activity {
 	
@@ -28,9 +29,10 @@ public class WorldSelectionActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState); 
-	Log.d("LOGCAT", "WorldSelectionActivity started");
 		setContentView(R.layout.worldselection);
 		
+		Log.d("LOGCAT", "WorldSelectionActivity started");
+
 		//create view on the fly
 		worldListView = (ListView) findViewById(R.id.worldListView);
 		

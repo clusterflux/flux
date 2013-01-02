@@ -17,8 +17,10 @@ public class MenuActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-	Log.d("LOGCAT", "MenuActivity Started");
         setContentView(R.layout.menu);
+		
+		Log.d("LOGCAT", "MenuActivity Started");
+		
     }
 	
 	/**Called when the user clicks the Start button - loads WorldSelection activity*/
