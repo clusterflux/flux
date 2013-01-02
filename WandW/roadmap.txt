@@ -81,17 +81,17 @@ general housecleaning
 rename startgame to worldselection
 things are flowing now. minor updates are no biggie. major updates went smoothly!
 git is really making things feel nice!
+need a start up activity for tile translator => make it into an object for mapview to construct
+add 'world loading' toast message => added it to worldselection listview's on click listener so it hits before the load
 
 todo:
-need a start up activity for tile translator => make it into an object for mapview to reference in onCreate
 add canvas.translate to world drawing. only draw new tiles
-
-outline control areas in gameview => use whole space, just need to set up user controls => swipe
-
-add 'world loading' toast message => canvas goes blank so it doesn't show up. maybe in a overlaying view.
  
 abstract out player class
+outline control areas in gameview => use whole space, just need to set up user controls => swipe
 abstract out the view for world activity. worldview = view the generated world, choose to save it
+
+
 
 make sprite
 make sprite move

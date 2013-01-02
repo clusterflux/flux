@@ -41,10 +41,6 @@ public class MapView extends View implements OnClickListener {
 		
 		setOnClickListener(this);
 		
-		//Create a TileMap object and get the tile translator hashmap
-		TileMap tileMap = new TileMap(context);	
-		tileTranslator = tileMap.getTileTranslator();
-		
 	}
 	
 	@Override
@@ -93,9 +89,10 @@ public class MapView extends View implements OnClickListener {
 		
 	}
 	
-	public void setWorld(World world){
+	public void setArgs(World world, Map<Integer,Bitmap> tileTranslator){
 		
 		this.world = world;
+		this.tileTranslator = tileTranslator;
 		
 	}
 	

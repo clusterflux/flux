@@ -51,6 +51,8 @@ public class WorldSelectionActivity extends Activity {
 		{
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
 			{
+				Toast.makeText(WorldSelectionActivity.this, "LOADING WORLD", Toast.LENGTH_SHORT).show();
+				
 				//get the world_name and send it back to MenuActivity
 				message = parent.getItemAtPosition(position).toString();
 				sendSelection();

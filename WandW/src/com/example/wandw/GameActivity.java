@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import java.io.*;
 import android.util.Log;
 import android.widget.Toast;
+import android.graphics.Bitmap;
+import java.util.*;
 
 public class GameActivity extends Activity {
 	
@@ -26,9 +28,13 @@ public class GameActivity extends Activity {
 		//load the world
 		World world = loadWorld(world_name);
 		
-		//Create a mapview object and set the current world
+		//create a tilemap and get the tile translator array from it - there should be a better way, tilemap is static
+		TileMap tileMap = new TileMap(this);	
+		Map<Integer,Bitmap> tileTranslator = tileMap.getTileTranslator();
+		
+		//Create a reference to the MapView object and set the translator
 		MapView mapView = (MapView) findViewById(R.id.map_view);
-		mapView.setWorld(world);
+		mapView.setArgs(world, tileTranslator);
 		
 	}
 	
