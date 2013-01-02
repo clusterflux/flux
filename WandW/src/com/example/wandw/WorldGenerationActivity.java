@@ -31,11 +31,8 @@ public class WorldGenerationActivity extends Activity {
 	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.worldgeneration);
-		
 		context = this.context;
-		
 		Log.d("LOGCAT", "WorldGenerationActivity started");
-		
 		
 	}
 	
@@ -82,7 +79,7 @@ public class WorldGenerationActivity extends Activity {
 			
 		Toast.makeText(context, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();;
 		
-		//end the activity
+		//end the activity and go back to MenuActivity
 		finish();
 
 	}

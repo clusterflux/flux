@@ -18,22 +18,24 @@ import android.widget.AdapterView;
 import android.util.Log;
 
 public class GameActivity extends Activity {
-
-	public ListView worldListView;
-	public ArrayAdapter arrayAdapter;
-	public String[] filenames;
-	public static String world_name;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	
 		super.onCreate(savedInstanceState);
-		
+		setContentView(R.layout.game);	
 		Log.d("LOGCAT", "GameActivityStarted");
 		
+		//get the world_name from MenuActivity
 		Intent intent = getIntent();
-		world_name = intent.getStringExtra(MenuActivity.EXTRA_MESSAGE);
-		setContentView(R.layout.game);
+		String world_name = intent.getStringExtra(MenuActivity.EXTRA_MESSAGE);
+		
+		//load the world
+		World world = loadWorld(world_name);
+		
+		//Create a mapview object and set the current world
+		MapView mapView = (MapView) findViewById(R.id.map_view);
+		mapView.setWorld(world);
 		
 	}
 	
@@ -45,6 +47,27 @@ public class GameActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public World loadWorld(String world_name) {
+	
+	//Create a dummy world to load into - why?!
+		World dummy_world = new World();
+		
+		//load the world 
+		Log.d("LOGCAT", "Loading the World");
+		try {
+			World world = dummy_world.loadWorld(this, world_name);
+			return world;
+		} catch (IOException e) {
+		//do nothing!
+		} catch (ClassNotFoundException f) {
+		//do nothing!
+		}
+		
+		return dummy_world; //if world load fails, send back the default world
+							// NOTE: it's not saved!!!
+				
 	}
 
 }

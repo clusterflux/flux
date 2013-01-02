@@ -28,9 +28,9 @@ public class WorldSelectionActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+	
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.worldselection);
-		
 		Log.d("LOGCAT", "WorldSelectionActivity started");
 		
 		//create view on the fly
@@ -51,7 +51,7 @@ public class WorldSelectionActivity extends Activity {
 		{
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
 			{
-				//get the world choice and send it back to the parent activity
+				//get the world_name and send it back to MenuActivity
 				message = parent.getItemAtPosition(position).toString();
 				sendSelection();
 			}
@@ -61,16 +61,19 @@ public class WorldSelectionActivity extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+	
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+		
 	}
 	
-	public void sendSelection() {
-	Log.d("LOGCAT", "Sending World Selection to MenuActivity");
+	public void sendSelection() { //send world_name back to MenuActivity
+	
+		Log.d("LOGCAT", "Sending world_name to MenuActivity");
 		Intent intent = new Intent();
 		intent.putExtra(EXTRA_MESSAGE, message);
 		setResult(Activity.RESULT_OK, intent);

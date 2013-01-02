@@ -56,6 +56,7 @@ public class World implements Serializable {
 		}
 		
 		return world_map;
+		
 	}	
 	
 	public void saveWorld(Context context, String world_name, World world) throws IOException {

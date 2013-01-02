@@ -25,7 +25,6 @@ public class MapView extends View implements OnClickListener {
 	private int tile_width = 50;
 	private int tile_height = 50;
 	protected Context context;
-	public String world_name;
 	public World world;
 	public int screen_width = 12;
 	public int screen_height = 6;
@@ -34,63 +33,38 @@ public class MapView extends View implements OnClickListener {
 
 
 	public MapView(Context context, AttributeSet attrs) {
+	
 		super(context, attrs);
-		
+		this.context = context;
 		Log.d("LOGCAT", "MapView created");	
 		
-		this.context = context;
 		setOnClickListener(this);
-		this.world_name = GameActivity.world_name;
-	
-		//Create a dummy world to load into - why?!
-		World dummy_world = new World();
 		
-		//load the world 
-		try {
-			world = dummy_world.loadWorld(context, world_name);
-		} catch (IOException e) {
-		//do nothing!
-		} catch (ClassNotFoundException f) {
-		//do nothing!
-		}
-				
-	}
-	
-	@Override
-	public void onClick(View v) {
-		
-		//if in bounds, move the player and redraw
-		if ( playerY < (world.world_width - screen_width/2 - 1) && playerX < (world.world_height - screen_height/2 - 1)) {
-			//Toast.makeText(context, "CLICK DETECTED, MOVING RIGHT", Toast.LENGTH_SHORT).show();
-			Log.d("LOGCAT", "playerYcomp = " + (world.world_width - screen_width/2) + "; PlayerXcomp = " + (world.world_height - screen_height/2));
-			playerY += 1;
-			invalidate();
-		} else { 
-			//do nothing
-			Toast.makeText(context, "REACHED THE END OF THE WORLD", Toast.LENGTH_SHORT).show();
-		}
 	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
-	Log.d("LOGCAT", "onDraw started");
+	Log.d("LOGCAT", "drawing canvas");
 	
 		//get the TileTranslator
 		Map<Integer,Bitmap> tile_translator = createTileTranslator();
-		
 		Log.d("LOGCAT", "Tile Translator received");	
 		
-		Log.d("LOGCAT", "Player moves to (" + playerX + ", " + playerY + ")");
+		//Hardcoded player movement
+		Log.d("LOGCAT", "Player moed to (" + playerX + ", " + playerY + ")");
 		
 		//Draw tiles onto canvas
-		int screenX = -1;	
+		int screenX = -1;	// why?
+		
 		for (int worldX = (playerX - screen_height/2); worldX < (playerX + screen_height/2 + 1); worldX += 1) {
-			screenX += 1; int screenY = 0;
+		
+			screenX += 1; 
+			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to one column/row only
 			
 			for(int worldY = (playerY - screen_width/2);  worldY < (playerY + screen_width/2 + 1); worldY += 1) {
 			
-			Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + 
-				  ") [ world = (" + worldX + ", " + worldY + ") ]");
+				//Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + 
+				//      ") [ world = (" + worldX + ", " + worldY + ") ]");
 			
 				canvas.drawBitmap(tile_translator.get(world.world_map[worldX][worldY]), 
 							      screenY*tile_height, screenX*tile_width, null);
@@ -98,6 +72,30 @@ public class MapView extends View implements OnClickListener {
 			}
 		}
 		Log.d("LOGCAT", "done drawing canvas");	
+		
+	}
+	
+	@Override
+	public void onClick(View v) { //hardcoded move right function
+		
+		//if in bounds, move the player and redraw
+		if ( playerY < (world.world_width - screen_width/2 - 1) && playerX < (world.world_height - screen_height/2 - 1)) {
+		
+			//Toast.makeText(context, "CLICK DETECTED, MOVING RIGHT", Toast.LENGTH_SHORT).show();;
+			playerY += 1;
+			invalidate(); 
+			
+		} else { 
+			//do nothing
+			Toast.makeText(context, "REACHED THE END OF THE WORLD", Toast.LENGTH_SHORT).show();
+		}
+		
+	}
+	
+	public void setWorld(World world){
+		
+		this.world = world;
+		
 	}
 	
 	public Map<Integer,Bitmap> createTileTranslator() {  //move to start up activity!
