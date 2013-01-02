@@ -85,6 +85,8 @@ need a start up activity for tile translator => make it into an object for mapvi
 add 'world loading' toast message => added it to worldselection listview's on click listener so it hits before the load
 
 todo:
+find better way to deal with TileMap - it's a static hashmap, should be able to reference it from everywhere
+still can't pass variable for tileTranslator size when creating World objects
 add canvas.translate to world drawing. only draw new tiles
  
 abstract out player class

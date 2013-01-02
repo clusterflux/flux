@@ -31,7 +31,6 @@ public class WorldGenerationActivity extends Activity {
 	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.worldgeneration);
-		context = this.context;
 		Log.d("LOGCAT", "WorldGenerationActivity started");
 		
 	}
