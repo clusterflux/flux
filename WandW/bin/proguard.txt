@@ -11,12 +11,12 @@
 -keep class com.example.wandw.MenuActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:16
--keep class com.example.wandw.WorldActivity { <init>(...); }
+-keep class com.example.wandw.WorldGenerationActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:21
 -keep class com.example.wandw.WorldSelectionActivity { <init>(...); }
 
-# onClick res/layout/world.xml #generated:21
+# onClick res/layout/worldgeneration.xml #generated:21
 -keepclassmembers class * { *** generateWorld(...); }
 
 # onClick res/layout/menu.xml #generated:16

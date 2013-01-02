@@ -13,19 +13,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name="com.example.wandw.WorldActivity"
-				  android:label="@string/world_activity"
+		<activity android:name="com.example.wandw.WorldGenerationActivity"
+				  android:label="@string/world_generation_activity"
 				  androidparentActivityName="com.example.wandw.MenuActivity"
 				  android:screenOrientation="landscape" >
 		</activity>
 		<activity android:name="com.example.wandw.WorldSelectionActivity"
-				  android:label="@string/world_activity"
+				  android:label="@string/world_selection_activity"
 				  androidparentActivityName="com.example.wandw.MenuActivity"
 				  android:screenOrientation="landscape" >
 		</activity>
 		<activity android:name="com.example.wandw.GameActivity"
 				  android:label="@string/game_activity" 
-				  android:parentActivityName="com.example.wandw.WorldSelectionActivity" 
+				  android:parentActivityName="com.example.wandw.MenuSelectionActivity" 
 				  android:screenOrientation="landscape" >
 		</activity>
     </application>

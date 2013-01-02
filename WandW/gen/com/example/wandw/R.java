@@ -49,18 +49,19 @@ public final class R {
     public static final class layout {
         public static final int game=0x7f030000;
         public static final int menu=0x7f030001;
-        public static final int world=0x7f030002;
+        public static final int worldgeneration=0x7f030002;
         public static final int worldselection=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int game_activity=0x7f050002;
-        public static final int generate_world=0x7f050004;
-        public static final int send=0x7f050008;
+        public static final int game_activity=0x7f050003;
+        public static final int generate_world=0x7f050002;
+        public static final int send=0x7f050009;
         public static final int start_game=0x7f050001;
-        public static final int world_activity=0x7f050003;
-        public static final int world_height=0x7f050007;
-        public static final int world_name=0x7f050005;
-        public static final int world_width=0x7f050006;
+        public static final int world_generation_activity=0x7f050005;
+        public static final int world_height=0x7f050008;
+        public static final int world_name=0x7f050006;
+        public static final int world_selection_activity=0x7f050004;
+        public static final int world_width=0x7f050007;
     }
 }

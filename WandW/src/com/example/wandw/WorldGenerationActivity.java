@@ -21,13 +21,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import android.util.Log;
 
-public class WorldActivity extends Activity {
+public class WorldGenerationActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	Log.d("LOGCAT", "WorldGenerationActivity started");
-		setContentView(R.layout.world);
+		setContentView(R.layout.worldgeneration);
 		
 	}
 	

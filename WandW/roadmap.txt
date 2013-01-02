@@ -65,6 +65,11 @@ cameras? still need to draw world tiles based on where player is
 thank you debugging!
 toast messages
 
+day 7:
+break! git conceptual
+
+day 8:
+
 todo:
 abstract out player class
 make a map of all the current code => work on new code map
@@ -93,15 +98,14 @@ make sprite move
 
 outline control areas in gameview
 
+views, canvases, drawables, activity, threads - HURDLES!
+surfaceviews, tiled maps
+when to use xml?
 
 write:
 
 game engine or not?
-views, canvases, drawables, activity, threads - HURDLES!
-surfaceviews, tiled maps
-when to use xml?
 abstraction!
 do what's fun
 debugging!
-cloud dev
-github
+cloud dev/github/version control

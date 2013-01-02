@@ -52,7 +52,7 @@ public class MenuActivity extends Activity
 	public void newWorld(View view) {
 	Log.d("LOGCAT", "Starting WorldGenerationActivity");
 		//do something in response to the button
-		Intent intent = new Intent(this, WorldActivity.class);
+		Intent intent = new Intent(this, WorldGenerationActivity.class);
 		startActivity(intent);
 	}
 
