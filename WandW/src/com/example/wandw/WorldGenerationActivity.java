@@ -54,7 +54,7 @@ public class WorldGenerationActivity extends Activity {
 		Log.d("LOGCAT", "Getting World Information");
 		
 		//get the context so it can be passed to the World class for file saving
-		Context context = getApplicationContext();
+		//Context context = getApplicationContext();
 		
 		//get the user input and convert it to string/int
 		EditText editText = (EditText) findViewById(R.id.world_name);
@@ -72,12 +72,12 @@ public class WorldGenerationActivity extends Activity {
 		
 		Log.d("LOGCAT", "Saving the World");	
 		try {
-			world.saveWorld(context, world_name, world);
+			world.saveWorld(this, world_name, world);
 		} catch (IOException e) {
 			//do nothing
 		}
 			
-		Toast.makeText(context, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();;
+		Toast.makeText(this, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();
 		
 		//end the activity and go back to MenuActivity
 		finish();

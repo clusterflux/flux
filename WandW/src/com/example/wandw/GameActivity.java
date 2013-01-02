@@ -6,16 +6,9 @@ import android.view.View;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
-import android.graphics.Canvas;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import java.io.*;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView;
 import android.util.Log;
+import android.widget.Toast;
 
 public class GameActivity extends Activity {
 	

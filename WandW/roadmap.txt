@@ -78,38 +78,32 @@ get world loading out of map view and into menu or game activity!
 format code to one convention
 fix up comments and debug messages
 general housecleaning
+rename startgame to worldselection
+things are flowing now. minor updates are no biggie. major updates went smoothly!
+git is really making things feel nice!
 
 todo:
-abstract out player class
-make a map of all the current code - is there a progam for this? 
-
-
-add 'world loading' toast message
-add canvas.translate to world drawing. only draw new tiles
 need a start up activity for tile translator => make it into an object for mapview to reference in onCreate
+add canvas.translate to world drawing. only draw new tiles
+
+outline control areas in gameview => use whole space, just need to set up user controls => swipe
+
+add 'world loading' toast message => canvas goes blank so it doesn't show up. maybe in a overlaying view.
+ 
+abstract out player class
 abstract out the view for world activity. worldview = view the generated world, choose to save it
-
-rename startgame to worldselection
-
-read up on surface views, threads 
-read up on context, intent, activity vs view design. layout vs. classes, object passing / memory
-
-
-after tiled map, moving sprite, can work on game logic
-then back to interface/creative design
-user controls in there somewhere
 
 make sprite
 make sprite move
 
-outline control areas in gameview
+make a map of all the current code - is there a progam for this?
 
-views, canvases, drawables, activity, threads - HURDLES!
-surfaceviews, tiled maps
-when to use xml?
+
+read:
+surfaceviews, threads, handlers
+context, intent, attributeset
 
 write:
-
 game engine or not?
 abstraction!
 do what's fun
