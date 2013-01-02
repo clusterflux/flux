@@ -70,18 +70,25 @@ break! git conceptual
 
 day 8:
 add 'world generating' toast message, pass object as result back to menu activity
+work on new code map - finish activities and return to parent, instead of jumping through activities in sequence
+rework existing code to provide a better framework for future code =>
+only drawing and clicking done in views, more/less functions in activites where it makes sense
+rename world activity to worldgenerationactivity
+get world loading out of map view and into menu or game activity!
+format code to one convention
+fix up comments and debug messages
+general housecleaning
 
 todo:
 abstract out player class
-make a map of all the current code => work on new code map
-rework existing code to provide a better framework for future code
+make a map of all the current code - is there a progam for this? 
+
 
 add 'world loading' toast message
 add canvas.translate to world drawing. only draw new tiles
-need a start up activity for tile translator - tested generating/loading a large world. need pop ups + change where it loads at
+need a start up activity for tile translator => make it into an object for mapview to reference in onCreate
 abstract out the view for world activity. worldview = view the generated world, choose to save it
-rename world activity to worldgenerationactivity
-get world loading out of map view and into menu or game activity!
+
 rename startgame to worldselection
 
 read up on surface views, threads 
@@ -108,3 +115,4 @@ abstraction!
 do what's fun
 debugging!
 cloud dev/github/version control
+avoiding "housecleaning"

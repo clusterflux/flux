@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Wands and Wizards</string>
-	<string name="start_game">START GAME</string>
+	<string name="world_selection">WORLD SELECTION</string>
 	<string name="generate_world">GENERATE WORLD</string>
 	<string name="game_activity">Game Activity</string>
 	<string name="world_selection_activity">World Selection Activity</string>

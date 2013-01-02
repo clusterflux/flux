@@ -22,8 +22,8 @@ public class MenuActivity extends Activity {
 		
     }
 	
-	/**Called when the user clicks the Start button - loads WorldSelection activity*/
-	public void startGame(View view) {
+	/**Called when the user clicks the World Selection button*/
+	public void worldSelection(View view) {
 	
 		//Start WorldSelectionActivity and request world_name
 		Log.d("LOGCAT", "Loading WorldSelectionActivity");
@@ -33,7 +33,7 @@ public class MenuActivity extends Activity {
 		
 	}
 	
-	/**Called when the user finishes the startGame() activity*/
+	/**Called when the user finishes WorldSelectionActivity*/
 	@Override
 	public void onActivityResult(int reqCode, int resCode, Intent data) {
 	
@@ -53,8 +53,8 @@ public class MenuActivity extends Activity {
 		
 	}
 	
-	/**Called when the user clicks the Generate New World button */
-	public void newWorld(View view) {
+	/**Called when the user clicks the Generate World button */
+	public void generateWorld(View view) {
 		
 		//Start WorldGenerationActivity
 		Log.d("LOGCAT", "Starting WorldGenerationActivity");

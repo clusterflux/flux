@@ -51,7 +51,7 @@ public class MapView extends View implements OnClickListener {
 		Log.d("LOGCAT", "Tile Translator received");	
 		
 		//Hardcoded player movement
-		Log.d("LOGCAT", "Player moed to (" + playerX + ", " + playerY + ")");
+		Log.d("LOGCAT", "Player moved to (" + playerX + ", " + playerY + ")");
 		
 		//Draw tiles onto canvas
 		int screenX = -1;	// why?

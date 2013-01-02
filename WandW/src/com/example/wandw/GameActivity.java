@@ -24,7 +24,7 @@ public class GameActivity extends Activity {
 	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);	
-		Log.d("LOGCAT", "GameActivityStarted");
+		Log.d("LOGCAT", "GameActivity Started");
 		
 		//get the world_name from MenuActivity
 		Intent intent = getIntent();

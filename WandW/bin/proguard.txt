@@ -16,12 +16,10 @@
 # view AndroidManifest.xml #generated:21
 -keep class com.example.wandw.WorldSelectionActivity { <init>(...); }
 
+# onClick res/layout/menu.xml #generated:16
 # onClick res/layout/worldgeneration.xml #generated:21
 -keepclassmembers class * { *** generateWorld(...); }
 
-# onClick res/layout/menu.xml #generated:16
--keepclassmembers class * { *** newWorld(...); }
-
 # onClick res/layout/menu.xml #generated:6
--keepclassmembers class * { *** startGame(...); }
+-keepclassmembers class * { *** worldSelection(...); }
 
