@@ -3,6 +3,7 @@ C:\Users\Shasha\Documents\GitHub\flux\WandW\gen\com\example\wandw\R.java \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-hdpi\game_map.png \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-hdpi\grass.png \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-hdpi\ic_launcher.png \
+C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-hdpi\sprite.png \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-hdpi\stone.png \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-ldpi\ic_launcher.png \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\res\drawable-mdpi\ic_launcher.png \

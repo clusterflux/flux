@@ -27,7 +27,7 @@ public class MapView extends View {
 	public World world;
 	public Map<Integer,Bitmap> tileTranslator;
 	//public Bitmap overlayBitmap;
-	//public Bitmap sprite;
+	public Bitmap sprite;
 	
 	//hardcoded parameters for testing
 	private int tile_width = 50;
@@ -36,8 +36,8 @@ public class MapView extends View {
 	public int screen_height = 6;
 	public int playerX = 4;
 	public int playerY = 7;
-	public int centerTileX = 3;
-	public int centerTileY = 6;
+	public int centerTileX = screen_height/2 - 1;
+	public int centerTileY = screen_width/2 - 1;
 
 
 	public MapView(Context context, AttributeSet attrs) {
@@ -46,7 +46,7 @@ public class MapView extends View {
 		this.context = context;
 		Log.d("LOGCAT", "MapView created");	
 		
-		//sprite = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite);
+		sprite = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite);
 		//overlayBitmap = Bitmap.createBitmap(screen_width*tile_width, screen_height*tile_height);
 		
 	}
@@ -72,12 +72,13 @@ public class MapView extends View {
 				//      ") [ world = (" + worldX + ", " + worldY + ") ]");
 			
 				canvas.drawBitmap(tileTranslator.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
+				//Log.d("LOGCAT", "World tile is" + world.world_map[worldX][worldY]); 
 				screenY += 1;
 			}
 		}
-		//Log.d("LOGCAT", "Drawing sprite at" + centerTileX*tile_height + "," + centerTileY*tile_width);
+		Log.d("LOGCAT", "Drawing sprite at " + (centerTileX*tile_height + tile_height/4) + "," + (centerTileY*tile_width + tile_width/4));
 		//draw sprite in center
-		//canvas.drawBitmap(sprite, centerTileX*tile_height, centerTileY*tile_width);
+		canvas.drawBitmap(sprite, centerTileY*tile_height + tile_height/5, centerTileX*tile_width + tile_width/5, null);
 
 		Log.d("LOGCAT", "done drawing canvas");	
 		
