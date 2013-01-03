@@ -7,6 +7,9 @@ C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\GameVi
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\HudView.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\MapView.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\MenuActivity.class \
+C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\OnSwipeTouchListener$1.class \
+C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\OnSwipeTouchListener$GestureListener.class \
+C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\OnSwipeTouchListener.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\R$attr.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\R$color.class \
 C:\Users\Shasha\Documents\GitHub\flux\WandW\bin\classes\com\example\wandw\R$drawable.class \

@@ -83,8 +83,19 @@ things are flowing now. minor updates are no biggie. major updates went smoothly
 git is really making things feel nice!
 need a start up activity for tile translator => make it into an object for mapview to construct
 add 'world loading' toast message => added it to worldselection listview's on click listener so it hits before the load
+-code is correctly organized for adding swipe features-
+-code is organized enough now to get major updates-
+
+day9:
+spent time on forums asking about organization
+learned about factories
+implemented swipe to move all 4 directions
 
 todo:
+look into swiping in 360 degrees instead of 4 directions - how would the tile map be drawn?
+create worldfactory class, update activites accordingly
+look into swipe and hold for running. how would you control how often you redraw?
+
 find better way to deal with TileMap - it's a static hashmap, should be able to reference it from everywhere
 still can't pass variable for tileTranslator size when creating World objects
 add canvas.translate to world drawing. only draw new tiles
@@ -92,8 +103,6 @@ add canvas.translate to world drawing. only draw new tiles
 abstract out player class
 outline control areas in gameview => use whole space, just need to set up user controls => swipe
 abstract out the view for world activity. worldview = view the generated world, choose to save it
-
-
 
 make sprite
 make sprite move

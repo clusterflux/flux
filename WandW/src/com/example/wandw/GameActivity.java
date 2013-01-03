@@ -11,8 +11,11 @@ import android.util.Log;
 import android.widget.Toast;
 import android.graphics.Bitmap;
 import java.util.*;
+import android.view.View.OnTouchListener;
 
 public class GameActivity extends Activity {
+	
+	public MapView mapView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +31,30 @@ public class GameActivity extends Activity {
 		//load the world
 		World world = loadWorld(world_name);
 		
-		//create a tilemap and get the tile translator array from it - there should be a better way, tilemap is static
+		//create a tilemap and get the tile translator array from it //need to convert this to a static Map
 		TileMap tileMap = new TileMap(this);	
 		Map<Integer,Bitmap> tileTranslator = tileMap.getTileTranslator();
 		
 		//Create a reference to the MapView object and set the translator
-		MapView mapView = (MapView) findViewById(R.id.map_view);
+		mapView = (MapView) findViewById(R.id.map_view);
 		mapView.setArgs(world, tileTranslator);
+		
+		//implement the OnTouchSwipeListener
+		mapView.setOnTouchListener(new OnSwipeTouchListener() {
+			
+			public void onSwipeRight() {
+				movePlayer(0,1);
+			}
+			public void onSwipeLeft() {
+				movePlayer(0,-1);
+			}
+			public void onSwipeUp() {
+				movePlayer(-1,0);
+			}
+			public void onSwipeDown() {
+				movePlayer(1,0);
+			}
+		});
 		
 	}
 	
@@ -67,6 +87,12 @@ public class GameActivity extends Activity {
 		return dummy_world; //if world load fails, send back the default world
 							// NOTE: it's not saved!!!
 				
+	}
+	
+	public void movePlayer(int x, int y) {
+	
+		mapView.movePlayer(x,y);
+		
 	}
 
 }

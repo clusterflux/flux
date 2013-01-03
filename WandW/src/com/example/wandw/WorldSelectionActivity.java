@@ -47,7 +47,7 @@ public class WorldSelectionActivity extends Activity {
 		worldListView.setAdapter(arrayAdapter);
 		
 		//listen for item clicks
-		worldListView.setOnItemClickListener(new OnItemClickListener()
+		worldListView.setOnItemClickListener(new OnItemClickListener() 
 		{
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
 			{

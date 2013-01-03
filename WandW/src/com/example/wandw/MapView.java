@@ -17,20 +17,27 @@ import java.io.Serializable;
 import android.util.Log;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.graphics.BitmapFactory;
 
 
-public class MapView extends View implements OnClickListener {
+public class MapView extends View {
 
 	protected Context context;
 	public World world;
 	public Map<Integer,Bitmap> tileTranslator;
+	//public Bitmap overlayBitmap;
+	//public Bitmap sprite;
 	
+	//hardcoded parameters for testing
 	private int tile_width = 50;
 	private int tile_height = 50;
 	public int screen_width = 12;
 	public int screen_height = 6;
 	public int playerX = 4;
 	public int playerY = 7;
+	public int centerTileX = 3;
+	public int centerTileY = 6;
 
 
 	public MapView(Context context, AttributeSet attrs) {
@@ -39,15 +46,15 @@ public class MapView extends View implements OnClickListener {
 		this.context = context;
 		Log.d("LOGCAT", "MapView created");	
 		
-		setOnClickListener(this);
+		//sprite = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite);
+		//overlayBitmap = Bitmap.createBitmap(screen_width*tile_width, screen_height*tile_height);
 		
 	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
 		
-		//Hardcoded player movement
-		Log.d("LOGCAT", "Player moved to (" + playerX + ", " + playerY + ")");
+		//canvas = new Canvas(overlayBitmap);
 		
 		//Draw tiles onto canvas
 		Log.d("LOGCAT", "drawing canvas");
@@ -64,36 +71,46 @@ public class MapView extends View implements OnClickListener {
 				//Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + 
 				//      ") [ world = (" + worldX + ", " + worldY + ") ]");
 			
-				canvas.drawBitmap(tileTranslator.get(world.world_map[worldX][worldY]), screenY*tile_height, screenX*tile_width, null);
+				canvas.drawBitmap(tileTranslator.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
 				screenY += 1;
 			}
 		}
+		//Log.d("LOGCAT", "Drawing sprite at" + centerTileX*tile_height + "," + centerTileY*tile_width);
+		//draw sprite in center
+		//canvas.drawBitmap(sprite, centerTileX*tile_height, centerTileY*tile_width);
+
 		Log.d("LOGCAT", "done drawing canvas");	
 		
 	}
 	
-	@Override
-	public void onClick(View v) { //hardcoded move right function
-		
-		//if in bounds, move the player and redraw
-		if ( playerY < (world.world_width - screen_width/2 - 1) && playerX < (world.world_height - screen_height/2 - 1)) {
-		
-			//Toast.makeText(context, "CLICK DETECTED, MOVING RIGHT", Toast.LENGTH_SHORT).show();;
-			playerY += 1;
-			invalidate(); 
-			
-		} else { 
-			//do nothing
-			Toast.makeText(context, "REACHED THE END OF THE WORLD", Toast.LENGTH_SHORT).show();
-		}
-		
-	}
-	
+	//ugly method, fix!
 	public void setArgs(World world, Map<Integer,Bitmap> tileTranslator){
 		
 		this.world = world;
 		this.tileTranslator = tileTranslator;
 		
+	}
+	
+	public void movePlayer(int movePlayerX, int movePlayerY) {
+	Log.d("LOGCAT", "Moving Player (" + movePlayerX + "," + movePlayerY + ")");
+		
+		
+		//check if player's movement will take him out of bounds
+		if ( playerY + movePlayerY < (world.world_width - screen_width/2 - 1) && playerX + movePlayerX < (world.world_height - screen_height/2 - 1) 
+			 && playerY + movePlayerY > screen_width/2 && playerX + movePlayerX > screen_height/2) {
+	
+			this.playerX += movePlayerX;
+			this.playerY += movePlayerY;
+			
+			invalidate();
+			
+		} else {
+		
+			//do nothing
+			Toast.makeText(context, "REACHED THE END OF THE WORLD", Toast.LENGTH_SHORT).show();
+			
+		}
+			
 	}
 	
 }
