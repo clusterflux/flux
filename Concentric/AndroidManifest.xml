@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.clusterflux.concentric"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" >
+		<activity android:name="com.clusterflux.concentric.MenuActivity"
+                  android:label="@string/app_name"
+				  android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity android:name="com.clusterflux.concentric.WorldGenerationActivity"
+				  android:label="@string/world_generation_activity"
+				  androidparentActivityName="com.clusterflux.concentric.MenuActivity"
+				  android:screenOrientation="landscape" >
+		</activity>
+		<activity android:name="com.clusterflux.concentric.WorldSelectionActivity"
+				  android:label="@string/world_selection_activity"
+				  androidparentActivityName="com.clusterflux.concentric.MenuActivity"
+				  android:screenOrientation="landscape" >
+		</activity>
+		<activity android:name="com.clusterflux.concentric.GameActivity"
+				  android:label="@string/game_activity" 
+				  android:parentActivityName="com.clusterflux.concentric.MenuSelectionActivity" 
+				  android:screenOrientation="landscape" >
+		</activity>
+    </application>
+</manifest>

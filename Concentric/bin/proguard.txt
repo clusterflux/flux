@@ -1,0 +1,25 @@
+# view AndroidManifest.xml #generated:25
+-keep class com.clusterflux.concentric.GameActivity { <init>(...); }
+
+# view res/layout/game.xml #generated:10
+-keep class com.clusterflux.concentric.HudView { <init>(...); }
+
+# view res/layout/game.xml #generated:5
+-keep class com.clusterflux.concentric.MapView { <init>(...); }
+
+# view AndroidManifest.xml #generated:7
+-keep class com.clusterflux.concentric.MenuActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:15
+-keep class com.clusterflux.concentric.WorldGenerationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:20
+-keep class com.clusterflux.concentric.WorldSelectionActivity { <init>(...); }
+
+# onClick res/layout/menu.xml #generated:16
+# onClick res/layout/worldgeneration.xml #generated:21
+-keepclassmembers class * { *** generateWorld(...); }
+
+# onClick res/layout/menu.xml #generated:6
+-keepclassmembers class * { *** worldSelection(...); }
+
