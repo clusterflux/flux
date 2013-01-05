@@ -16,14 +16,24 @@ public class OnSwipeTouchListener implements OnTouchListener {
 	
 	public boolean onTouch(View view, MotionEvent event) {
 	
-		return gestureDetector.onTouchEvent(event);
+		/*switch (event.getAction()) {
+		
+			case MotionEvent.ACTION_MOVE:
+	 
+				Log.d("LOGCAT", "SLIDE");
+				return true;
+		
+			default:
+				Log.d("LOGCAT", "USING GESTURE DETECTOR");*/
+				return gestureDetector.onTouchEvent(event);
 		
 	}
 	
 	private final class GestureListener extends SimpleOnGestureListener {
 	
-		private static final int SWIPE_THRESHOLD = 50;
+		private static final int SWIPE_THRESHOLD = 5;
 		private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+		private static final int SCROLL_THRESHOLD = 50;
 		
 		@Override
 		public boolean onDown(MotionEvent event) {
@@ -33,8 +43,42 @@ public class OnSwipeTouchListener implements OnTouchListener {
 		}
 		
 		@Override
+		public boolean onScroll(MotionEvent down, MotionEvent up, float distanceX, float distanceY) {
+		Log.d("LOGCAT", "SCROLLING");
+			try {
+				float diffY = up.getY() - down.getY();
+				float diffX = up.getX() - down.getX();
+			
+				if (Math.abs(diffX) > Math.abs(diffY)) { //scrolled on X axis
+					
+						if (Math.abs(diffX) > SCROLL_THRESHOLD) { //scroll is defined enough
+							if (diffX > 0) { 
+								onScrollRight();
+							} else {
+								onScrollLeft();
+							}
+						}
+					} else { //scrolled on Y axis
+					
+						if (Math.abs(diffY) > SCROLL_THRESHOLD) { //scroll is defined enough
+							if (diffY < 0) { //Y-axis is upside down
+								onScrollUp();
+							} else {
+								onScrollDown();
+							}
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();;
+				} 
+			
+			return false;
+			
+		}
+		
+		@Override
 		public boolean onFling(MotionEvent down, MotionEvent up, float velocityX, float velocityY) {
-
+	Log.d("LOGCAT", "SWIPING");
 			try {
 				float diffY = up.getY() - down.getY();
 				float diffX = up.getX() - down.getX();
@@ -71,23 +115,46 @@ public class OnSwipeTouchListener implements OnTouchListener {
 		}
 	}
 	
+	public void onScrollRight() {
+		//abstract method
+		Log.d("LOGCAT", "Scrolling Right");
+
+	}
+	
+	public void onScrollLeft() {
+		//abstract method
+		Log.d("LOGCAT", "Scrolling Left");
+
+	}
+	
+	public void onScrollUp() {
+		//abstract method
+		Log.d("LOGCAT", "Scrolling Up");
+
+	}
+	
+	public void onScrollDown() {
+		//abstract method
+		Log.d("LOGCAT", "Scrolling Down");
+	}
+	
 	public void onSwipeRight() {
-	//override this in calling Activity
+	//abstract method
 		
 	}
 	
 	public void onSwipeLeft() {
-	//override this in calling Activity
+	//abstract method
 	
 	}
 	
 	public void onSwipeUp() {
-	//override this in calling Activity
+	//abstract method
 		
 	}
 	
 	public void onSwipeDown() {
-	//override this in calling Activity
+	//abstract method
 		
 	}
 	

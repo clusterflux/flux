@@ -44,16 +44,31 @@ public class GameActivity extends Activity {
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
 			
 			public void onSwipeRight() {
-					movePlayer(0,1, swipeVelocity);
+				mapView.movePlayer(0,1);
 			}
 			public void onSwipeLeft() {
-					movePlayer(0,-1, swipeVelocity);
+				mapView.movePlayer(0,-1);
 			}
 			public void onSwipeUp() {
-					movePlayer(-1,0, swipeVelocity);
+				mapView.movePlayer(-1,0);
 			}
 			public void onSwipeDown() {
-					movePlayer(1,0, swipeVelocity);
+				mapView.movePlayer(1,0);
+			}
+			public void onScrollRight() {
+				mapView.movePlayer(0,1);
+			}
+	
+			public void onScrollLeft() {
+				mapView.movePlayer(0,-1);
+			}
+	
+			public void onScrollUp() {
+				mapView.movePlayer(-1,0);
+			}
+	
+			public void onScrollDown() {
+				mapView.movePlayer(1,0);
 			}
 		});
 		
@@ -88,20 +103,6 @@ public class GameActivity extends Activity {
 		return dummy_world; //if world load fails, send back the default world
 							// NOTE: it's not saved!!!
 				
-	}
-	
-	public void movePlayer(int x, int y, float swipeVelocity) {
-		
-		Log.d("LOGCAT", "Velocity = " + swipeVelocity);
-		swipeVelocity = Math.abs(swipeVelocity);
-		
-		if (swipeVelocity > 3500) {
-			for ( int i = 1; i < swipeVelocity/200; i += 1){
-				mapView.movePlayer(x,y);
-			}
-		} else {
-				mapView.movePlayer(x,y);
-		}
 	}
 
 }
