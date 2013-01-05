@@ -12,6 +12,7 @@ import android.widget.Toast;
 import android.graphics.Bitmap;
 import java.util.*;
 import android.view.View.OnTouchListener;
+import java.math.*;
 
 public class GameActivity extends Activity {
 	
@@ -43,20 +44,16 @@ public class GameActivity extends Activity {
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
 			
 			public void onSwipeRight() {
-				Log.d("LOGCAT", "Velocity = " + swipeVelocity);
-				for ( int i = 1; i < swipeVelocity/200; i += 1){
-				Log.d("LOGCAT", "Calling movePlayer in GameActivity. i = " + i);
-				movePlayer(0,1);
-				}
+					movePlayer(0,1, swipeVelocity);
 			}
 			public void onSwipeLeft() {
-				movePlayer(0,-1);
+					movePlayer(0,-1, swipeVelocity);
 			}
 			public void onSwipeUp() {
-				movePlayer(-1,0);
+					movePlayer(-1,0, swipeVelocity);
 			}
 			public void onSwipeDown() {
-				movePlayer(1,0);
+					movePlayer(1,0, swipeVelocity);
 			}
 		});
 		
@@ -93,10 +90,18 @@ public class GameActivity extends Activity {
 				
 	}
 	
-	public void movePlayer(int x, int y) {
-	
-		mapView.movePlayer(x,y);
+	public void movePlayer(int x, int y, float swipeVelocity) {
 		
+		Log.d("LOGCAT", "Velocity = " + swipeVelocity);
+		swipeVelocity = Math.abs(swipeVelocity);
+		
+		if (swipeVelocity > 3500) {
+			for ( int i = 1; i < swipeVelocity/200; i += 1){
+				mapView.movePlayer(x,y);
+			}
+		} else {
+				mapView.movePlayer(x,y);
+		}
 	}
 
 }
