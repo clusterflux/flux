@@ -12,6 +12,8 @@ public class OnSwipeTouchListener implements OnTouchListener {
 
 	public final GestureDetector gestureDetector = new GestureDetector(new GestureListener());
 	
+	public float swipeVelocity;
+	
 	public boolean onTouch(View view, MotionEvent event) {
 	
 		return gestureDetector.onTouchEvent(event);
@@ -38,6 +40,9 @@ public class OnSwipeTouchListener implements OnTouchListener {
 				float diffX = up.getX() - down.getX();
 				
 				if (Math.abs(diffX) > Math.abs(diffY)) { //swiped on X axis
+				
+					swipeVelocity = velocityX;
+												
 					if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) { //swipe is defined enough
 						if (diffX > 0) { 
 							onSwipeRight();
@@ -46,6 +51,9 @@ public class OnSwipeTouchListener implements OnTouchListener {
 						}
 					}
 				} else { //swiped on Y axis
+				
+					swipeVelocity = velocityY;
+					
 					if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) { //swipe is defined enough
 						if (diffY < 0) { //Y-axis is upside down
 							onSwipeUp();

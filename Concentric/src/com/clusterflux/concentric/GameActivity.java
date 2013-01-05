@@ -43,7 +43,11 @@ public class GameActivity extends Activity {
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
 			
 			public void onSwipeRight() {
+				Log.d("LOGCAT", "Velocity = " + swipeVelocity);
+				for ( int i = 1; i < swipeVelocity/200; i += 1){
+				Log.d("LOGCAT", "Calling movePlayer in GameActivity. i = " + i);
 				movePlayer(0,1);
+				}
 			}
 			public void onSwipeLeft() {
 				movePlayer(0,-1);

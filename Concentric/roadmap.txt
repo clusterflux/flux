@@ -91,17 +91,28 @@ spent time on forums asking about organization
 learned about factories
 implemented swipe to move all 4 directions
 
+day10:
+implemented collision on stone - fixed world drawing from (1,1) instead of (0,0)
+changed app and package name to Concentric!
+
+day11:
+play with getting player to move more than one tile at a time => logic works, but breaks on drawing
+read up on surfaceviews, threads, handlers, executions
+
+next:
+worldfactory
+static tile map
+break out activity oncreate tasks into methods for ease of reading
+create surfaceview and thread
+
 todo:
 look into swiping in 360 degrees instead of 4 directions - how would the tile map be drawn?
-create worldfactory class, update activites accordingly
 look into swipe and hold for running. how would you control how often you redraw?
 
-find better way to deal with TileMap - it's a static hashmap, should be able to reference it from everywhere
 still can't pass variable for tileTranslator size when creating World objects
 add canvas.translate to world drawing. only draw new tiles
  
 abstract out player class
-outline control areas in gameview => use whole space, just need to set up user controls => swipe
 abstract out the view for world activity. worldview = view the generated world, choose to save it
 
 make sprite
@@ -111,7 +122,6 @@ make a map of all the current code - is there a progam for this?
 
 
 read:
-surfaceviews, threads, handlers
 context, intent, attributeset
 
 write:
@@ -121,3 +131,4 @@ do what's fun
 debugging!
 cloud dev/github/version control
 avoiding "housecleaning"
+version control!
