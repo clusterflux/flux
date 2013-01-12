@@ -39,14 +39,9 @@ public class GameActivity extends Activity {
 			//do nothing
 		}
 		
-		//get the tile map
-		WorldFeatures worldFeatures = new WorldFeatures(this);		
-		Map<Integer,Bitmap> TILE_MAP = worldFeatures.TILE_MAP;
-		
-		//Create a reference to the MapView object, set attributes
+		//Create a reference to the MapView object, set world
 		mapView = (MapView) findViewById(R.id.map_view);
 		mapView.setWorld(world);
-		mapView.setTileMap(TILE_MAP);
 		
 		//implement the OnTouchSwipeListener
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {

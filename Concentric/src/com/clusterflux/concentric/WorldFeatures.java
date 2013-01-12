@@ -10,8 +10,12 @@ import android.content.Context;
 public class WorldFeatures {
 	
 	public final Map<Integer, Bitmap> TILE_MAP;
+	public final Bitmap SPRITE;
 	
 	public WorldFeatures(Context context) {
+	
+		//get the sprite
+		SPRITE = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite);
 	
 		TILE_MAP = new HashMap<Integer, Bitmap>();
 	

@@ -19,15 +19,17 @@ import android.widget.Toast;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.graphics.BitmapFactory;
+import android.view.SurfaceView;
+import android.view.SurfaceHolder;
 
 
-public class MapView extends View {
+public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 
 	protected Context context;
 	public World world;
 	public Map<Integer,Bitmap> TILE_MAP;
 	//public Bitmap overlayBitmap;
-	public Bitmap sprite;
+	public Bitmap SPRITE;
 	
 	//hardcoded parameters for testing
 	private int tile_width = 50;
@@ -39,19 +41,56 @@ public class MapView extends View {
 	public int centerTileX = screen_height/2 - 1;
 	public int centerTileY = screen_width/2 - 1;
 
-
+	public MapThread mapThread; 
+	
 	public MapView(Context context, AttributeSet attrs) {
 	
 		super(context, attrs);
 		this.context = context;
 		Log.d("LOGCAT", "MapView created");	
 		
-		sprite = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite);
+		//get the tile map
+		WorldFeatures worldFeatures = new WorldFeatures(context);		
+		TILE_MAP = worldFeatures.TILE_MAP;
+		SPRITE = worldFeatures.SPRITE;
+		
+		SurfaceHolder holder = getHolder();
+		holder.addCallback(this);
 		
 	}
 	
 	@Override
-	public void onDraw(Canvas canvas) {
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) { }
+	
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) { 
+	
+		mapThread = new MapThread(holder, context, this);
+		mapThread.setRunning(true);
+		mapThread.start();
+		
+	}
+	
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) { 
+	
+		mapThread.setRunning(false);
+		boolean retry = true;
+		
+		while (retry) {
+		
+			try {
+				mapThread.join();
+				retry = false;
+			} catch (Exception e) {
+				Log.d("LOGCAT", e.getMessage());
+			}
+		
+		}
+		
+	}
+	
+	public void doDraw(Canvas canvas) {
 		
 		//Draw tiles onto canvas
 		Log.d("LOGCAT", "drawing canvas");
@@ -74,7 +113,7 @@ public class MapView extends View {
 		}
 		
 		//draw sprite in center (2,5) on screen map
-		canvas.drawBitmap(sprite, centerTileY*tile_height + tile_height/5, centerTileX*tile_width + tile_width/5, null);
+		canvas.drawBitmap(SPRITE, centerTileY*tile_height + tile_height/5, centerTileX*tile_width + tile_width/5, null);
 
 		Log.d("LOGCAT", "done drawing canvas");	
 		
