@@ -51,7 +51,8 @@ public class WorldGenerationActivity extends Activity {
 	public void generateWorld (View view) { 
 											
 		Log.d("LOGCAT", "Getting World Information");
-		
+		Toast.makeText(this, "GENERATING WORLD...", Toast.LENGTH_SHORT).show();
+
 		//get the context so it can be passed to the World class for file saving
 		//Context context = getApplicationContext();
 		
@@ -67,7 +68,6 @@ public class WorldGenerationActivity extends Activity {
 		
 		//generate and save the world
 		Log.d("LOGCAT", "Generating the World");
-		Toast.makeText(this, "GENERATING WORLD...", Toast.LENGTH_SHORT).show();
 		World world = new World(world_name, world_width, world_height);
 		Toast.makeText(this, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();
 

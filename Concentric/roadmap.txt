@@ -99,15 +99,19 @@ day11:
 play with getting player to move more than one tile at a time => logic works, but breaks on drawing
 read up on surfaceviews, threads, handlers, executions
 
-next:
-worldfactory
-static tile map
-break out activity oncreate tasks into methods for ease of reading
-create surfaceview and thread
+day12,13,14(15?) - WoT AMoL
+
+day 16:
+worldfactory -- bust, but cleaned up the methods
+static tile map -- can't do static with getResources - is there a better way?
+break out activity oncreate tasks into methods for ease of reading -- they look ok for now, hard to reference context in methods
+create surfaceview and thread -- done!
 
 todo:
-look into swiping in 360 degrees instead of 4 directions - how would the tile map be drawn?
-look into swipe and hold for running. how would you control how often you redraw?
+fix back button bug on world selection
+switch to d pad
+abstract player class
+abstract sprite class?
 
 still can't pass variable for tileTranslator size when creating World objects
 add canvas.translate to world drawing. only draw new tiles

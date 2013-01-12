@@ -23,6 +23,7 @@ public class WorldFeatures {
 		TILE_MAP.put(0, BitmapFactory.decodeResource(context.getResources(), R.drawable.dirt));
 		TILE_MAP.put(1, BitmapFactory.decodeResource(context.getResources(), R.drawable.grass));
 		TILE_MAP.put(2, BitmapFactory.decodeResource(context.getResources(), R.drawable.stone));
+		TILE_MAP.put(3, BitmapFactory.decodeResource(context.getResources(), R.drawable.water));
 		
 	}
 	

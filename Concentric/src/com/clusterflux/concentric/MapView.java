@@ -93,7 +93,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public void doDraw(Canvas canvas) {
 		
 		//Draw tiles onto canvas
-		Log.d("LOGCAT", "drawing canvas");
+		//Log.d("LOGCAT", "drawing canvas");
 			
 		int screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
@@ -104,7 +104,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			for (int worldY = (playerY - screen_width/2 + 1);  worldY < (playerY + screen_width/2 + 1); worldY += 1, screenY += 1) {
 				
 				if (screenX == 2 && screenY == 5) {
-				Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + ") [ world = (" + worldX + ", " + worldY + ") ]");
+				//Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + ") [ world = (" + worldX + ", " + worldY + ") ]");
 				}
 			
 				canvas.drawBitmap(TILE_MAP.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
@@ -115,7 +115,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 		//draw sprite in center (2,5) on screen map
 		canvas.drawBitmap(SPRITE, centerTileY*tile_height + tile_height/5, centerTileX*tile_width + tile_width/5, null);
 
-		Log.d("LOGCAT", "done drawing canvas");	
+		//Log.d("LOGCAT", "done drawing canvas");	
 		
 	}
 	

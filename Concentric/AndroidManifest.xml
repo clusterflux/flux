@@ -14,17 +14,17 @@
         </activity>
 		<activity android:name="com.clusterflux.concentric.WorldGenerationActivity"
 				  android:label="@string/world_generation_activity"
-				  androidparentActivityName="com.clusterflux.concentric.MenuActivity"
+				  android:parentActivityName="com.clusterflux.concentric.MenuActivity"
 				  android:screenOrientation="landscape" >
 		</activity>
 		<activity android:name="com.clusterflux.concentric.WorldSelectionActivity"
 				  android:label="@string/world_selection_activity"
-				  androidparentActivityName="com.clusterflux.concentric.MenuActivity"
+				  android:parentActivityName="com.clusterflux.concentric.MenuActivity"
 				  android:screenOrientation="landscape" >
 		</activity>
 		<activity android:name="com.clusterflux.concentric.GameActivity"
 				  android:label="@string/game_activity" 
-				  android:parentActivityName="com.clusterflux.concentric.MenuSelectionActivity" 
+				  android:parentActivityName="com.clusterflux.concentric.MenuActivity" 
 				  android:screenOrientation="landscape" >
 		</activity>
     </application>
