@@ -25,7 +25,7 @@ public class MapView extends View {
 
 	protected Context context;
 	public World world;
-	public Map<Integer,Bitmap> tileTranslator;
+	public Map<Integer,Bitmap> TILE_MAP;
 	//public Bitmap overlayBitmap;
 	public Bitmap sprite;
 	
@@ -68,7 +68,7 @@ public class MapView extends View {
 				Log.d("LOGCAT", "Drawing tile @ = (" + screenX + ", " + screenY + ") [ world = (" + worldX + ", " + worldY + ") ]");
 				}
 			
-				canvas.drawBitmap(tileTranslator.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
+				canvas.drawBitmap(TILE_MAP.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
 
 			}
 		}
@@ -80,11 +80,15 @@ public class MapView extends View {
 		
 	}
 	
-	//ugly method, fix!
-	public void setArgs(World world, Map<Integer,Bitmap> tileTranslator){
+	public void setWorld(World world){
 		
 		this.world = world;
-		this.tileTranslator = tileTranslator;
+		
+	}
+	
+	public void setTileMap(Map<Integer, Bitmap> TILE_MAP){
+		
+		this.TILE_MAP = TILE_MAP;
 		
 	}
 	

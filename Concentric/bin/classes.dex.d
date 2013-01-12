@@ -17,6 +17,7 @@ C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\con
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\TileMap.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\World.class \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\WorldFeatures.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\WorldGenerationActivity.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\WorldSelectionActivity$1.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\WorldSelectionActivity.class \

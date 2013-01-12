@@ -39,13 +39,14 @@ public class GameActivity extends Activity {
 			//do nothing
 		}
 		
-		//create a tilemap and get the tile translator array from it //need to convert this to a static Map
-		TileMap tileMap = new TileMap(this);	
-		Map<Integer,Bitmap> tileTranslator = tileMap.getTileTranslator();
+		//get the tile map
+		WorldFeatures worldFeatures = new WorldFeatures(this);		
+		Map<Integer,Bitmap> TILE_MAP = worldFeatures.TILE_MAP;
 		
-		//Create a reference to the MapView object and set the translator
+		//Create a reference to the MapView object, set attributes
 		mapView = (MapView) findViewById(R.id.map_view);
-		mapView.setArgs(world, tileTranslator);
+		mapView.setWorld(world);
+		mapView.setTileMap(TILE_MAP);
 		
 		//implement the OnTouchSwipeListener
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
@@ -90,26 +91,5 @@ public class GameActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	/*public World loadWorld(String world_name) {
-	
-	//Create a dummy world to load into - why?!
-		World world = new World(this, world_name); //create a default world
-		
-		//load the world from file
-		Log.d("LOGCAT", "Loading the World");
-		try {
-			world.loadWorld(this, world_name);
-			return world;
-		} catch (IOException e) {
-		//do nothing!
-		} catch (ClassNotFoundException f) {
-		//do nothing!
-		}
-		
-		return dummy_world; //if world load fails, send back the default world
-							// NOTE: it's not saved!!!
-				
-	}*/
 
 }
