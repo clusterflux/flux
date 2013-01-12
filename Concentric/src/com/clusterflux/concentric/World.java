@@ -17,16 +17,6 @@ public class World implements Serializable {
 	public int world_height;
 	public int[][] world_map;
 	
-	public World() { //default world - I don't even want this constructor here!
-	
-		world_name = "default_world";
-		world_width = 1;
-		world_height = 1;
-		
-		world_map = createWorld(world_width, world_height);
-		
-	}
-	
 	public World(String world_name, int world_width, int world_height) {
 
 		//set the world attributes
@@ -35,11 +25,26 @@ public class World implements Serializable {
 		this.world_height = world_height;
 		
 		//generate the map
-		world_map = createWorld(world_width, world_height);
+		world_map = createWorldMap(world_width, world_height);
 	
 	}
 	
-	private int[][] createWorld(int world_width, int world_height) {
+	public World(Context context, String world_name) throws IOException, ClassNotFoundException {
+		
+		//load world from file
+		FileInputStream fis = context.openFileInput(world_name);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		World world = (World)ois.readObject();
+		
+		//set the world attributes
+		this.world_name = world.world_name;
+		this.world_width = world.world_width;
+		this.world_height = world.world_height;
+		this.world_map = world.world_map;
+		
+	}
+	
+	private int[][] createWorldMap(int world_width, int world_height) {
 	
 		//create a local tile map 
 		int[][] world_map = new int[world_width][world_height];
@@ -61,24 +66,11 @@ public class World implements Serializable {
 	
 	public void saveWorld(Context context, String world_name, World world) throws IOException {
 		
+		//save world object to file named world_name
 		FileOutputStream fos = context.openFileOutput(world_name, Context.MODE_PRIVATE);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(world);
 		oos.close();
-		
-	}
-	
-	public World loadWorld(Context context, String world_name) throws IOException, ClassNotFoundException {
-		
-		FileInputStream fis = context.openFileInput(world_name);
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		World world = (World)ois.readObject();
-		
-		/*this.world_name = world.world_name;
-		this.world_width = world.world_width;
-		this.world_height = world.world_height;
-		this.world_map = world.world_map;*/  //why doesn't this work?
-		return world;
 		
 	}
 	

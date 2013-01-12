@@ -139,12 +139,12 @@ public class OnSwipeTouchListener implements OnTouchListener {
 	}
 	
 	public void onSwipeRight() {
-	//abstract method
+		//abstract method
 		
 	}
 	
 	public void onSwipeLeft() {
-	//abstract method
+		//abstract method
 	
 	}
 	

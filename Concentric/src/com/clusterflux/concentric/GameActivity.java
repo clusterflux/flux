@@ -17,6 +17,7 @@ import java.math.*;
 public class GameActivity extends Activity {
 	
 	public MapView mapView;
+	public World world;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,13 @@ public class GameActivity extends Activity {
 		String world_name = intent.getStringExtra(MenuActivity.EXTRA_MESSAGE);
 		
 		//load the world
-		World world = loadWorld(world_name);
+		try {
+			world = new World(this, world_name);
+		} catch (IOException e) {
+			//do nothing
+		} catch (ClassNotFoundException e) {
+			//do nothing
+		}
 		
 		//create a tilemap and get the tile translator array from it //need to convert this to a static Map
 		TileMap tileMap = new TileMap(this);	
@@ -84,15 +91,15 @@ public class GameActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public World loadWorld(String world_name) {
+	/*public World loadWorld(String world_name) {
 	
 	//Create a dummy world to load into - why?!
-		World dummy_world = new World();
+		World world = new World(this, world_name); //create a default world
 		
-		//load the world 
+		//load the world from file
 		Log.d("LOGCAT", "Loading the World");
 		try {
-			World world = dummy_world.loadWorld(this, world_name);
+			world.loadWorld(this, world_name);
 			return world;
 		} catch (IOException e) {
 		//do nothing!
@@ -103,6 +110,6 @@ public class GameActivity extends Activity {
 		return dummy_world; //if world load fails, send back the default world
 							// NOTE: it's not saved!!!
 				
-	}
+	}*/
 
 }

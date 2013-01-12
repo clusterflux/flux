@@ -67,16 +67,19 @@ public class WorldGenerationActivity extends Activity {
 		
 		//generate and save the world
 		Log.d("LOGCAT", "Generating the World");
+		Toast.makeText(this, "GENERATING WORLD...", Toast.LENGTH_SHORT).show();
 		World world = new World(world_name, world_width, world_height);
-		
+		Toast.makeText(this, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();
+
 		Log.d("LOGCAT", "Saving the World");	
 		try {
+			Toast.makeText(this, "SAVING WORLD...", Toast.LENGTH_SHORT).show();
 			world.saveWorld(this, world_name, world);
 		} catch (IOException e) {
 			//do nothing
 		}
 			
-		Toast.makeText(this, "WORLD GENERATED!!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "WORLD SAVED!!", Toast.LENGTH_SHORT).show();
 		
 		//end the activity and go back to MenuActivity
 		finish();
