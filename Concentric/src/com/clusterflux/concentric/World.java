@@ -61,18 +61,18 @@ public class World implements Serializable {
 		for (int row = 0; row < world_map.length; row++) {
 			for (int col = 0; col < world_map[row].length; col++) {
 				Log.d("LOGCAT", "perlin" + perlin[row][col]);
-				if (perlin[row][col] < 0.25) {
-					world_map[row][col] = 0;
+				if (perlin[row][col] < 0.15) {
+					world_map[row][col] = 3;
 				}
 				
-				if (perlin[row][col] > 0.25 && perlin[row][col] < 0.60) {
+				if (perlin[row][col] > 0.15 && perlin[row][col] < 0.35) {
+					world_map[row][col] = 0;
+				}
+				if (perlin[row][col] > 0.35 && perlin[row][col] < 0.75) {
 					world_map[row][col] = 1;
 				}
-				if (perlin[row][col] > 0.60 && perlin[row][col] < 0.85) {
+				if (perlin[row][col] > 0.75) {
 					world_map[row][col] = 2;
-				}
-				if (perlin[row][col] > 0.85) {
-					world_map[row][col] = 3;
 				}
 				//world_map[row][col] = rand.nextInt(3);  //static number, needs variable!
 														//3 is the number of tile types

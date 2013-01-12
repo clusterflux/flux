@@ -42,14 +42,13 @@ public class MenuActivity extends Activity {
 		if (reqCode == 1) {
 			if (resCode == Activity.RESULT_OK) {
 				message = data.getStringExtra(EXTRA_MESSAGE);
+				//Start GameActivity and pass it world_name
+				Log.d("LOGCAT", "Starting GameActivity");		
+				Intent intent = new Intent(this, GameActivity.class);
+				intent.putExtra(EXTRA_MESSAGE, message);
+				startActivity(intent);
 			}
 		}
-		
-		//Start GameActivity and pass it world_name
-		Log.d("LOGCAT", "Starting GameActivity");		
-		Intent intent = new Intent(this, GameActivity.class);
-		intent.putExtra(EXTRA_MESSAGE, message);
-		startActivity(intent);
 		
 	}
 	

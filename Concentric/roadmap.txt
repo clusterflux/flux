@@ -109,6 +109,7 @@ create surfaceview and thread -- done!
 
 todo:
 fix back button bug on world selection
+method to delete worlds (long press? new activity under world management?)
 switch to d pad
 abstract player class
 abstract sprite class?
