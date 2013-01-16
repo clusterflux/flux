@@ -106,18 +106,26 @@ worldfactory -- bust, but cleaned up the methods
 static tile map -- can't do static with getResources - is there a better way?
 break out activity oncreate tasks into methods for ease of reading -- they look ok for now, hard to reference context in methods
 create surfaceview and thread -- done!
+fix back button bug on world selection - done
+
+day 18?
+added player class
+added camera class
+moved player logic to GameActivity
 
 todo:
-fix back button bug on world selection
+fix player/map edge logic
+identify camera via top left coord instead of middle coord
+figure out how to deal with tile size relative to screen size
+
 method to delete worlds (long press? new activity under world management?)
 switch to d pad
 abstract player class
 abstract sprite class?
 
 still can't pass variable for tileTranslator size when creating World objects
-add canvas.translate to world drawing. only draw new tiles
+add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview?
  
-abstract out player class
 abstract out the view for world activity. worldview = view the generated world, choose to save it
 
 make sprite

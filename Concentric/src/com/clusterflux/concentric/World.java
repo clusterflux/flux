@@ -50,14 +50,11 @@ public class World implements Serializable {
 		//create a local tile map 
 		int[][] world_map = new int[world_width][world_height];
 		
+		//get perlin noise array
 		float[][] white_noise = generateWhiteNoise(world_width, world_height);
 		float[][] perlin = generatePerlinNoise(white_noise, 6);
-		
-		//get a randomizer to fill the array with - {temporary solution}
-		/*Random rand = new Random();*/
 
-		//fill the tile map array with random numbers between 0 and 2
-		
+		//fill it based on perlin noise array
 		for (int row = 0; row < world_map.length; row++) {
 			for (int col = 0; col < world_map[row].length; col++) {
 				Log.d("LOGCAT", "perlin" + perlin[row][col]);
@@ -74,8 +71,6 @@ public class World implements Serializable {
 				if (perlin[row][col] > 0.75) {
 					world_map[row][col] = 2;
 				}
-				//world_map[row][col] = rand.nextInt(3);  //static number, needs variable!
-														//3 is the number of tile types
 			}
 		}
 		

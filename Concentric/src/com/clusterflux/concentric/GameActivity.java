@@ -18,6 +18,14 @@ public class GameActivity extends Activity {
 	
 	public MapView mapView;
 	public World world;
+	public Player player;
+	public Camera camera;
+	
+	//hardcoded parameters for testing
+	private int tile_width = 25;
+	private int tile_height = 25;
+	public int screen_width = 24;
+	public int screen_height = 12;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,41 +47,101 @@ public class GameActivity extends Activity {
 			//do nothing
 		}
 		
-		//Create a reference to the MapView object, set world
+		player = new Player(200, 200, world);
+		camera = new Camera(200, 200, world);
+		
+		//Create a reference to the MapView object, set world & player
 		mapView = (MapView) findViewById(R.id.map_view);
 		mapView.setWorld(world);
+		mapView.setPlayer(player);
+		mapView.setCamera(camera);
 		
 		//implement the OnTouchSwipeListener
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
 			
-			public void onSwipeRight() {
-				mapView.movePlayer(0,1);
+			public void onSwipeRight() {		
+				update(0,1);
 			}
+			
 			public void onSwipeLeft() {
-				mapView.movePlayer(0,-1);
+				update(0,-1);
 			}
+			
 			public void onSwipeUp() {
-				mapView.movePlayer(-1,0);
+				update(-1,0);
 			}
+			
 			public void onSwipeDown() {
-				mapView.movePlayer(1,0);
+				update(1,0);
 			}
+			
 			public void onScrollRight() {
-				mapView.movePlayer(0,1);
+				update(0,1);
 			}
 	
 			public void onScrollLeft() {
-				mapView.movePlayer(0,-1);
+				update(0,-1);
 			}
 	
 			public void onScrollUp() {
-				mapView.movePlayer(-1,0);
+				update(-1,0);
 			}
 	
 			public void onScrollDown() {
-				mapView.movePlayer(1,0);
+				update(1,0);
 			}
 		});
+		
+	}
+	
+	public void update(int moveX, int moveY) {
+		
+		int newX = player.x + moveX;
+		int newY = player.y + moveY;
+		Log.d("LOGCAT", "new X,Y = (" + newX + "," + newY + ")");
+		Log.d("LOGCAT", "playerX,Y = (" + player.x + "," + player.y + ")");
+		Log.d("LOGCAT", "cameraX,Y = (" + camera.x + "," + camera.y + ")");
+		
+		//check if player is trying to go out of bounds
+		if ( newY > world.world_width - 1 || newX > world.world_height - 1 || newY < 0 || newX < 0) {
+		
+			Log.d("LOGCAT", "Player attempting to go out of bounds");
+			
+		} else { //check for collisions
+		
+			if (world.world_map[newX][newY] == 2) { //2 == stone
+        
+            Log.d("LOGCAT", "Trying to cross stone. Cancel move");
+            
+			} else { //update player and camera positions
+				
+				player.move(moveX, moveY);
+				
+				if(moveX > 0 || moveY > 0) { //moving up the axis
+				
+					if (player.y <= (world.world_width - screen_width/2 - 1) && player.x <= (world.world_height - screen_height/2 - 1) && (player.y > screen_width/2 - 1)&& (player.x > screen_height/2 - 1)) {
+					
+						camera.move(moveX, moveY);
+						
+						Log.d("LOGCAT", "Moving up the axis");
+				
+					}
+					
+				} else { //moving down the axis
+				
+					if (player.y < (world.world_width - screen_width/2 - 1) && player.x < (world.world_height - screen_height/2 - 1) && (player.y >= screen_width/2 - 1)&& (player.x >= screen_height/2 - 1)) {
+
+						camera.move(moveX, moveY);
+						
+						Log.d("LOGCAT", "Moving down the axis");
+				
+					}
+					
+				}
+				
+			}
+				
+		}
 		
 	}
 	

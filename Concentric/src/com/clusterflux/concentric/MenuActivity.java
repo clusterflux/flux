@@ -40,8 +40,11 @@ public class MenuActivity extends Activity {
 		//get world_name from WorldSelectionActivity
 		Log.d("LOGCAT", "Getting world_name from WorldSelectionActivity");
 		if (reqCode == 1) {
-			if (resCode == Activity.RESULT_OK) {
+			if (resCode == Activity.RESULT_OK) { 
+			
+				//get world_name
 				message = data.getStringExtra(EXTRA_MESSAGE);
+				
 				//Start GameActivity and pass it world_name
 				Log.d("LOGCAT", "Starting GameActivity");		
 				Intent intent = new Intent(this, GameActivity.class);
