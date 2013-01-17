@@ -118,31 +118,12 @@ public class GameActivity extends Activity {
 				player.move(moveX, moveY);
 				
 				//moving up x-axis out of bounds condition
-				if (moveX == 1 && player.x <= (world.world_height - screen_height/2 - 1) && (player.x > screen_height/2 - 1)) {
-				
-					camera.move(moveX, moveY);
-					
-				}
-				
-				//moving up the y-axis out of bounds condition
-				if (moveY == 1 && player.y <= (world.world_width - screen_width/2 - 1) && (player.y > screen_width/2 - 1)) { 
-					
-					camera.move(moveX, moveY);
-	
-				}
-				
-				//moving down the x-axis out of bounds condition
-				if (moveX == -1 && player.x < (world.world_height - screen_height/2 - 1) && (player.x >= screen_height/2 - 1)) { 
-				
-					camera.move(moveX, moveY);
-					
-				}
-
-				//moving up the y-axis out of bounds condition
-				if (moveY == -1 && player.y < (world.world_width - screen_width/2 - 1) && (player.y >= screen_width/2 - 1)) {
-				
-					camera.move(moveX, moveY);
-					
+				if ( ( moveX == 1 && player.x <= (world.world_height - screen_height/2 - 1) && (player.x > screen_height/2 - 1)  ) ||
+				     ( moveY == 1 && player.y <= (world.world_width - screen_width/2 - 1) && (player.y > screen_width/2 - 1)     ) ||
+				     ( moveX == -1 && player.x < (world.world_height - screen_height/2 - 1) && (player.x >= screen_height/2 - 1) ) ||	 
+				     ( moveY == -1 && player.y < (world.world_width - screen_width/2 - 1) && (player.y >= screen_width/2 - 1)    ) ) 
+				{
+					camera.move(moveX, moveY);	
 				}
 				
 			}
