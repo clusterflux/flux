@@ -117,25 +117,31 @@ public class GameActivity extends Activity {
 				
 				player.move(moveX, moveY);
 				
-				if(moveX > 0 || moveY > 0) { //moving up the axis
+				//moving up x-axis out of bounds condition
+				if (moveX == 1 && player.x <= (world.world_height - screen_height/2 - 1) && (player.x > screen_height/2 - 1)) {
 				
-					if (player.y <= (world.world_width - screen_width/2 - 1) && player.x <= (world.world_height - screen_height/2 - 1) && (player.y > screen_width/2 - 1)&& (player.x > screen_height/2 - 1)) {
+					camera.move(moveX, moveY);
 					
-						camera.move(moveX, moveY);
-						
-						Log.d("LOGCAT", "Moving up the axis");
+				}
 				
-					}
+				//moving up the y-axis out of bounds condition
+				if (moveY == 1 && player.y <= (world.world_width - screen_width/2 - 1) && (player.y > screen_width/2 - 1)) { 
 					
-				} else { //moving down the axis
+					camera.move(moveX, moveY);
+	
+				}
 				
-					if (player.y < (world.world_width - screen_width/2 - 1) && player.x < (world.world_height - screen_height/2 - 1) && (player.y >= screen_width/2 - 1)&& (player.x >= screen_height/2 - 1)) {
+				//moving down the x-axis out of bounds condition
+				if (moveX == -1 && player.x < (world.world_height - screen_height/2 - 1) && (player.x >= screen_height/2 - 1)) { 
+				
+					camera.move(moveX, moveY);
+					
+				}
 
-						camera.move(moveX, moveY);
-						
-						Log.d("LOGCAT", "Moving down the axis");
+				//moving up the y-axis out of bounds condition
+				if (moveY == -1 && player.y < (world.world_width - screen_width/2 - 1) && (player.y >= screen_width/2 - 1)) {
 				
-					}
+					camera.move(moveX, moveY);
 					
 				}
 				
