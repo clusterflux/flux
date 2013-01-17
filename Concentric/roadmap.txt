@@ -116,8 +116,9 @@ moved player logic to GameActivity
 todo:
 fix player/map edge logic
 identify camera via top left coord instead of middle coord
-figure out how to deal with tile size relative to screen size
+figure out how to deal with tile size relative to screen size - make it relative to the camera, tile size can be whatever
 move update method to MapThread? implement touch listener in view? thread?
+points and rects!
 
 method to delete worlds (long press? new activity under world management?)
 switch to d pad

@@ -34,8 +34,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	//public Bitmap overlayBitmap;
 	
 	//hardcoded parameters for testing
-	private int tile_width = 25;
-	private int tile_height = 25;
+	private int tile_width = 24;
+	private int tile_height = 24;
 	public int screen_width = 24;
 	public int screen_height = 12;
 	public int centerTileX = screen_height/2 - 1;

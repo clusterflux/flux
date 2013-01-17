@@ -13,6 +13,8 @@ import android.graphics.Bitmap;
 import java.util.*;
 import android.view.View.OnTouchListener;
 import java.math.*;
+import android.view.Display;
+import android.graphics.Point;
 
 public class GameActivity extends Activity {
 	
@@ -22,8 +24,8 @@ public class GameActivity extends Activity {
 	public Camera camera;
 	
 	//hardcoded parameters for testing
-	private int tile_width = 25;
-	private int tile_height = 25;
+	private int tile_width = 24;
+	private int tile_height = 24;
 	public int screen_width = 24;
 	public int screen_height = 12;
 	
@@ -47,14 +49,24 @@ public class GameActivity extends Activity {
 			//do nothing
 		}
 		
+		//load the player and camera
 		player = new Player(200, 200, world);
 		camera = new Camera(200, 200, world);
 		
-		//Create a reference to the MapView object, set world & player
+		/*//Create a display object so we can get the Activity's size
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		tile_width = size.y/24;
+		tile_height = size.x/12;
+		Log.d("LOGCAT", "tile_width, height = (" + tile_width + "," + tile_height + ")");*/
+		
+		//Create a reference to the MapView object. set world, player, camera, tile sizes.
 		mapView = (MapView) findViewById(R.id.map_view);
 		mapView.setWorld(world);
 		mapView.setPlayer(player);
 		mapView.setCamera(camera);
+		//mapView.setTiles(tile_width, tile_height);
 		
 		//implement the OnTouchSwipeListener
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
@@ -118,10 +130,10 @@ public class GameActivity extends Activity {
 				player.move(moveX, moveY);
 				
 				//moving up x-axis out of bounds condition
-				if ( ( moveX == 1 && player.x <= (world.world_height - screen_height/2 - 1) && (player.x > screen_height/2 - 1)  ) ||
-				     ( moveY == 1 && player.y <= (world.world_width - screen_width/2 - 1) && (player.y > screen_width/2 - 1)     ) ||
-				     ( moveX == -1 && player.x < (world.world_height - screen_height/2 - 1) && (player.x >= screen_height/2 - 1) ) ||	 
-				     ( moveY == -1 && player.y < (world.world_width - screen_width/2 - 1) && (player.y >= screen_width/2 - 1)    ) ) 
+				if ( ( moveX == 1  && newX <= (world.world_height - screen_height/2 - 1) && (newX > screen_height/2 - 1)    ) ||
+				     ( moveY == 1  && newY <= (world.world_width - screen_width/2 - 1)   && (newY > screen_width/2 - 1)     ) ||
+				     ( moveX == -1 && newX < (world.world_height - screen_height/2 - 1)  && (newX >= screen_height/2 - 1)   ) ||	 
+				     ( moveY == -1 && newY < (world.world_width - screen_width/2 - 1)    && (newY >= screen_width/2 - 1)    ) ) 
 				{
 					camera.move(moveX, moveY);	
 				}
