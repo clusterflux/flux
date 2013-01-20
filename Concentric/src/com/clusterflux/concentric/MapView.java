@@ -34,12 +34,10 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	//public Bitmap overlayBitmap;
 	
 	//hardcoded parameters for testing
-	private int tile_width = 24;
-	private int tile_height = 24;
-	public int screen_width = 24;
-	public int screen_height = 12;
-	public int centerTileX = screen_height/2 - 1;
-	public int centerTileY = screen_width/2 - 1;
+	private int tile_width = 50;
+	private int tile_height = 65;
+	public int screen_width = 6;
+	public int screen_height = 3;
 
 	public MapThread mapThread; 
 	
@@ -104,7 +102,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			for (int worldY = (camera.y - screen_width/2 + 1);  worldY < (camera.y + screen_width/2 + 1); worldY += 1, screenY += 1) {
 			
 				canvas.drawBitmap(TILE_MAP.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
-				
+				Log.d("LOGCAT", "screenX,y (" + screenX + "," + screenY + ") DRAWING " + world.world_map[worldX][worldY]);
 				//Log.d("LOGCAT", "worldX,y (" + worldX + "," + worldY + ")");
 				//Log.d("LOGCAT", "playerx,y (" + player.x + "," + player.y + ")");
 

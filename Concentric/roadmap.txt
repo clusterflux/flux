@@ -113,8 +113,10 @@ added player class
 added camera class
 moved player logic to GameActivity
 
-todo:
+day 19
 fix player/map edge logic
+
+todo:
 identify camera via top left coord instead of middle coord
 figure out how to deal with tile size relative to screen size - make it relative to the camera, tile size can be whatever
 move update method to MapThread? implement touch listener in view? thread?
