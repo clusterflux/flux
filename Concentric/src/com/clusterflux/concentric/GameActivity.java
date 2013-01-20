@@ -24,8 +24,10 @@ public class GameActivity extends Activity {
 	public Camera camera;
 	
 	//hardcoded parameters for testing
-	public int screen_width = 6;
-	public int screen_height = 3;
+	private int tile_width = 24;
+	private int tile_height = 24;
+	public int screen_width = 24;
+	public int screen_height = 12;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
