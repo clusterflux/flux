@@ -95,6 +95,10 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	public void doDraw(Canvas canvas) {
 					
+		canvas.drawColor(Color.BLACK);
+		
+		canvas.translate(0, - tile_height/2);
+
 		int screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
 		for (int worldX = camera.x; worldX < camera.x + screen_height; worldX += 1, screenX += 1) {
@@ -110,13 +114,19 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 
 				if (player.x == worldX && player.y == worldY) { //if the player is standing here, draw the sprite
 					//Log.d("LOGCAT", "DRAWING SPRITE AT (" + player.x + "," + player.y + ")");
-					canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/4, screenX*tile_width + tile_width/5, null);
+					canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/4, screenX*tile_width + ((4*tile_width)/5), null);
 
+				}
+				
+				if (world.world_map[worldX][worldY] == 2) {
+				
+					canvas.drawBitmap(TILE_MAP.get(2), screenY*tile_height, screenX*tile_width - tile_width/2, null);
+					
 				}
 
 			}
 		}
-				
+						
 	}
 	
 	public void setWorld(World world){

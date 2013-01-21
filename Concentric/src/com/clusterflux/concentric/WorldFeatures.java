@@ -27,8 +27,8 @@ public class WorldFeatures {
 		TILE_MAP.put(2, BitmapFactory.decodeResource(context.getResources(), R.drawable.stone));
 		TILE_MAP.put(3, BitmapFactory.decodeResource(context.getResources(), R.drawable.water));
 		
-		tile_width = TILE_MAP.get(0).getHeight();
-		tile_height = TILE_MAP.get(0).getWidth();
+		tile_width = TILE_MAP.get(0).getHeight()/2 - 2; //account for overlap
+		tile_height = TILE_MAP.get(0).getWidth() - 1; 
 
 	}
 	
