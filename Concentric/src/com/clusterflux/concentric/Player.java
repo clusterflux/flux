@@ -7,7 +7,7 @@ public class Player {
 	public int x;
 	public int y;
 	
-	public Player(int spawnX, int spawnY, World world) {
+	public Player(int spawnX, int spawnY) {
 	
 		x = spawnX;
 		y = spawnY;

@@ -7,7 +7,7 @@ public class Camera {
 	public int x;
 	public int y;
 	
-	public Camera(int spawnX, int spawnY, World world) {
+	public Camera(int spawnX, int spawnY) {
 	
 		x = spawnX;
 		y = spawnY;
@@ -16,8 +16,8 @@ public class Camera {
 	
 	public void move(int moveX, int moveY) {
 	
-	x += moveX;
-	y += moveY;
+		x += moveX;
+		y += moveY;
 	
 	Log.d("LOGCAT", "Camera -> (" + moveX + "," + moveY + ")");
 

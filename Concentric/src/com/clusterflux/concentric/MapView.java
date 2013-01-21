@@ -34,12 +34,10 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	//public Bitmap overlayBitmap;
 	
 	//hardcoded parameters for testing
-	private int tile_width = 24;
-	private int tile_height = 24;
-	public int screen_width = 24;
-	public int screen_height = 12;
-	public int centerTileX = screen_height/2 - 1;
-	public int centerTileY = screen_width/2 - 1;
+	public int tile_width;
+	public int tile_height;
+	public int screen_width;
+	public int screen_height;
 
 	public MapThread mapThread; 
 	
@@ -53,6 +51,11 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 		WorldFeatures worldFeatures = new WorldFeatures(context);		
 		TILE_MAP = worldFeatures.TILE_MAP;
 		SPRITE = worldFeatures.SPRITE;
+		tile_height = worldFeatures.tile_height;
+		tile_width = worldFeatures.tile_width;
+		
+		Log.d("LOGCAT", "tile_height = " + tile_height);
+		Log.d("LOGCAT", "tile_width = " + tile_width);
 		
 		SurfaceHolder holder = getHolder();
 		holder.addCallback(this);
@@ -91,34 +94,29 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 	public void doDraw(Canvas canvas) {
-		
-		//Draw tiles onto canvas
-		//Log.d("LOGCAT", "drawing canvas");
-			
+					
 		int screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
-		for (int worldX = (camera.x - screen_height/2 + 1); worldX < (camera.x + screen_height/2 + 1); worldX += 1, screenX += 1) {
+		for (int worldX = camera.x; worldX < camera.x + screen_height; worldX += 1, screenX += 1) {
 			
 			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
-			for (int worldY = (camera.y - screen_width/2 + 1);  worldY < (camera.y + screen_width/2 + 1); worldY += 1, screenY += 1) {
+			for (int worldY = camera.y; worldY < camera.y + screen_width; worldY += 1, screenY += 1) {
 			
 				canvas.drawBitmap(TILE_MAP.get(world.world_map[worldX][worldY]), screenY*tile_height , screenX*tile_width, null);
-				
+
 				//Log.d("LOGCAT", "worldX,y (" + worldX + "," + worldY + ")");
 				//Log.d("LOGCAT", "playerx,y (" + player.x + "," + player.y + ")");
 
 				if (player.x == worldX && player.y == worldY) { //if the player is standing here, draw the sprite
 					//Log.d("LOGCAT", "DRAWING SPRITE AT (" + player.x + "," + player.y + ")");
-					canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/5, screenX*tile_width + tile_width/5, null);
+					canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/4, screenX*tile_width + tile_width/5, null);
 
 				}
 
 			}
 		}
-		
-		//Log.d("LOGCAT", "done drawing canvas");	
-		
+				
 	}
 	
 	public void setWorld(World world){
@@ -136,6 +134,13 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public void setCamera(Camera camera) {
 	
 		this.camera = camera;
+		
+	}
+	
+	public void setScreenSize(int screen_width, int screen_height) {
+	
+		this.screen_width = screen_width;
+		this.screen_height = screen_height;
 		
 	}
 

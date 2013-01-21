@@ -24,10 +24,12 @@ public class GameActivity extends Activity {
 	public Camera camera;
 	
 	//hardcoded parameters for testing
-	private int tile_width = 24;
-	private int tile_height = 24;
-	public int screen_width = 24;
-	public int screen_height = 12;
+	public int screen_width;
+	public int screen_height;
+	public int tile_width;
+	public int tile_height;
+	public int cameraOffsetX;
+	public int cameraOffsetY;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +51,43 @@ public class GameActivity extends Activity {
 			//do nothing
 		}
 		
-		//load the player and camera
-		player = new Player(200, 200, world);
-		camera = new Camera(200, 200, world);
+		//get the tile sizes
+		WorldFeatures worldFeatures = new WorldFeatures(this);		
+		tile_height = worldFeatures.tile_height;
+		tile_width = worldFeatures.tile_width;
 		
-		/*//Create a display object so we can get the Activity's size
+		//get the window size and determine tiles per screen
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
-		tile_width = size.y/24;
-		tile_height = size.x/12;
-		Log.d("LOGCAT", "tile_width, height = (" + tile_width + "," + tile_height + ")");*/
+		screen_width = (size.y / tile_width) + 1;
+		screen_height = (size.x / tile_height) + 1;
+
+		//load the player
+		player = new Player(world.world_height/2, world.world_width/2); //hardcoded spawn point!
+		
+		//determine camera offset
+		if ((screen_width & 1) == 0) { //even
+			cameraOffsetX = screen_width/2 - 1;
+		} else { //odd
+			cameraOffsetX = screen_width/2;
+		}
+		
+		if ((screen_height & 1) == 0) { //even
+			cameraOffsetY = screen_height/2 - 1;
+		} else { //odd
+			cameraOffsetY = screen_height/2;
+		}
+		
+		//load the camera relative to the player
+		camera = new Camera(player.x - cameraOffsetX, player.y - cameraOffsetY);
 		
 		//Create a reference to the MapView object. set world, player, camera, tile sizes.
 		mapView = (MapView) findViewById(R.id.map_view);
 		mapView.setWorld(world);
 		mapView.setPlayer(player);
 		mapView.setCamera(camera);
-		//mapView.setTiles(tile_width, tile_height);
+		mapView.setScreenSize(screen_height, screen_width);
 		
 		//implement the OnTouchSwipeListener
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
@@ -108,32 +129,37 @@ public class GameActivity extends Activity {
 	
 	public void update(int moveX, int moveY) {
 		
-		int newX = player.x + moveX;
-		int newY = player.y + moveY;
-		Log.d("LOGCAT", "new X,Y = (" + newX + "," + newY + ")");
+		int newPlayerX = player.x + moveX;
+		int newPlayerY = player.y + moveY;
+		int newCameraX = camera.x + moveX;
+		int newCameraY = camera.y + moveY;
+		
+		Log.d("LOGCAT", "new player X,Y = (" + newPlayerX + "," + newPlayerY + ")");
+		Log.d("LOGCAT", "new camera X,Y = (" + newCameraX + "," + newCameraY + ")");
 		Log.d("LOGCAT", "playerX,Y = (" + player.x + "," + player.y + ")");
 		Log.d("LOGCAT", "cameraX,Y = (" + camera.x + "," + camera.y + ")");
 		
 		//check if player is trying to go out of bounds
-		if ( newY > world.world_width - 1 || newX > world.world_height - 1 || newY < 0 || newX < 0) {
+		if ( newPlayerY > world.world_width - 1 || newPlayerX > world.world_height - 1 || newPlayerY < 0 || newPlayerX < 0) {
 		
 			Log.d("LOGCAT", "Player attempting to go out of bounds");
 			
 		} else { //check for collisions
 		
-			if (world.world_map[newX][newY] == 2) { //2 == stone
+			if (world.world_map[newPlayerX][newPlayerY] == 2) { //2 == stone
         
             Log.d("LOGCAT", "Trying to cross stone. Cancel move");
             
 			} else { //update player and camera positions
-				
+				Log.d("LOGCAT", "screenX,Y = (" + screen_height + "," + screen_width + ")");
+
 				player.move(moveX, moveY);
 				
-				//moving up x-axis out of bounds condition
-				if ( ( moveX == 1  && newX <= (world.world_height - screen_height/2 - 1) && (newX > screen_height/2 - 1)    ) ||
-				     ( moveY == 1  && newY <= (world.world_width - screen_width/2 - 1)   && (newY > screen_width/2 - 1)     ) ||
-				     ( moveX == -1 && newX < (world.world_height - screen_height/2 - 1)  && (newX >= screen_height/2 - 1)   ) ||	 
-				     ( moveY == -1 && newY < (world.world_width - screen_width/2 - 1)    && (newY >= screen_width/2 - 1)    ) ) 
+				//camera out of bounds condition
+				if ( ( moveX == 1  && newCameraX < world.world_height - screen_width + 1 && newPlayerX > cameraOffsetX )||
+				     ( moveY == 1  && newCameraY < world.world_width - screen_height + 1 && newPlayerY > cameraOffsetY )||
+				     ( moveX == -1 && newCameraX >= 0  && newPlayerX < world.world_height - (screen_width/2 + 1)       )||	 
+				     ( moveY == -1 && newCameraY >= 0  && newPlayerY < world.world_width - (screen_height/2 + 1)       )) 
 				{
 					camera.move(moveX, moveY);	
 				}

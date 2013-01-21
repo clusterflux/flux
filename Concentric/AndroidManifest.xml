@@ -3,7 +3,8 @@
       package="com.clusterflux.concentric"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" >
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
+				 android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
 		<activity android:name="com.clusterflux.concentric.MenuActivity"
                   android:label="@string/app_name"
 				  android:screenOrientation="landscape" >
