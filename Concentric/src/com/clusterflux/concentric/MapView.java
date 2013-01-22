@@ -118,12 +118,11 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 
 				}
 				
-				if (world.world_map[worldX][worldY] == 2) {
+				if (world.world_map2[worldX][worldY] != 0) {
 				
-					canvas.drawBitmap(TILE_MAP.get(2), screenY*tile_height, screenX*tile_width - tile_width/2, null);
-					
+					canvas.drawBitmap(TILE_MAP.get(world.world_map2[worldX][worldY]), screenY*tile_height, screenX*tile_width - tile_width/2, null);
 				}
-
+				
 			}
 		}
 						

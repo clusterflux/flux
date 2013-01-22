@@ -146,9 +146,9 @@ public class GameActivity extends Activity {
 			
 		} else { //check for collisions
 		
-			if (world.world_map[newPlayerX][newPlayerY] == 2) { //2 == stone
+			if (world.world_map2[newPlayerX][newPlayerY] != 0) { //there's a block on 2nd layer
         
-            Log.d("LOGCAT", "Trying to cross stone. Cancel move");
+            Log.d("LOGCAT", "Trying to cross 2nd layer. Cancel move");
             
 			} else { //update player and camera positions
 				Log.d("LOGCAT", "screenX,Y = (" + screen_height + "," + screen_width + ")");

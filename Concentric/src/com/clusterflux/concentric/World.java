@@ -17,6 +17,7 @@ public class World implements Serializable {
 	public int world_width;
 	public int world_height;
 	public int[][] world_map;
+	public int[][] world_map2;
 	
 	public World(String world_name, int world_width, int world_height) {
 
@@ -26,7 +27,7 @@ public class World implements Serializable {
 		this.world_height = world_height;
 		
 		//generate the map
-		world_map = createWorldMap(world_width, world_height);
+		createWorldMap(world_width, world_height);
 	
 	}
 	
@@ -42,39 +43,62 @@ public class World implements Serializable {
 		this.world_width = world.world_width;
 		this.world_height = world.world_height;
 		this.world_map = world.world_map;
+		this.world_map2 = world.world_map2;
 		
 	}
 	
-	private int[][] createWorldMap(int world_width, int world_height) {
+	private void createWorldMap(int world_width, int world_height) {
 	
 		//create a local tile map 
 		int[][] world_map = new int[world_width][world_height];
+		int[][] world_map2 = new int[world_width][world_height];
 		
 		//get perlin noise array
 		float[][] white_noise = generateWhiteNoise(world_width, world_height);
 		float[][] perlin = generatePerlinNoise(white_noise, 6);
+		float[][] perlin2 = generatePerlinNoise(white_noise, 3);
 
 		//fill it based on perlin noise array
 		for (int row = 0; row < world_map.length; row++) {
 			for (int col = 0; col < world_map[row].length; col++) {
-				Log.d("LOGCAT", "perlin" + perlin[row][col]);
+				
 				if (perlin[row][col] < 0.15) {
-					world_map[row][col] = 3;
+					world_map[row][col] = 4;
 				}
 				
-				if (perlin[row][col] > 0.15 && perlin[row][col] < 0.35) {
-					world_map[row][col] = 0;
-				}
-				if (perlin[row][col] > 0.35 && perlin[row][col] < 0.75) {
+				if (perlin[row][col] >= 0.15 && perlin[row][col] < 0.35) {
 					world_map[row][col] = 1;
 				}
-				if (perlin[row][col] > 0.75) {
+				if (perlin[row][col] >= 0.35 && perlin[row][col] < 0.75) {
 					world_map[row][col] = 2;
 				}
+				if (perlin[row][col] >= 0.75) {
+					world_map[row][col] = 3;
+				}
+				/*if (perlin2[row][col] < 0.5) {
+					world_map2[row][col] = world_map[row][col];
+				}*/
+				if (perlin2[row][col] < 0.02) {
+					world_map2[row][col] = 4;
+				}
+				
+				if (perlin2[row][col] >= 0.15 && perlin[row][col] < 0.20) {
+					world_map2[row][col] = 1;
+				}
+				if (perlin2[row][col] >= 0.35 && perlin[row][col] < 0.4) {
+					world_map2[row][col] = 2;
+				}
+				if (perlin2[row][col] >= 0.85) {
+					world_map2[row][col] = 3;
+				}
+				Log.d("LOGCAT", "world_map[row][col] = " + world_map[row][col]);
+				Log.d("LOGCAT", "world_map2[row][col] = " + world_map2[row][col]);
+
 			}
 		}
 		
-		return world_map;
+		this.world_map = world_map;
+		this.world_map2 = world_map2;
 		
 	}	
 	

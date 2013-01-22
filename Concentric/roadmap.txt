@@ -113,25 +113,43 @@ added player class
 added camera class
 moved player logic to GameActivity
 
-todo:
-fix player/map edge logic
-identify camera via top left coord instead of middle coord
-figure out how to deal with tile size relative to screen size - make it relative to the camera, tile size can be whatever
+
+fix player/map edge logic - done
+identify camera via top left coord instead of middle coord - done
+figure out how to deal with tile size relative to screen size - done
+
+added cool 2.5D cuteplanet prototyping tiles + canvas.translate to fix null space
+implemented overlapping tiles
+added 2nd layer generation and rendering
+
+next:
+fun w/ tils
+implement shadows
+
+forced housekeeping to move forward
 move update method to MapThread? implement touch listener in view? thread?
-points and rects!
+fix touch slowing bug
+fix FPS
 
-method to delete worlds (long press? new activity under world management?)
-switch to d pad
-abstract player class
-abstract sprite class?
+fun w/ players
+identify which direction the player is facing
+mining!
 
-still can't pass variable for tileTranslator size when creating World objects
+naming convention housekeeping
+fix height/width naming discrepancies
+
+optimize
+points and rects! redo camera, player, etc.
 add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview?
- 
-abstract out the view for world activity. worldview = view the generated world, choose to save it
 
-make sprite
-make sprite move
+menu housekeeping
+abstract out the view for world activity. worldview = view the generated world, choose to save it
+method to delete worlds (long press? new activity under world management?)
+
+other 
+ability to change orientation via surfacechanged
+switch to d pad
+abstract sprite class?
 
 make a map of all the current code - is there a progam for this?
 
@@ -147,3 +165,4 @@ debugging!
 cloud dev/github/version control
 avoiding "housecleaning"
 version control!
+prototyping tiles
