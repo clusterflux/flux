@@ -97,6 +97,9 @@ public class World implements Serializable {
 			}
 		}
 		
+		//force spawn point to be empty on layer2
+		world_map2[world_width/2][world_height/2] = 0;
+		
 		this.world_map = world_map;
 		this.world_map2 = world_map2;
 		

@@ -122,14 +122,16 @@ added cool 2.5D cuteplanet prototyping tiles + canvas.translate to fix null spac
 implemented overlapping tiles
 added 2nd layer generation and rendering
 
-next:
-fun w/ tils
 implement shadows
+
+todo:
+fix shadow map edge bug
 
 forced housekeeping to move forward
 move update method to MapThread? implement touch listener in view? thread?
 fix touch slowing bug
 fix FPS
+fix slow world generation code
 
 fun w/ players
 identify which direction the player is facing

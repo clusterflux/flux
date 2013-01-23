@@ -134,11 +134,6 @@ public class GameActivity extends Activity {
 		int newCameraX = camera.x + moveX;
 		int newCameraY = camera.y + moveY;
 		
-		Log.d("LOGCAT", "new player X,Y = (" + newPlayerX + "," + newPlayerY + ")");
-		Log.d("LOGCAT", "new camera X,Y = (" + newCameraX + "," + newCameraY + ")");
-		Log.d("LOGCAT", "playerX,Y = (" + player.x + "," + player.y + ")");
-		Log.d("LOGCAT", "cameraX,Y = (" + camera.x + "," + camera.y + ")");
-		
 		//check if player is trying to go out of bounds
 		if ( newPlayerY > world.world_width - 1 || newPlayerX > world.world_height - 1 || newPlayerY < 0 || newPlayerX < 0) {
 		

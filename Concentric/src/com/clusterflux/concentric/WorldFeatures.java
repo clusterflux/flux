@@ -13,6 +13,7 @@ public class WorldFeatures {
 	public final Bitmap SPRITE;
 	public final int tile_height;
 	public final int tile_width;
+	public final Map<String, Bitmap> SHADOW;
 	
 	public WorldFeatures(Context context) {
 	
@@ -29,7 +30,20 @@ public class WorldFeatures {
 		
 		tile_width = TILE_MAP.get(1).getHeight()/2 - 2; //account for overlap
 		tile_height = TILE_MAP.get(1).getWidth() - 1; 
-
+		
+		SHADOW = new HashMap<String, Bitmap>();
+	
+		//add string keys and shadow tiles to hash
+		SHADOW.put("north", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_north));
+		SHADOW.put("south", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_south));
+		SHADOW.put("east", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_east));
+		SHADOW.put("west", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_west));
+		SHADOW.put("northeast", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_northwest));
+		SHADOW.put("northwest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_northeast));
+		SHADOW.put("southeast", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_southwest));
+		SHADOW.put("southwest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_southeast));
+		SHADOW.put("sidewest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_sidewest));
+		
 	}
 	
 }
