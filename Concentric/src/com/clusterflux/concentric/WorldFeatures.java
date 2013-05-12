@@ -27,7 +27,8 @@ public class WorldFeatures {
 		TILE_MAP.put(2, BitmapFactory.decodeResource(context.getResources(), R.drawable.grass));
 		TILE_MAP.put(3, BitmapFactory.decodeResource(context.getResources(), R.drawable.stone));
 		TILE_MAP.put(4, BitmapFactory.decodeResource(context.getResources(), R.drawable.water));
-		
+		TILE_MAP.put(5, BitmapFactory.decodeResource(context.getResources(), R.drawable.wood));
+
 		tile_width = TILE_MAP.get(1).getHeight()/2 - 2; //account for overlap
 		tile_height = TILE_MAP.get(1).getWidth() - 1; 
 		
@@ -38,10 +39,10 @@ public class WorldFeatures {
 		SHADOW.put("south", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_south));
 		SHADOW.put("east", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_east));
 		SHADOW.put("west", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_west));
-		SHADOW.put("northeast", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_northwest));
-		SHADOW.put("northwest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_northeast));
-		SHADOW.put("southeast", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_southwest));
-		SHADOW.put("southwest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_southeast));
+		SHADOW.put("northeast", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_northeast));
+		SHADOW.put("northwest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_northwest));
+		SHADOW.put("southeast", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_southeast));
+		SHADOW.put("southwest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_southwest));
 		SHADOW.put("sidewest", BitmapFactory.decodeResource(context.getResources(), R.drawable.shadow_sidewest));
 		
 	}

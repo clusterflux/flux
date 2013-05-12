@@ -75,7 +75,7 @@ public class OnSwipeTouchListener implements OnTouchListener {
 			return false;
 			
 		}
-		
+	/***	
 		@Override
 		public boolean onFling(MotionEvent down, MotionEvent up, float velocityX, float velocityY) {
 	Log.d("LOGCAT", "SWIPING");
@@ -113,6 +113,7 @@ public class OnSwipeTouchListener implements OnTouchListener {
 			return false;
 		
 		}
+		****/
 	}
 	
 	public void onScrollRight() {

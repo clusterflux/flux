@@ -91,7 +91,7 @@ public class GameActivity extends Activity {
 		
 		//implement the OnTouchSwipeListener
 		mapView.setOnTouchListener(new OnSwipeTouchListener() {
-			
+			/***
 			public void onSwipeRight() {		
 				update(0,1);
 			}
@@ -107,7 +107,7 @@ public class GameActivity extends Activity {
 			public void onSwipeDown() {
 				update(1,0);
 			}
-			
+			***/
 			public void onScrollRight() {
 				update(0,1);
 			}
@@ -133,7 +133,7 @@ public class GameActivity extends Activity {
 		int newPlayerY = player.y + moveY;
 		int newCameraX = camera.x + moveX;
 		int newCameraY = camera.y + moveY;
-		
+
 		//check if player is trying to go out of bounds
 		if ( newPlayerY > world.world_width - 1 || newPlayerX > world.world_height - 1 || newPlayerY < 0 || newPlayerX < 0) {
 		
