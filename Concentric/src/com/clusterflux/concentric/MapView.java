@@ -121,41 +121,40 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					}
 					
 					//draw shadows
-				Log.d ("LOGCAT", "x = " + x + "y = " + y);
-						if (y != world.world_height - 1 && x != world.world_width - 1) {
-						if (world.world_map2[x+1][y+1] != 0 && world.world_map2[x][y+1] == 0) {
-							canvas.drawBitmap(SHADOW.get("southeast"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (x != world.world_width - 1) {
-						if (world.world_map2[x+1][y] != 0) {
-							canvas.drawBitmap(SHADOW.get("south"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (x != world.world_width - 1 && y != 0) {
-						if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x][y-1] == 0) {
-							canvas.drawBitmap(SHADOW.get("southwest"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (y != world.world_height - 1) {
-						if (world.world_map2[x][y+1] != 0) {
-							canvas.drawBitmap(SHADOW.get("east"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (y != 0) { 
-						if (world.world_map2[x][y-1] != 0) {
-							canvas.drawBitmap(SHADOW.get("west"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (x != 0 && y != world.world_height - 1) {
-						if (world.world_map2[x-1][y+1] != 0 && world.world_map2[x-1][y] == 0 && world.world_map2[x][y+1] == 0) {
-							canvas.drawBitmap(SHADOW.get("northeast"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (x != 0) {
-						if (world.world_map2[x-1][y] != 0) {
-							canvas.drawBitmap(SHADOW.get("north"), screenY*tile_height , screenX*tile_width, null);
-						}}
-						if (x != 0 && y != 0) {
-						if (world.world_map2[x-1][y-1] != 0 && world.world_map2[x][y-1] == 0 && world.world_map2[x-1][y] == 0) {
-							canvas.drawBitmap(SHADOW.get("northwest"), screenY*tile_height , screenX*tile_width, null);
-						}}
+					if (y != world.world_height - 1 && x != world.world_width - 1) {
+					if (world.world_map2[x+1][y+1] != 0 && world.world_map2[x][y+1] == 0) {
+						canvas.drawBitmap(SHADOW.get("southeast"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (x != world.world_width - 1) {
+					if (world.world_map2[x+1][y] != 0) {
+						canvas.drawBitmap(SHADOW.get("south"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (x != world.world_width - 1 && y != 0) {
+					if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x][y-1] == 0) {
+						canvas.drawBitmap(SHADOW.get("southwest"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (y != world.world_height - 1) {
+					if (world.world_map2[x][y+1] != 0) {
+						canvas.drawBitmap(SHADOW.get("east"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (y != 0) { 
+					if (world.world_map2[x][y-1] != 0) {
+						canvas.drawBitmap(SHADOW.get("west"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (x != 0 && y != world.world_height - 1) {
+					if (world.world_map2[x-1][y+1] != 0 && world.world_map2[x-1][y] == 0 && world.world_map2[x][y+1] == 0) {
+						canvas.drawBitmap(SHADOW.get("northeast"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (x != 0) {
+					if (world.world_map2[x-1][y] != 0) {
+						canvas.drawBitmap(SHADOW.get("north"), screenY*tile_height , screenX*tile_width, null);
+					}}
+					if (x != 0 && y != 0) {
+					if (world.world_map2[x-1][y-1] != 0 && world.world_map2[x][y-1] == 0 && world.world_map2[x-1][y] == 0) {
+						canvas.drawBitmap(SHADOW.get("northwest"), screenY*tile_height , screenX*tile_width, null);
+					}}
 					
-					}
+				}
 				
 				//LAYER 2:
 				if (world.world_map2[x][y] != 0) {
@@ -167,7 +166,6 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					if (x != world.world_width - 1 && y != 0) {
 					if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x+1][y] == 0) {
 						canvas.drawBitmap(SHADOW.get("sidewest"), screenY*tile_height , screenX*tile_width, null);
-					//Log.d("LOGCAT", "SIDEWEST @ (" + x + "," + y + ")");
 					}}
 					if (x != 0) {
 					if (world.world_map2[x-1][y] == 0 && world.world_map[x-1][y] == 0) {
