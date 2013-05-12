@@ -19,6 +19,7 @@ import android.graphics.Point;
 public class GameActivity extends Activity {
 	
 	public MapView mapView;
+	public DPadView dPadView;
 	public World world;
 	public Player player;
 	public Camera camera;
@@ -89,8 +90,9 @@ public class GameActivity extends Activity {
 		mapView.setCamera(camera);
 		mapView.setScreenSize(screen_height, screen_width);
 		
-		//implement the OnTouchSwipeListener
-		mapView.setOnTouchListener(new OnSwipeTouchListener() {
+		//Create a reference to the DPadView object, implement OnTouchSwipeListener
+		dPadView = (DPadView) findViewById(R.id.dpad_view);
+		dPadView.setOnTouchListener(new OnSwipeTouchListener() {
 			/***
 			public void onSwipeRight() {		
 				update(0,1);

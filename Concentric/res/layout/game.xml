@@ -13,4 +13,11 @@
 		android:layout_width="fill_parent"
 		android:layout_height=".3in" 
 		android:layout_alignParentBottom="true"/>
+	<view
+		class="com.clusterflux.concentric.DPadView"
+		android:id="@+id/dpad_view"
+		android:layout_width=".7in"
+		android:layout_height=".7in" 
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"/>
 </RelativeLayout>
