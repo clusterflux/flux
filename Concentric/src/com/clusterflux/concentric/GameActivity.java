@@ -15,6 +15,8 @@ import android.view.View.OnTouchListener;
 import java.math.*;
 import android.view.Display;
 import android.graphics.Point;
+import android.view.MotionEvent;
+import java.lang.Math;
 
 public class GameActivity extends Activity {
 	
@@ -90,41 +92,48 @@ public class GameActivity extends Activity {
 		mapView.setCamera(camera);
 		mapView.setScreenSize(screen_height, screen_width);
 		
-		//Create a reference to the DPadView object, implement OnTouchSwipeListener
+		//Create a reference to the DPadView object, implement OnTouchListener
 		dPadView = (DPadView) findViewById(R.id.dpad_view);
-		dPadView.setOnTouchListener(new OnSwipeTouchListener() {
-			/***
-			public void onSwipeRight() {		
-				update(0,1);
-			}
+		
+		dPadView.setOnTouchListener(new View.OnTouchListener() {
+
+			public boolean onTouch(View v, MotionEvent event) {
+				
+				//get DPad center coordinates - how to get this out of here?
+				int dPadCenter = dPadView.getHeight()/2;
 			
-			public void onSwipeLeft() {
-				update(0,-1);
-			}
+				//get DPad touch coordinates
+				float touchX = event.getX();
+				float touchY = event.getY();
+								
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+	
+					//update based on DPad usage
+					float diffX = touchX - dPadCenter;
+					float diffY = touchY - dPadCenter;
+					Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
+
+					if (Math.abs(diffX) > Math.abs(diffY)) {
+						if (touchX > dPadCenter) { update(0,1);  }
+						if (touchX < dPadCenter) { update(0,-1); }
+					}
+					
+					if (Math.abs(diffY) > Math.abs(diffX)) {
+						if (touchY > dPadCenter) { update(1,0);  }
+						if (touchY < dPadCenter) { update(-1,0); }
+					}
+					
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+				
+					//reset coordinates when done touching
+					touchX = 0f;
+					touchY = 0f;
+				}
 			
-			public void onSwipeUp() {
-				update(-1,0);
+				return true;
 			}
-			
-			public void onSwipeDown() {
-				update(1,0);
-			}
-			***/
-			public void onScrollRight() {
-				update(0,1);
-			}
-	
-			public void onScrollLeft() {
-				update(0,-1);
-			}
-	
-			public void onScrollUp() {
-				update(-1,0);
-			}
-	
-			public void onScrollDown() {
-				update(1,0);
-			}
+				
+				
 		});
 		
 	}
