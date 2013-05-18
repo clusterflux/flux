@@ -1,5 +1,6 @@
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\gen\com\clusterflux\concentric\R.java \
  : C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\dirt.png \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\dpad.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\game_map.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\grass.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\ic_launcher.png \
@@ -26,6 +27,7 @@ C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\layout\worldselection.xml \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\values\color.xml \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\values\strings.xml \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\dirt.png \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\dpad.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\game_map.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\grass.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\ic_launcher.png \

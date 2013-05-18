@@ -39,6 +39,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public int tile_height;
 	public int screen_width;
 	public int screen_height;
+	public int spriteX = 0;
+	public int spriteY = 0;
 
 	public MapThread mapThread; 
 	
@@ -115,9 +117,22 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					//draw tile
 					canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*tile_width, null);
 				
-					//draw sprite
 					if (player.x == x && player.y == y) { //if the player is standing here, draw the sprite
-						canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/4, screenX*tile_width + ((4*tile_width)/5), null);
+						//draw sprite
+						
+						spriteX = player.movement;
+						
+						if (player.direction.equals("right")) { spriteY = 2; } 
+						else if (player.direction.equals("left")) { spriteY = 1; } 
+						else if (player.direction.equals("up")) { spriteY = 3; } 
+						else if (player.direction.equals("down")) { spriteY = 0; } 
+						
+						Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*spriteY, 
+						  (SPRITE.getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(spriteY+1));
+						Rect dest = new Rect(screenY*tile_height, screenX*tile_width + tile_width/4, 
+						  (screenY + 1)*tile_height, (screenX + 1)*tile_width + tile_width/3);
+						/*canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/8, screenX*tile_width + tile_width/4, null);*/
+						canvas.drawBitmap(SPRITE, src, dest, null);
 					}
 					
 					//draw shadows

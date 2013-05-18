@@ -131,23 +131,27 @@ BACK AFTER MONTHS!
 -removed perlin noise generator and generated X world w/ 4 biomes - heaven, hell, fantasy, the waste
 -now world generation is fast!
 
+day 2 back:
+removed swipe, added dpad
+procedural generation is back! (need variety for testing + shadows are cool)
+
 todo:
 
-forced housekeeping to move forward
+research:
 move update method to MapThread? implement touch listener in view? thread?
+
+next:
+touch and hold
 fix touch slowing bug
 fix FPS
+identify which direction the player is facing based on last press
 
-fun w/ players
-identify which direction the player is facing
-mining!
-
-naming convention housekeeping
+housekeeping:
 fix height/width naming discrepancies
-
-optimize
 points and rects! redo camera, player, etc.
-add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview?
+
+research: is it necessary?
+add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview? <--- why did I think it would be?
 
 menu housekeeping
 abstract out the view for world activity. worldview = view the generated world, choose to save it
@@ -155,7 +159,6 @@ method to delete worlds (long press? new activity under world management?)
 
 other 
 ability to change orientation via surfacechanged
-switch to d pad
 abstract sprite class?
 
 make a map of all the current code - is there a progam for this?

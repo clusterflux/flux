@@ -1,7 +1,6 @@
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes.dex : \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\BuildConfig.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\Camera.class \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\DPadView.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\HudView.class \

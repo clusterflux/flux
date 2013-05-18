@@ -17,11 +17,12 @@ import android.view.Display;
 import android.graphics.Point;
 import android.view.MotionEvent;
 import java.lang.Math;
+import android.widget.ImageView;
 
 public class GameActivity extends Activity {
 	
 	public MapView mapView;
-	public DPadView dPadView;
+	public ImageView dPadView;
 	public World world;
 	public Player player;
 	public Camera camera;
@@ -33,6 +34,8 @@ public class GameActivity extends Activity {
 	public int tile_height;
 	public int cameraOffsetX;
 	public int cameraOffsetY;
+					
+				int count = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +96,11 @@ public class GameActivity extends Activity {
 		mapView.setScreenSize(screen_height, screen_width);
 		
 		//Create a reference to the DPadView object, implement OnTouchListener
-		dPadView = (DPadView) findViewById(R.id.dpad_view);
+		dPadView = (ImageView) findViewById(R.id.dpad_view);
+		//dPadView.setAlpha(127); //make it transparent
 		
 		dPadView.setOnTouchListener(new View.OnTouchListener() {
-
+ 
 			public boolean onTouch(View v, MotionEvent event) {
 				
 				//get DPad center coordinates - how to get this out of here?
@@ -106,12 +110,29 @@ public class GameActivity extends Activity {
 				float touchX = event.getX();
 				float touchY = event.getY();
 								
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-	
+				if (event.getAction() == MotionEvent.ACTION_DOWN ) {
+						
+						//update based on DPad usage
+						float diffX = touchX - dPadCenter;
+						float diffY = touchY - dPadCenter;
+						//Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
+
+						if (Math.abs(diffX) > Math.abs(diffY)) {
+							if (touchX > dPadCenter) { update(0,1,"right");  }
+							if (touchX < dPadCenter) { update(0,-1,"left"); }
+						}
+					
+						if (Math.abs(diffY) > Math.abs(diffX)) {
+							if (touchY > dPadCenter) { update(1,0,"down");  }
+							if (touchY < dPadCenter) { update(-1,0,"up"); }
+						}
+						
+				/*} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+					
 					//update based on DPad usage
 					float diffX = touchX - dPadCenter;
 					float diffY = touchY - dPadCenter;
-					Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
+					//Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
 
 					if (Math.abs(diffX) > Math.abs(diffY)) {
 						if (touchX > dPadCenter) { update(0,1);  }
@@ -121,8 +142,8 @@ public class GameActivity extends Activity {
 					if (Math.abs(diffY) > Math.abs(diffX)) {
 						if (touchY > dPadCenter) { update(1,0);  }
 						if (touchY < dPadCenter) { update(-1,0); }
-					}
-					
+					}*/
+						
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 				
 					//reset coordinates when done touching
@@ -132,19 +153,21 @@ public class GameActivity extends Activity {
 			
 				return true;
 			}
-				
-				
+					
 		});
 		
 	}
 	
-	public void update(int moveX, int moveY) {
+	public void update(int moveX, int moveY, String direction) {
 		
 		int newPlayerX = player.x + moveX;
 		int newPlayerY = player.y + moveY;
 		int newCameraX = camera.x + moveX;
 		int newCameraY = camera.y + moveY;
-
+		
+		//set direction
+		player.changeDirection(direction);
+		
 		//check if player is trying to go out of bounds
 		if ( newPlayerY > world.world_width - 1 || newPlayerX > world.world_height - 1 || newPlayerY < 0 || newPlayerX < 0) {
 		
@@ -157,13 +180,14 @@ public class GameActivity extends Activity {
             Log.d("LOGCAT", "Trying to cross 2nd layer. Cancel move");
             
 			} else { //update player and camera positions
-				Log.d("LOGCAT", "screenX,Y = (" + screen_height + "," + screen_width + ")");
+				//Log.d("LOGCAT", "screenX,Y = (" + screen_height + "," + screen_width + ")");
 
 				player.move(moveX, moveY);
 				
 				//camera out of bounds condition
-				if ( ( moveX == 1  && newCameraX < world.world_height - screen_width + 1 && newPlayerX > cameraOffsetX )||
-				     ( moveY == 1  && newCameraY < world.world_width - screen_height + 1 && newPlayerY > cameraOffsetY )||
+				if ( ( moveX == 1  && newCameraX < world.world_height - screen_width + 1 && newPlayerX > 			 
+				     cameraOffsetX )||
+				     ( moveY == 1  && newCameraY < world.world_width - screen_height + 1 && newPlayerY >          cameraOffsetY )||
 				     ( moveX == -1 && newCameraX >= 0  && newPlayerX < world.world_height - (screen_width/2 + 1)       )||	 
 				     ( moveY == -1 && newCameraY >= 0  && newPlayerY < world.world_width - (screen_height/2 + 1)       )) 
 				{

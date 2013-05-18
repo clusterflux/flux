@@ -6,6 +6,8 @@ public class Player {
 
 	public int x;
 	public int y;
+	public String direction = "right";
+	public int movement = 0;
 	
 	public Player(int spawnX, int spawnY) {
 	
@@ -16,13 +18,28 @@ public class Player {
 	
 	public void move(int moveX, int moveY) {
 	
-	Log.d("LOGCAT", "Player -> (" + moveX + "," + moveY + ")");
+	//Log.d("LOGCAT", "Player -> (" + moveX + "," + moveY + ")");
 
 		x += moveX;
 		y += moveY;
 		
-	Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
+	//Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
 			
+	}
+	
+	public void changeDirection(String newDirection) {
+	
+		if (direction == newDirection) {
+			if (movement == 2) {
+				movement = 0;
+			} else {
+				movement++;
+			}
+		} else {
+			direction = newDirection;
+			movement = 0;
+		}
+		
 	}
 		
 }

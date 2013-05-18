@@ -18,7 +18,7 @@ public class HudView extends View {
 	protected void onDraw(Canvas canvas) {
 	
 		super.onDraw(canvas);
-		canvas.drawARGB(200, 200, 0, 0);
+		canvas.drawARGB(0, 0, 0, 0);
 		
 	}
 	
