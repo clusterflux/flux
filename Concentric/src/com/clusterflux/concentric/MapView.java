@@ -111,14 +111,19 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			
 			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
 			
+				if (x == world.world_width || y == world.world_height) {
+				
+					//skip drawing
+					
+				} else {
 				//LAYER 1:
 				if (world.world_map[x][y] != 0) {
 					
 					//draw tile
 					canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*tile_width, null);
 				
+					//draw sprite
 					if (player.x == x && player.y == y) { //if the player is standing here, draw the sprite
-						//draw sprite
 						
 						spriteX = player.movement;
 						
@@ -189,6 +194,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					
 				}
 				
+			}
+			
 			}
 			
 		}

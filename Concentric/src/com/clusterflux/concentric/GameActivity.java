@@ -34,9 +34,7 @@ public class GameActivity extends Activity {
 	public int tile_height;
 	public int cameraOffsetX;
 	public int cameraOffsetY;
-					
-				int count = 0;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	
@@ -204,7 +202,12 @@ public class GameActivity extends Activity {
 	
 		Point block = player.isFacing();
 		
-		if ( world.world_map2[block.x][block.y] != 0 ) {
+		if ( block.x < 0 || block.y < 0 || block.x == world.world_width || block.y == world.world_height )
+		{
+		
+			Log.d("LOGCAT", "trying to break blocks off the edge of map");
+			
+		} else if ( world.world_map2[block.x][block.y] != 0 ) {
 		
 			world.world_map2[block.x][block.y] = 0;
 			
