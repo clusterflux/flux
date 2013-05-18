@@ -105,7 +105,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 
 		int screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
-		for (int x = camera.x; x < camera.x + screen_height; x += 1, screenX += 1) {
+		for (int x = camera.x; x < camera.x + screen_height + 1; x += 1, screenX += 1) {
 			
 			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
