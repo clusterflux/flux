@@ -200,6 +200,22 @@ public class GameActivity extends Activity {
 		
 	}
 	
+	public void updateWorld(View view) {
+	
+		Point block = player.isFacing();
+		
+		if ( world.world_map2[block.x][block.y] != 0 ) {
+		
+			world.world_map2[block.x][block.y] = 0;
+			
+		} else {
+		
+			Log.d("LOGCAT", "no block to break");
+			
+		}
+		
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {

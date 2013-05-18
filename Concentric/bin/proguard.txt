@@ -20,6 +20,9 @@
 # onClick res/layout/worldgeneration.xml #generated:21
 -keepclassmembers class * { *** generateWorld(...); }
 
+# onClick res/layout/game.xml #generated:24
+-keepclassmembers class * { *** updateWorld(...); }
+
 # onClick res/layout/menu.xml #generated:6
 -keepclassmembers class * { *** worldSelection(...); }
 

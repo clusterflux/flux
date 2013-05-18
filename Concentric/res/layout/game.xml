@@ -18,7 +18,17 @@
 		android:layout_width=".7in"
 		android:layout_height=".7in" 
 		android:layout_alignParentBottom="true"
-		android:layout_alignParentRight="true"
+		android:layout_alignParentLeft="true"
 		android:src="@drawable/dpad"
 		android:alpha=".35"/>
+	<Button
+		android:id="@+id/action_button"
+		android:layout_width=".7in"
+		android:layout_height=".7in"
+		android:background="@drawable/action"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:onClick="updateWorld"
+	/>
+		
 </RelativeLayout>
