@@ -109,7 +109,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			
 			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
-			for (int y = camera.y; y < camera.y + screen_width; y += 1, screenY += 1) {
+			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
 			
 				//LAYER 1:
 				if (world.world_map[x][y] != 0) {
