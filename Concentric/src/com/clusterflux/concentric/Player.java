@@ -1,6 +1,7 @@
 package com.clusterflux.concentric;
 
 import android.util.Log;
+import android.graphics.Point;
 
 public class Player {
 
@@ -23,7 +24,7 @@ public class Player {
 		x += moveX;
 		y += moveY;
 		
-	//Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
+	Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
 			
 	}
 	
@@ -41,5 +42,17 @@ public class Player {
 		}
 		
 	}
+	
+	public Point isFacing() {
+	
+		Point block = new Point();
 		
+		if (direction.equals("right")) { block.set(x,y+1); }
+		else if (direction.equals("left")) { block.set(x, y-1); }
+		else if (direction.equals("down")) { block.set(x+1, y); }
+		else if (direction.equals("up")) { block.set(x-1,y); }
+		
+		return block;
+
+	}
 }
