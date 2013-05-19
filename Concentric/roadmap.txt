@@ -146,6 +146,11 @@ fixed glitching tile draws, still need to fix glitchy sprite draws
 sprite animations = walking sprite!
 added mining action button and it works!
 
+day 6:
+fixed glitchy sprite by synchronizing game update with map update/render
+fixed back button functionality (thread screwed it up)
+debug warning (lol)
+
 todo:
 
 next:
@@ -154,7 +159,7 @@ touch and hold
 fix touch slowing bug
 
 housekeeping:
-code us getting really messy
+code is getting really messy
 fix height/width naming discrepancies
 points and rects! redo camera, player, etc.
 
@@ -162,19 +167,17 @@ research:
 add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview? <--- why did I think it would be? - how does this work with overlapping tiles?
 sprite pixel by pixel movement
 
-menu housekeeping
+menu housekeeping:
 abstract out the view for world activity. worldview = view the generated world, choose to save it
 method to delete worlds (long press? new activity under world management?)
 
-other 
+other :
 ability to change orientation via surfacechanged
 abstract sprite class
 move update method to MapThread? - this gets a seperate update method (mobs)
 implement touch listener in view? thread?
 
-
 make a map of all the current code - is there a progam for this?
-
 
 read:
 context, intent, attributeset <--i forgot all about these
@@ -192,5 +195,6 @@ shading
 hiatus => thank past self for great comments
 hiatus+ => ball is rolling, bad stuff is obvious
 the code is getting big and unweildy
+at what point is it worthy of showing to people? - alpha!
 
 
