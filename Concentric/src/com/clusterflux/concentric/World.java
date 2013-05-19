@@ -105,12 +105,12 @@ public class World implements Serializable {
 		
 	}	
 	
-	public void saveWorld(Context context, String world_name, World world) throws IOException {
+	public void save(Context context) throws IOException {
 		
 		//save world object to file named world_name
 		FileOutputStream fos = context.openFileOutput(world_name, Context.MODE_PRIVATE);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(world);
+		oos.writeObject(this);
 		oos.close();
 		
 	}

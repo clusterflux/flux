@@ -74,7 +74,7 @@ public class WorldGenerationActivity extends Activity {
 		Log.d("LOGCAT", "Saving the World");	
 		try {
 			Toast.makeText(this, "SAVING WORLD...", Toast.LENGTH_SHORT).show();
-			world.saveWorld(this, world_name, world);
+			world.save(this);
 		} catch (IOException e) {
 			//do nothing
 		}

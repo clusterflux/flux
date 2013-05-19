@@ -81,7 +81,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) { 
-	
+	Log.d("LOGCAT", "SURFACE DESTROYED");
 		mapThread.setRunning(false);
 		boolean retry = true;
 		

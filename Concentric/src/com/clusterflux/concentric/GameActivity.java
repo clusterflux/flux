@@ -236,5 +236,18 @@ public class GameActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+	public void onBackPressed() {
+	
+		try {
+			Toast.makeText(this, "SAVING WORLD...", Toast.LENGTH_SHORT).show();
+			world.save(this);
+			finish();
+		} catch (IOException e) {
+			//do nothing
+		}
+		
+	}
 
 }

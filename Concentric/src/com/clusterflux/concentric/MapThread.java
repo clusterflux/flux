@@ -3,6 +3,7 @@ package com.clusterflux.concentric;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 import android.content.Context;
+import android.util.Log;
 
 
 public class MapThread extends Thread {
@@ -28,7 +29,7 @@ public class MapThread extends Thread {
 	public void setRunning(boolean mapRun) {
 	
 		this.mapRun = mapRun;
-		
+
 	}
 	
 	@Override
@@ -56,8 +57,11 @@ public class MapThread extends Thread {
 					framesSkipped = 0; //reset the frames skipped
 					
 					//update and render
-					//mapView.update()
-					mapView.doDraw(mapCanvas);
+					if (mapCanvas != null) {
+					
+						mapView.doDraw(mapCanvas);
+						//mapView.update()
+					}
 					
 					timeDiff = System.currentTimeMillis() - beginTime; //calculate how long cycle took
 					sleepTime = (int)(FRAME_PERIOD - timeDiff); //calculate sleep time
