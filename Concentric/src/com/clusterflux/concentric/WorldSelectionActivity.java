@@ -33,31 +33,43 @@ public class WorldSelectionActivity extends Activity {
 		setContentView(R.layout.worldselection);
 		Log.d("LOGCAT", "WorldSelectionActivity started");
 		
-		//create view on the fly
-		worldListView = (ListView) findViewById(R.id.worldListView);
-		
 		//get the file data and dump it into an array
 		File folder = new File("/data/data/com.clusterflux.concentric/files/");
 		filenames = folder.list();
 		
-		//initialize the array adapter
-		arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, filenames);
+		//no worlds condition
+		if ( filenames == null ) {
+		Log.d("LOGCAT", "null files");
+			Intent intent = new Intent();
+			intent.putExtra(EXTRA_MESSAGE, "null");
+			setResult(Activity.RESULT_CANCELED, intent);
+			finish();
+
+		} else {
+
+			//create view on the fly
+			worldListView = (ListView) findViewById(R.id.worldListView);
 		
-		//plug the view into the adapter
-		worldListView.setAdapter(arrayAdapter);
+			//initialize the array adapter
+			arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, filenames);
 		
-		//listen for item clicks
-		worldListView.setOnItemClickListener(new OnItemClickListener() 
-		{
-			public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
+			//plug the view into the adapter
+			worldListView.setAdapter(arrayAdapter);
+		
+			//listen for item clicks
+			worldListView.setOnItemClickListener(new OnItemClickListener() 
 			{
-				Toast.makeText(WorldSelectionActivity.this, "LOADING WORLD", Toast.LENGTH_SHORT).show();
+				public void onItemClick(AdapterView<?> parent, View v, int position, long id) 
+				{
+					Toast.makeText(WorldSelectionActivity.this, "LOADING WORLD", Toast.LENGTH_LONG).show();
 				
-				//get the world_name and send it back to MenuActivity
-				message = parent.getItemAtPosition(position).toString();
-				sendSelection();
-			}
-		});
+					//get the world_name and send it back to MenuActivity
+					message = parent.getItemAtPosition(position).toString();
+					sendSelection();
+				}
+			});
+			
+		}
 			
 	}
 	

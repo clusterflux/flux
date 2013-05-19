@@ -52,9 +52,6 @@ public class WorldGenerationActivity extends Activity {
 											
 		Log.d("LOGCAT", "Getting World Information");
 		Toast.makeText(this, "GENERATING WORLD...", Toast.LENGTH_SHORT).show();
-
-		//get the context so it can be passed to the World class for file saving
-		//Context context = getApplicationContext();
 		
 		//get the user input and convert it to string/int
 		EditText editText = (EditText) findViewById(R.id.world_name);

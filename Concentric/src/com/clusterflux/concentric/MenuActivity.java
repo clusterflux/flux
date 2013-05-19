@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MenuActivity extends Activity {
 
@@ -36,10 +37,11 @@ public class MenuActivity extends Activity {
 	/**Called when the user finishes WorldSelectionActivity*/
 	@Override
 	public void onActivityResult(int reqCode, int resCode, Intent data) {
-	
+	Log.d("LOGCAT", "back to MENU");
 		//get world_name from WorldSelectionActivity
 		Log.d("LOGCAT", "Getting world_name from WorldSelectionActivity");
 		if (reqCode == 1) {
+		
 			if (resCode == Activity.RESULT_OK) { 
 			
 				//get world_name
@@ -51,6 +53,14 @@ public class MenuActivity extends Activity {
 				intent.putExtra(EXTRA_MESSAGE, message);
 				startActivity(intent);
 			}
+			
+			if (resCode == Activity.RESULT_CANCELED) {
+			Log.d("LOGCAT", "result canceled");
+				Toast.makeText(MenuActivity.this, "PLEASE GENERATE A WORLD FIRST", 
+				  Toast.LENGTH_SHORT).show();
+				  
+			}
+
 		}
 		
 	}

@@ -10,5 +10,6 @@
 	<string name="world_width">World Width</string>
 	<string name="world_height">World Height</string>
 	<string name="send">SEND</string>
+	<string name="debug_warning">This is a debug screen, so it doesn\'t have error checking. To avoid crashes, create a world of at least 30x30. Use common characters for the world name and numbers for the world width and height. Don\'t hit the generate button when the world name field is blank. Just because no one is watching doesn\'t mean you need to be a dick.</string>
 
 </resources>

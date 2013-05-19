@@ -17,7 +17,7 @@
 -keep class com.clusterflux.concentric.WorldSelectionActivity { <init>(...); }
 
 # onClick res/layout/menu.xml #generated:16
-# onClick res/layout/worldgeneration.xml #generated:21
+# onClick res/layout/worldgeneration.xml #generated:32
 -keepclassmembers class * { *** generateWorld(...); }
 
 # onClick res/layout/game.xml #generated:24
