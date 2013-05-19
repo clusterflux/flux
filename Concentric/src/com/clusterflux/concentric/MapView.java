@@ -32,6 +32,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public Bitmap SPRITE;
 	public Player player;
 	public Camera camera;
+	public SurfaceHolder holder;
 	//public Bitmap overlayBitmap;
 	
 	//hardcoded parameters for testing
@@ -61,7 +62,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 		Log.d("LOGCAT", "tile_height = " + tile_height);
 		Log.d("LOGCAT", "tile_width = " + tile_width);
 		
-		SurfaceHolder holder = getHolder();
+		holder = getHolder();
 		holder.addCallback(this);
 		
 	}
@@ -98,7 +99,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 	public void doDraw(Canvas canvas) {
-					
+		
 		canvas.drawColor(Color.BLACK);
 		
 		canvas.translate(0, - tile_height/2); //account for null space at top of tiles
@@ -110,96 +111,98 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
 			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
-			
+
 				if (x == world.world_width || y == world.world_height) {
 				
 					//skip drawing
 					
 				} else {
-				//LAYER 1:
-				if (world.world_map[x][y] != 0) {
-					
-					//draw tile
-					canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*tile_width, null);
 				
-					//draw sprite
-					if (player.x == x && player.y == y) { //if the player is standing here, draw the sprite
+					//LAYER 1:
+					if (world.world_map[x][y] != 0) {
+					
+						//draw tile
+						canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*tile_width, null);
+				
+						//draw sprite
+						if (player.x == x && player.y == y) { 
+
+							spriteX = player.movement;
 						
-						spriteX = player.movement;
+							if (player.direction.equals("right")) { spriteY = 2; } 
+							else if (player.direction.equals("left")) { spriteY = 1; } 
+							else if (player.direction.equals("up")) { spriteY = 3; } 
+							else if (player.direction.equals("down")) { spriteY = 0; } 
 						
-						if (player.direction.equals("right")) { spriteY = 2; } 
-						else if (player.direction.equals("left")) { spriteY = 1; } 
-						else if (player.direction.equals("up")) { spriteY = 3; } 
-						else if (player.direction.equals("down")) { spriteY = 0; } 
-						
-						Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*spriteY, 
-						  (SPRITE.getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(spriteY+1));
-						Rect dest = new Rect(screenY*tile_height, screenX*tile_width + tile_width/4, 
-						  (screenY + 1)*tile_height, (screenX + 1)*tile_width + tile_width/3);
-						/*canvas.drawBitmap(SPRITE, screenY*tile_height + tile_height/8, screenX*tile_width + tile_width/4, null);*/
-						canvas.drawBitmap(SPRITE, src, dest, null);
+							Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*	  	spriteY,(SPRITE.getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(		 spriteY+1));
+						  
+							Rect dest = new Rect(screenY*tile_height, screenX*tile_width + tile_width/4, 
+								(screenY + 1)*tile_height, (screenX + 1)*tile_width + tile_width/3);
+
+							canvas.drawBitmap(SPRITE, src, dest, null);
+							
+						}
+					
+						//draw shadows
+						if (y != world.world_height - 1 && x != world.world_width - 1) {
+						if (world.world_map2[x+1][y+1] != 0 && world.world_map2[x][y+1] == 0) {
+							canvas.drawBitmap(SHADOW.get("southeast"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (x != world.world_width - 1) {
+						if (world.world_map2[x+1][y] != 0) {
+							canvas.drawBitmap(SHADOW.get("south"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (x != world.world_width - 1 && y != 0) {
+						if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x][y-1] == 0) {
+							canvas.drawBitmap(SHADOW.get("southwest"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (y != world.world_height - 1) {
+						if (world.world_map2[x][y+1] != 0) {
+							canvas.drawBitmap(SHADOW.get("east"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (y != 0) { 
+						if (world.world_map2[x][y-1] != 0) {
+							canvas.drawBitmap(SHADOW.get("west"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (x != 0 && y != world.world_height - 1) {
+						if (world.world_map2[x-1][y+1] != 0 && world.world_map2[x-1][y] == 0 && world.world_map2[x][y+1] == 0) {
+							canvas.drawBitmap(SHADOW.get("northeast"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (x != 0) {
+						if (world.world_map2[x-1][y] != 0) {
+							canvas.drawBitmap(SHADOW.get("north"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (x != 0 && y != 0) {
+						if (world.world_map2[x-1][y-1] != 0 && world.world_map2[x][y-1] == 0 && world.world_map2[x-1][y] == 0) {
+							canvas.drawBitmap(SHADOW.get("northwest"), screenY*tile_height , screenX*tile_width, null);
+						}}
+					
 					}
+				
+					//LAYER 2:
+					if (world.world_map2[x][y] != 0) {
+				
+						//draw tile
+						canvas.drawBitmap(TILE_MAP.get(world.world_map2[x][y]), screenY*tile_height,		screenX*tile_width - tile_width/2, null);
 					
-					//draw shadows
-					if (y != world.world_height - 1 && x != world.world_width - 1) {
-					if (world.world_map2[x+1][y+1] != 0 && world.world_map2[x][y+1] == 0) {
-						canvas.drawBitmap(SHADOW.get("southeast"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (x != world.world_width - 1) {
-					if (world.world_map2[x+1][y] != 0) {
-						canvas.drawBitmap(SHADOW.get("south"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (x != world.world_width - 1 && y != 0) {
-					if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x][y-1] == 0) {
-						canvas.drawBitmap(SHADOW.get("southwest"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (y != world.world_height - 1) {
-					if (world.world_map2[x][y+1] != 0) {
-						canvas.drawBitmap(SHADOW.get("east"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (y != 0) { 
-					if (world.world_map2[x][y-1] != 0) {
-						canvas.drawBitmap(SHADOW.get("west"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (x != 0 && y != world.world_height - 1) {
-					if (world.world_map2[x-1][y+1] != 0 && world.world_map2[x-1][y] == 0 && world.world_map2[x][y+1] == 0) {
-						canvas.drawBitmap(SHADOW.get("northeast"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (x != 0) {
-					if (world.world_map2[x-1][y] != 0) {
-						canvas.drawBitmap(SHADOW.get("north"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (x != 0 && y != 0) {
-					if (world.world_map2[x-1][y-1] != 0 && world.world_map2[x][y-1] == 0 && world.world_map2[x-1][y] == 0) {
-						canvas.drawBitmap(SHADOW.get("northwest"), screenY*tile_height , screenX*tile_width, null);
-					}}
+						//draw shadows
+						if (x != world.world_width - 1 && y != 0) {
+						if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x+1][y] == 0) {
+							canvas.drawBitmap(SHADOW.get("sidewest"), screenY*tile_height , screenX*tile_width, null);
+						}}
+						if (x != 0) {
+						if (world.world_map2[x-1][y] == 0 && world.world_map[x-1][y] == 0) {
+							canvas.drawBitmap(SHADOW.get("south"), screenY*tile_height , screenX*tile_width, null);
+						}}
 					
+					}
+				
 				}
-				
-				//LAYER 2:
-				if (world.world_map2[x][y] != 0) {
-				
-					//draw tile
-					canvas.drawBitmap(TILE_MAP.get(world.world_map2[x][y]), screenY*tile_height, screenX*tile_width - tile_width/2, null);
-					
-					//draw shadows
-					if (x != world.world_width - 1 && y != 0) {
-					if (world.world_map2[x+1][y-1] != 0 && world.world_map2[x+1][y] == 0) {
-						canvas.drawBitmap(SHADOW.get("sidewest"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					if (x != 0) {
-					if (world.world_map2[x-1][y] == 0 && world.world_map[x-1][y] == 0) {
-						canvas.drawBitmap(SHADOW.get("south"), screenY*tile_height , screenX*tile_width, null);
-					}}
-					
-				}
-				
-			}
 			
 			}
 			
 		}
-						
+			
 	}
 	
 	public void setWorld(World world){
