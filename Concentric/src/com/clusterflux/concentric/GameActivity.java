@@ -18,6 +18,7 @@ import android.graphics.Point;
 import android.view.MotionEvent;
 import java.lang.Math;
 import android.widget.ImageView;
+import android.os.Handler;
 
 public class GameActivity extends Activity {
 	
@@ -34,6 +35,10 @@ public class GameActivity extends Activity {
 	public int tile_height;
 	public int cameraOffsetX;
 	public int cameraOffsetY;
+	
+	private boolean dPadThreadRunning = false;
+	private boolean cancelDPadThread = false;
+	private Handler handler = new Handler();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +102,7 @@ public class GameActivity extends Activity {
 		dPadView = (ImageView) findViewById(R.id.dpad_view);
 		//dPadView.setAlpha(127); //make it transparent
 		
+		
 		dPadView.setOnTouchListener(new View.OnTouchListener() {
  
 			public boolean onTouch(View v, MotionEvent event) {
@@ -116,43 +122,105 @@ public class GameActivity extends Activity {
 						//Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
 
 						if (Math.abs(diffX) > Math.abs(diffY)) {
-							if (touchX > dPadCenter) { update(0,1,"right");  }
-							if (touchX < dPadCenter) { update(0,-1,"left"); }
+							if (touchX > dPadCenter) { handleDPadDown(0,1,"right");  }
+							if (touchX < dPadCenter) { handleDPadDown(0,-1,"left"); }
 						}
 					
 						if (Math.abs(diffY) > Math.abs(diffX)) {
-							if (touchY > dPadCenter) { update(1,0,"down");  }
-							if (touchY < dPadCenter) { update(-1,0,"up"); }
+							if (touchY > dPadCenter) { handleDPadDown(1,0,"down");  }
+							if (touchY < dPadCenter) { handleDPadDown(-1,0,"up"); }
 						}
 						
-				/*} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-					
-					//update based on DPad usage
-					float diffX = touchX - dPadCenter;
-					float diffY = touchY - dPadCenter;
-					//Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
-
-					if (Math.abs(diffX) > Math.abs(diffY)) {
-						if (touchX > dPadCenter) { update(0,1);  }
-						if (touchX < dPadCenter) { update(0,-1); }
-					}
-					
-					if (Math.abs(diffY) > Math.abs(diffX)) {
-						if (touchY > dPadCenter) { update(1,0);  }
-						if (touchY < dPadCenter) { update(-1,0); }
-					}*/
+						return true;
 						
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 				
 					//reset coordinates when done touching
 					touchX = 0f;
 					touchY = 0f;
-				}
-			
-				return true;
-			}
 					
+					handleDPadUp();
+					return true;
+					
+				} else {
+			
+					return false;
+					
+				}
+			}
+			
+			private void handleDPadDown(int moveX, int moveY, String direction) {
+			
+				if (!dPadThreadRunning) { 
+				
+					startDPadThread(moveX, moveY, direction);
+					
+				}
+				
+			}
+			
+			private void startDPadThread(int moveX, int moveY, String direction) {
+			
+			final int LmoveX = moveX;
+			final int LmoveY = moveY;
+			final String Ldirection = direction;
+			
+				Thread r = new Thread() {
+				
+					@Override
+					public void run() {
+					
+						try {
+						
+							dPadThreadRunning = true;
+							while (!cancelDPadThread) {
+							
+								handler.post(new Runnable() {
+								
+									@Override
+									public void run() {
+									
+										update(LmoveX, LmoveY, Ldirection);
+										
+									}
+									
+								});
+								
+								try {
+								
+									Thread.sleep(100);
+									
+								} catch (InterruptedException e) {
+								
+									throw new RuntimeException("Could not wait between dPad updates", e);
+									
+								}
+								
+							}
+								
+						} finally {
+							
+							dPadThreadRunning = false;
+							cancelDPadThread = false;
+								
+						}
+							
+					}
+								
+				};
+							
+				//start the function thread
+				r.start();
+							
+			}
+						
 		});
+		
+	}
+	
+	private void handleDPadUp() {
+	
+		cancelDPadThread = true;
 		
 	}
 	

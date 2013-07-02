@@ -151,6 +151,12 @@ fixed glitchy sprite by synchronizing game update with map update/render
 fixed back button functionality (thread screwed it up)
 debug warning (lol)
 
+<<<<<<< HEAD
+=======
+day 7:
+-added dPadThead for touch & hold functionality
+
+>>>>>>> added touch and hold (dPadThread in GameActivity)
 todo:
 
 next:
