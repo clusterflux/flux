@@ -157,15 +157,15 @@ day 7:
 day 8:
 
 -updated dPad to use handler instead of thread (less complications)
--forced SDK version for multiple touch to multiple view
+-forced SDK version for multiple touch to multiple view (split motionevents)
+-music!
 
 todo:
 
 next:
-get multiple touch events without sdk version forcing (which justs defaults it to on)
+get split motionevents without sdk version forcing (which justs defaults it to on)
 animate mining/alternative to rpg maker sprites
 sprite pixel by pixel movement
-music! (to keep it fun)
 
 
 housekeeping:

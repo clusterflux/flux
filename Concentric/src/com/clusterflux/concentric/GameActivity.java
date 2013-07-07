@@ -19,6 +19,8 @@ import android.view.MotionEvent;
 import java.lang.Math;
 import android.widget.ImageView;
 import android.os.Handler;
+import android.media.MediaPlayer;
+import android.media.AudioManager;
 
 public class GameActivity extends Activity {
 	
@@ -52,6 +54,8 @@ public class GameActivity extends Activity {
 		}
 		
 	};
+	
+	private MediaPlayer mediaPlayer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +131,6 @@ public class GameActivity extends Activity {
 				float touchY = event.getY();
 								
 				if (event.getAction() == MotionEvent.ACTION_DOWN ) {
-				Log.d("LOGCAT", "ACTION_DOWN Detected");
 
 						handler.removeCallbacks(r);
 				
@@ -149,7 +152,6 @@ public class GameActivity extends Activity {
 						handler.postDelayed(r, 100);				
 						
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-				Log.d("LOGCAT", "ACTION_UP Detected");
 				
 					//reset coordinates when done touching
 					touchX = 0f;
@@ -164,6 +166,14 @@ public class GameActivity extends Activity {
 			}
 						
 		});
+		
+	//let user change music volume via hardware controls
+	setVolumeControlStream(AudioManager.STREAM_MUSIC);
+	
+	//start music
+	mediaPlayer = MediaPlayer.create(this, R.raw.overworld);
+    mediaPlayer.start();
+	mediaPlayer.setLooping(true);
 		
 	}
 	
@@ -262,6 +272,7 @@ public class GameActivity extends Activity {
 		try {
 			Toast.makeText(this, "SAVING WORLD...", Toast.LENGTH_SHORT).show();
 			world.save(this);
+			mediaPlayer.stop();
 			finish();
 		} catch (IOException e) {
 			//do nothing

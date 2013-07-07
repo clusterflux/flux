@@ -1,11 +1,7 @@
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes.dex : \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\BuildConfig.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\Camera.class \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1$1$1.class \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1$1.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1.class \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$2$1$1.class \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$2$1.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$2.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\HudView.class \
@@ -21,6 +17,7 @@ C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\con
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R$drawable.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R$id.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R$layout.class \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R$raw.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R$string.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\R.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\World.class \
