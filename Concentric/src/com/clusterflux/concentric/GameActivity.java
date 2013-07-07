@@ -36,9 +36,22 @@ public class GameActivity extends Activity {
 	public int cameraOffsetX;
 	public int cameraOffsetY;
 	
-	private boolean dPadThreadRunning = false;
-	private boolean cancelDPadThread = false;
+	//DPad stuff - needs to be abstracted out to its own class
+	private int valueX;
+	private int valueY;
+	private String direction;
+	
 	private Handler handler = new Handler();
+	private Runnable r = new Runnable() {
+	
+		public void run() {
+		
+			update(valueX,valueY,direction);
+			handler.postDelayed(this, 100);
+			
+		}
+		
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +115,6 @@ public class GameActivity extends Activity {
 		dPadView = (ImageView) findViewById(R.id.dpad_view);
 		//dPadView.setAlpha(127); //make it transparent
 		
-		
 		dPadView.setOnTouchListener(new View.OnTouchListener() {
  
 			public boolean onTouch(View v, MotionEvent event) {
@@ -115,112 +127,51 @@ public class GameActivity extends Activity {
 				float touchY = event.getY();
 								
 				if (event.getAction() == MotionEvent.ACTION_DOWN ) {
-						
+				Log.d("LOGCAT", "ACTION_DOWN Detected");
+
+						handler.removeCallbacks(r);
+				
 						//update based on DPad usage
 						float diffX = touchX - dPadCenter;
 						float diffY = touchY - dPadCenter;
-						//Log.d("LOGCAT", "diffX = " + diffX + "; diffY = " + diffY);
 
 						if (Math.abs(diffX) > Math.abs(diffY)) {
-							if (touchX > dPadCenter) { handleDPadDown(0,1,"right");  }
-							if (touchX < dPadCenter) { handleDPadDown(0,-1,"left"); }
+							if (touchX > dPadCenter) { setValues(0,1,"right"); }
+							if (touchX < dPadCenter) { setValues(0,-1,"left"); }
 						}
 					
 						if (Math.abs(diffY) > Math.abs(diffX)) {
-							if (touchY > dPadCenter) { handleDPadDown(1,0,"down");  }
-							if (touchY < dPadCenter) { handleDPadDown(-1,0,"up"); }
+							if (touchY > dPadCenter) { setValues(1,0,"down"); }
+							if (touchY < dPadCenter) { setValues(-1,0,"up"); }
 						}
 						
-						return true;
+						update(valueX,valueY,direction);  
+						handler.postDelayed(r, 100);				
 						
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+				Log.d("LOGCAT", "ACTION_UP Detected");
 				
 					//reset coordinates when done touching
 					touchX = 0f;
 					touchY = 0f;
 					
-					handleDPadUp();
-					return true;
-					
-				} else {
-			
-					return false;
-					
-				}
-			}
-			
-			private void handleDPadDown(int moveX, int moveY, String direction) {
-			
-				if (!dPadThreadRunning) { 
+					handler.removeCallbacks(r);
 				
-					startDPadThread(moveX, moveY, direction);
+				} 
+			
+				return true;
 					
-				}
-				
-			}
-			
-			private void startDPadThread(int moveX, int moveY, String direction) {
-			
-			final int LmoveX = moveX;
-			final int LmoveY = moveY;
-			final String Ldirection = direction;
-			
-				Thread r = new Thread() {
-				
-					@Override
-					public void run() {
-					
-						try {
-						
-							dPadThreadRunning = true;
-							while (!cancelDPadThread) {
-							
-								handler.post(new Runnable() {
-								
-									@Override
-									public void run() {
-									
-										update(LmoveX, LmoveY, Ldirection);
-										
-									}
-									
-								});
-								
-								try {
-								
-									Thread.sleep(100);
-									
-								} catch (InterruptedException e) {
-								
-									throw new RuntimeException("Could not wait between dPad updates", e);
-									
-								}
-								
-							}
-								
-						} finally {
-							
-							dPadThreadRunning = false;
-							cancelDPadThread = false;
-								
-						}
-							
-					}
-								
-				};
-							
-				//start the function thread
-				r.start();
-							
 			}
 						
 		});
 		
 	}
 	
-	private void handleDPadUp() {
+	public void setValues(int x, int y, String d) {
 	
-		cancelDPadThread = true;
+		valueX = x;
+		valueY = y;
+		direction = d;
 		
 	}
 	

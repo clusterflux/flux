@@ -4,6 +4,9 @@ C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\con
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1$1$1.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1$1.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$1.class \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$2$1$1.class \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$2$1.class \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity$2.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\GameActivity.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\HudView.class \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes\com\clusterflux\concentric\MapThread.class \
