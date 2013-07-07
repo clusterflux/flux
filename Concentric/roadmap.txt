@@ -154,12 +154,19 @@ debug warning (lol)
 day 7:
 -added dPadThead for touch & hold functionality
 
+day 8:
+
+-updated dPad to use handler instead of thread (less complications)
+-forced SDK version for multiple touch to multiple view
+
 todo:
 
 next:
+get multiple touch events without sdk version forcing (which justs defaults it to on)
 animate mining/alternative to rpg maker sprites
-touch and hold
-fix touch slowing bug
+sprite pixel by pixel movement
+music! (to keep it fun)
+
 
 housekeeping:
 code is getting really messy
@@ -168,11 +175,11 @@ points and rects! redo camera, player, etc.
 
 research:
 add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview? <--- why did I think it would be? - how does this work with overlapping tiles?
-sprite pixel by pixel movement
 
 menu housekeeping:
 abstract out the view for world activity. worldview = view the generated world, choose to save it
 method to delete worlds (long press? new activity under world management?)
+abstract out touch listeners from gameactivity
 
 other :
 ability to change orientation via surfacechanged

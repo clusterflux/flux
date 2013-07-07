@@ -13,7 +13,7 @@ public class MapThread extends Thread {
 	SurfaceHolder surfaceHolder;
 	Context context;
 	MapView mapView;
-	private final int MAX_FPS = 50;
+	private final int MAX_FPS = 30;
 	private final int FRAME_PERIOD = 1000/ MAX_FPS;
 	private final int MAX_FRAME_SKIPS = 5;
 	

@@ -158,17 +158,6 @@ public class GameActivity extends Activity {
 					handler.removeCallbacks(r);
 				
 				} 
-				
-				/*switch(event.getAction() & MotionEvent.ACTION_MASK) {
-				
-				 case MotionEvent.ACTION_POINTER_DOWN:
-					Log.d("LOGCAT", "second finger");
-					break;
-					
-				default:
-					break;
-					
-				}*/
 			
 				return true;
 					
