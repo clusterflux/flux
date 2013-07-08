@@ -11,6 +11,7 @@ public class WorldFeatures {
 	
 	public final Map<Integer, Bitmap> TILE_MAP;
 	public final Bitmap SPRITE;
+	public final Bitmap MONSTER;
 	public final int tile_height;
 	public final int tile_width;
 	public final Map<String, Bitmap> SHADOW;
@@ -19,6 +20,9 @@ public class WorldFeatures {
 	
 		//get the sprite
 		SPRITE = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite);
+		
+		//get the monster
+		MONSTER = BitmapFactory.decodeResource(context.getResources(), R.drawable.monster);
 	
 		TILE_MAP = new HashMap<Integer, Bitmap>();
 	

@@ -185,7 +185,6 @@ other :
 ability to change orientation via surfacechanged
 abstract sprite class
 move update method to MapThread? - this gets a seperate update method (mobs)
-implement touch listener in view? thread?
 
 make a map of all the current code - is there a progam for this?
 

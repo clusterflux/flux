@@ -5,6 +5,7 @@ C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\dpad.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\game_map.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\grass.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\ic_launcher.png \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\monster.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\shadow_east.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\shadow_north.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\res\drawable-hdpi\shadow_northeast.png \
@@ -34,6 +35,7 @@ C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\dpad.png 
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\game_map.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\grass.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\ic_launcher.png \
+C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\monster.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\shadow_east.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\shadow_north.png \
 C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\res\drawable-hdpi\shadow_northeast.png \

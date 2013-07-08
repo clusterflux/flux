@@ -28,6 +28,7 @@ public class GameActivity extends Activity {
 	public ImageView dPadView;
 	public World world;
 	public Player player;
+	public Monster monster;
 	public Camera camera;
 	
 	//hardcoded parameters for testing
@@ -48,8 +49,20 @@ public class GameActivity extends Activity {
 	
 		public void run() {
 		
-			update(valueX,valueY,direction);
+			updatePlayer(valueX,valueY,direction);
 			handler.postDelayed(this, 100);
+			
+		}
+		
+	};
+	
+	private Handler monsterHandler = new Handler();
+	private Runnable m = new Runnable() {
+	
+		public void run() {
+		
+			updateMonster();
+			monsterHandler.postDelayed(this, 500);
 			
 		}
 		
@@ -92,6 +105,9 @@ public class GameActivity extends Activity {
 		//load the player
 		player = new Player(world.world_height/2, world.world_width/2); //hardcoded spawn point!
 		
+		//load the monster
+		monster = new Monster(player.x + 2, player.y + 8);
+		
 		//determine camera offset
 		if ((screen_width & 1) == 0) { //even
 			cameraOffsetX = screen_width/2 - 1;
@@ -112,6 +128,7 @@ public class GameActivity extends Activity {
 		mapView = (MapView) findViewById(R.id.map_view);
 		mapView.setWorld(world);
 		mapView.setPlayer(player);
+		mapView.setMonster(monster);
 		mapView.setCamera(camera);
 		mapView.setScreenSize(screen_height, screen_width);
 		
@@ -148,7 +165,7 @@ public class GameActivity extends Activity {
 							if (touchY < dPadCenter) { setValues(-1,0,"up"); }
 						}
 						
-						update(valueX,valueY,direction);  
+						updatePlayer(valueX,valueY,direction);  
 						handler.postDelayed(r, 100);				
 						
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -174,6 +191,10 @@ public class GameActivity extends Activity {
 	mediaPlayer = MediaPlayer.create(this, R.raw.overworld);
     mediaPlayer.start();
 	mediaPlayer.setLooping(true);
+	
+	//start the monsters
+	monsterHandler.removeCallbacks(m);
+	monsterHandler.postDelayed(m, 100);
 		
 	}
 	
@@ -185,7 +206,7 @@ public class GameActivity extends Activity {
 		
 	}
 	
-	public void update(int moveX, int moveY, String direction) {
+	public void updatePlayer(int moveX, int moveY, String direction) {
 		
 		synchronized(mapView.holder) {
 		
@@ -235,6 +256,18 @@ public class GameActivity extends Activity {
 		
 	}
 	
+	public void updateMonster() {
+	
+		synchronized(mapView.holder) {
+		
+			//set direction
+			monster.checkDirection();
+			monster.move();
+		
+		}
+		
+	}	
+	
 	public void updateWorld(View view) {
 	
 		Point block = player.isFacing();
@@ -270,9 +303,11 @@ public class GameActivity extends Activity {
 	public void onBackPressed() {
 	
 		try {
+		
+			monsterHandler.removeCallbacks(m);
+			mediaPlayer.stop();
 			Toast.makeText(this, "SAVING WORLD...", Toast.LENGTH_SHORT).show();
 			world.save(this);
-			mediaPlayer.stop();
 			finish();
 		} catch (IOException e) {
 			//do nothing

@@ -24,7 +24,7 @@ public class Player {
 		x += moveX;
 		y += moveY;
 		
-	//Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
+	Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
 			
 	}
 	

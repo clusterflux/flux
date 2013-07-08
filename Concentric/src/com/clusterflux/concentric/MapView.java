@@ -30,7 +30,9 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public Map<Integer,Bitmap> TILE_MAP;
 	public Map<String,Bitmap> SHADOW;
 	public Bitmap SPRITE;
+	public Bitmap MONSTER;
 	public Player player;
+	public Monster monster;
 	public Camera camera;
 	public SurfaceHolder holder;
 	//public Bitmap overlayBitmap;
@@ -42,6 +44,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public int screen_height;
 	public int spriteX = 0;
 	public int spriteY = 0;
+	public int monsterX = 0;
+	public int monsterY = 0;
 
 	public MapThread mapThread; 
 	
@@ -56,6 +60,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 		TILE_MAP = worldFeatures.TILE_MAP;
 		SHADOW = worldFeatures.SHADOW;
 		SPRITE = worldFeatures.SPRITE;
+		MONSTER = worldFeatures.MONSTER;
 		tile_height = worldFeatures.tile_height;
 		tile_width = worldFeatures.tile_width;
 		
@@ -142,6 +147,23 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 							canvas.drawBitmap(SPRITE, src, dest, null);
 							
 						}
+						
+						//draw monster
+						if (monster.x == x && monster.y == y) {
+						
+							monsterX = monster.movement;
+							
+							if (monster.direction.equals("right")) { monsterY = 2; }
+							else if (monster.direction.equals("left")) { monsterY = 1;}
+							
+							Rect src = new Rect((MONSTER.getHeight()/4)*monsterX, (MONSTER.getWidth()/3)*	  	monsterY,(MONSTER.getHeight()/4)*(monsterX+1), (MONSTER.getWidth()/3)*(		 monsterY+1));
+						  
+							Rect dest = new Rect(screenY*tile_height, screenX*tile_width + tile_width/4, 
+								(screenY + 1)*tile_height, (screenX + 1)*tile_width + tile_width/3);
+								
+							canvas.drawBitmap(MONSTER, src, dest, null);
+								
+						}
 					
 						//draw shadows
 						if (y != world.world_height - 1 && x != world.world_width - 1) {
@@ -214,6 +236,12 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public void setPlayer(Player player) {
 	
 		this.player = player;
+		
+	}
+	
+	public void setMonster(Monster monster) {
+	
+		this.monster = monster;
 		
 	}
 	
