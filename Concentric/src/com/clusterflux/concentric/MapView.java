@@ -104,7 +104,9 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 	public void doDraw(Canvas canvas) {
-		
+	
+	int count = 0;
+
 		canvas.drawColor(Color.BLACK);
 		
 		canvas.translate(0, - tile_height/2); //account for null space at top of tiles
@@ -150,6 +152,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 						
 						//draw monster
 						if (monster.x == x && monster.y == y) {
+						
+						count++;
 						
 							monsterX = monster.movement;
 							
@@ -203,7 +207,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 				
 					//LAYER 2:
 					if (world.world_map2[x][y] != 0) {
-				
+
 						//draw tile
 						canvas.drawBitmap(TILE_MAP.get(world.world_map2[x][y]), screenY*tile_height,		screenX*tile_width - tile_width/2, null);
 					
@@ -224,7 +228,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 			
 		}
-			
+if (count == 2) { Log.d("LOGCAT", "TWO!!"); }
 	}
 	
 	public void setWorld(World world){

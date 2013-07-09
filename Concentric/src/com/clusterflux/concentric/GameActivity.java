@@ -56,13 +56,12 @@ public class GameActivity extends Activity {
 		
 	};
 	
-	private Handler monsterHandler = new Handler();
 	private Runnable m = new Runnable() {
 	
 		public void run() {
 		
 			updateMonster();
-			monsterHandler.postDelayed(this, 500);
+			handler.postDelayed(this, 500);
 			
 		}
 		
@@ -149,6 +148,8 @@ public class GameActivity extends Activity {
 								
 				if (event.getAction() == MotionEvent.ACTION_DOWN ) {
 
+					//synchronized(mapView.holder) {
+					
 						handler.removeCallbacks(r);
 				
 						//update based on DPad usage
@@ -166,7 +167,9 @@ public class GameActivity extends Activity {
 						}
 						
 						updatePlayer(valueX,valueY,direction);  
-						handler.postDelayed(r, 100);				
+						handler.postDelayed(r, 100);	
+
+					//}
 						
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 				
@@ -184,25 +187,29 @@ public class GameActivity extends Activity {
 						
 		});
 		
-	//let user change music volume via hardware controls
-	setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		//let user change music volume via hardware controls
+		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 	
-	//start music
-	mediaPlayer = MediaPlayer.create(this, R.raw.overworld);
-    mediaPlayer.start();
-	mediaPlayer.setLooping(true);
+		//start music
+		mediaPlayer = MediaPlayer.create(this, R.raw.overworld);
+		mediaPlayer.start();
+		mediaPlayer.setLooping(true);
 	
-	//start the monsters
-	monsterHandler.removeCallbacks(m);
-	monsterHandler.postDelayed(m, 100);
+		//start the monsters
+		handler.removeCallbacks(m);
+		handler.postDelayed(m, 100);
 		
 	}
 	
 	public void setValues(int x, int y, String d) {
 	
-		valueX = x;
-		valueY = y;
-		direction = d;
+		synchronized(mapView.holder) {
+		
+			valueX = x;
+			valueY = y;
+			direction = d;
+			
+		}
 		
 	}
 	
@@ -304,7 +311,8 @@ public class GameActivity extends Activity {
 	
 		try {
 		
-			monsterHandler.removeCallbacks(m);
+			handler.removeCallbacks(r);
+			handler.removeCallbacks(m);
 			mediaPlayer.stop();
 			Toast.makeText(this, "SAVING WORLD...", Toast.LENGTH_SHORT).show();
 			world.save(this);
