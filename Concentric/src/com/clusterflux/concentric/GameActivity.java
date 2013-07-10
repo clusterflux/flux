@@ -105,7 +105,7 @@ public class GameActivity extends Activity {
 		player = new Player(world.world_height/2, world.world_width/2); //hardcoded spawn point!
 		
 		//load the monster
-		monster = new Monster(player.x + 2, player.y + 8);
+		//monster = new Monster(player.x + 2, player.y + 8);
 		
 		//determine camera offset
 		if ((screen_width & 1) == 0) { //even
@@ -119,9 +119,9 @@ public class GameActivity extends Activity {
 		} else { //odd
 			cameraOffsetY = screen_height/2;
 		}
-		
+						
 		//load the camera relative to the player
-		camera = new Camera(player.x - cameraOffsetX, player.y - cameraOffsetY);
+		camera = new Camera((int)Math.floor(player.x) - cameraOffsetX, (int)Math.floor(player.y) - cameraOffsetY);
 		
 		//Create a reference to the MapView object. set world, player, camera, tile sizes.
 		mapView = (MapView) findViewById(R.id.map_view);
@@ -196,8 +196,8 @@ public class GameActivity extends Activity {
 		mediaPlayer.setLooping(true);
 	
 		//start the monsters
-		handler.removeCallbacks(m);
-		handler.postDelayed(m, 100);
+		//handler.removeCallbacks(m);
+		//handler.postDelayed(m, 100);
 		
 	}
 	
@@ -217,46 +217,63 @@ public class GameActivity extends Activity {
 		
 		synchronized(mapView.holder) {
 		
-			int newPlayerX = player.x + moveX;
-			int newPlayerY = player.y + moveY;
+			float offset = 0.5f;
+			
+			int newPlayerX = (int)Math.floor(player.x) + moveX;
+			int newPlayerY = (int)Math.floor(player.y) + moveY;
 			int newCameraX = camera.x + moveX;
 			int newCameraY = camera.y + moveY;
 		
-			//set direction
-			player.changeDirection(direction);
-		
-			//check if player is trying to go out of bounds
-			if ( newPlayerY > world.world_width - 1 || newPlayerX > world.world_height - 1 || newPlayerY < 0 || newPlayerX < 0) {
-		
-				Log.d("LOGCAT", "Player attempting to go out of bounds");
-			
-			} else { //check for collisions
-		
-				if (world.world_map2[newPlayerX][newPlayerY] != 0) { //there's a block on 2nd layer
-        
-				Log.d("LOGCAT", "Trying to cross 2nd layer. Cancel move");
-            
-				} else { //update player and camera positions
+			boolean changed = player.changeDirection(direction);
+					
+			if (!changed) { //only move player if direction did not change
 
-					player.move(moveX, moveY);
+				//check if player is trying to go out of bounds
+				if ( newPlayerY > world.world_width - 1 || newPlayerX > world.world_height - 1 || newPlayerY < 0 || newPlayerX < 0) {
+		
+					Log.d("LOGCAT", "Player attempting to go out of bounds");
+			
+				} else { //check for collisions
+		
+					if (world.world_map2[newPlayerX][newPlayerY] != 0) { //there's a block on 2nd layer
+        
+					Log.d("LOGCAT", "Trying to cross 2nd layer. Cancel move");
+		
+					} else { //update player and camera positions
 					
-					//camera out of bounds condition
-					if ( ( moveX == 1  && newCameraX < world.world_height - screen_width + 1 
-					     && newPlayerX > cameraOffsetX )||
-					   ( moveY == 1  && newCameraY < world.world_width - screen_height + 1 
-					     && newPlayerY >  cameraOffsetY )||
-				       ( moveX == -1 && newCameraX >= 0  && newPlayerX < world.world_height - 
-					    ( screen_width/2 + 1) )||	 
-				       ( moveY == -1 && newCameraY >= 0  && newPlayerY < world.world_width - 
-					    ( screen_height/2 + 1) )) 
-					{
+						player.move(moveX*offset, moveY*offset);
+						Log.d("LOGCAT", "C");
 					
-					camera.move(moveX, moveY);
+						//camera out of bounds condition
+						if ( ( moveX == 1  && newCameraX < world.world_height - screen_width + 1 
+							&& newPlayerX > cameraOffsetX )||
+							( moveY == 1  && newCameraY < world.world_width - screen_height + 1 
+							&& newPlayerY >  cameraOffsetY )||
+							( moveX == -1 && newCameraX >= 0  && newPlayerX < world.world_height - 
+							( screen_width/2 + 1) )||	 
+							( moveY == -1 && newCameraY >= 0  && newPlayerY < world.world_width - 
+							( screen_height/2 + 1) )) 
+						{
+					
+							//but only update the camera if player has moved to next tile	
+							if (player.y % 1 == 0) {
+
+								camera.move(0, moveY);
+							
+							}
+						
+							if (player.x % 1 == 0) {
+							
+								camera.move(moveX, 0);
+							
+							}
+						
+						}
 					
 					}
 				
 				}
-				
+			
 			}
 		
 		}

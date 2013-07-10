@@ -46,6 +46,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	public int spriteY = 0;
 	public int monsterX = 0;
 	public int monsterY = 0;
+	public float translateX = 0f;
+	public float translateY = 0f;
 
 	public MapThread mapThread; 
 	
@@ -105,17 +107,40 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	public void doDraw(Canvas canvas) {
 	
-	int count = 0;
-
 		canvas.drawColor(Color.BLACK);
 		
 		canvas.translate(0, - tile_height/2); //account for null space at top of tiles
+		
+		if (!player.changed) {
+		
+			if (player.direction.equals("right")) { 
+				translateY = -(player.y % 1)*tile_width; 
+				translateX = 0 ; 
+			}
+			if (player.direction.equals("left"))  { 
+				translateY = (player.y % 1)*tile_width;
+				translateX = 0 ; 
+			}
+			if (player.direction.equals("up"))    { 
+				translateY = 0;
+				translateX = (player.x % 1)*tile_height; 
+			}
+			if (player.direction.equals("down"))  { 
+				translateY = 0; 
+				translateX = -(player.x % 1)*tile_height; 
+			}
+			
+		}
+			
+		canvas.translate( translateY, translateX );
+		
+		//canvas.translate(-(player.y % 1)*tile_width, -(player.x % 1)*tile_height);
 
-		int screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
+		int screenX = -1; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
 		for (int x = camera.x; x < camera.x + screen_height + 1; x += 1, screenX += 1) {
 			
-			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
+			int screenY = -1; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
 			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
 
@@ -130,9 +155,35 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					
 						//draw tile
 						canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*tile_width, null);
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		//loop again for sprite and LAYER 2
+		
+		screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
+		
+		for (int x = camera.x; x < camera.x + screen_height + 1; x += 1, screenX += 1) {
+			
+			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
+			
+			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
+
+				if (x == world.world_width || y == world.world_height) {
+				
+					//skip drawing
+					
+				} else {
+				
+					if (world.world_map[x][y] != 0) {
 				
 						//draw sprite
-						if (player.x == x && player.y == y) { 
+						if ((int)player.x == x && (int)player.y == y) { 
 
 							spriteX = player.movement;
 						
@@ -141,20 +192,24 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 							else if (player.direction.equals("up")) { spriteY = 3; } 
 							else if (player.direction.equals("down")) { spriteY = 0; } 
 						
-							Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*	  	spriteY,(SPRITE.getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(		 spriteY+1));
+							Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*	  	spriteY,(SPRITE.	getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(		 spriteY+1));
 						  
-							Rect dest = new Rect(screenY*tile_height, screenX*tile_width + tile_width/4, 
-								(screenY + 1)*tile_height, (screenX + 1)*tile_width + tile_width/3);
+							int Yoffset = 0;
+							int Xoffset = 0;
+							
+							if (player.y % 1 != 0) { Yoffset = tile_height/2; }
+							if (player.x % 1 != 0) { Xoffset = tile_width/2; }
+							
+							Rect dest = new Rect(screenY*tile_height + Yoffset, screenX*tile_width + tile_width/4 + Xoffset, 
+								(screenY + 1)*tile_height + Yoffset, (screenX + 1)*tile_width + tile_width/3 + Xoffset);
 
 							canvas.drawBitmap(SPRITE, src, dest, null);
 							
 						}
 						
 						//draw monster
-						if (monster.x == x && monster.y == y) {
-						
-						count++;
-						
+						/*if (monster.x == x && monster.y == y) {
+												
 							monsterX = monster.movement;
 							
 							if (monster.direction.equals("right")) { monsterY = 2; }
@@ -167,7 +222,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 								
 							canvas.drawBitmap(MONSTER, src, dest, null);
 								
-						}
+						}*/
 					
 						//draw shadows
 						if (y != world.world_height - 1 && x != world.world_width - 1) {
@@ -228,7 +283,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 			
 		}
-if (count == 2) { Log.d("LOGCAT", "TWO!!"); }
+		
 	}
 	
 	public void setWorld(World world){

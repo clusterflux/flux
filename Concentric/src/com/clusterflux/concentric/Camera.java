@@ -21,7 +21,7 @@ public class Camera {
 	
 	//Log.d("LOGCAT", "Camera -> (" + moveX + "," + moveY + ")");
 
-	//Log.d("LOGCAT", "Moved Camera. Camera @  (" + x + "," + y + ")");
+	Log.d("LOGCAT", "Moved Camera. Camera @  (" + x + "," + y + ")");
 		
 	}
 

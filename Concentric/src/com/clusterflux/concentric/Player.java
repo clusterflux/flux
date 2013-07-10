@@ -5,10 +5,11 @@ import android.graphics.Point;
 
 public class Player {
 
-	public int x;
-	public int y;
+	public float x;
+	public float y;
 	public String direction = "right";
 	public int movement = 0;
+	boolean changed;
 	
 	public Player(int spawnX, int spawnY) {
 	
@@ -17,7 +18,7 @@ public class Player {
 		
 	}
 	
-	public void move(int moveX, int moveY) {
+	public void move(float moveX, float moveY) {
 	
 	//Log.d("LOGCAT", "Player -> (" + moveX + "," + moveY + ")");
 
@@ -28,18 +29,26 @@ public class Player {
 			
 	}
 	
-	public void changeDirection(String newDirection) {
-	
+	public boolean changeDirection(String newDirection) {
+			
 		if (direction == newDirection) {
+		
+			changed = false;
+			
 			if (movement == 2) {
 				movement = 0;
 			} else {
 				movement++;
 			}
 		} else {
+		
+			changed = true;
+			
 			direction = newDirection;
 			movement = 0;
 		}
+		
+		return changed;
 		
 	}
 	
@@ -47,10 +56,10 @@ public class Player {
 	
 		Point block = new Point();
 		
-		if (direction.equals("right")) { block.set(x,y+1); }
-		else if (direction.equals("left")) { block.set(x, y-1); }
-		else if (direction.equals("down")) { block.set(x+1, y); }
-		else if (direction.equals("up")) { block.set(x-1,y); }
+		if (direction.equals("right")) { block.set((int)x,(int)y+1); }
+		else if (direction.equals("left")) { block.set((int)x, (int)y-1); }
+		else if (direction.equals("down")) { block.set((int)x+1, (int)y); }
+		else if (direction.equals("up")) { block.set((int)x-1,(int)y); }
 		
 		return block;
 
