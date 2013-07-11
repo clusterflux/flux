@@ -110,39 +110,16 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 		canvas.drawColor(Color.BLACK);
 		
 		canvas.translate(0, - tile_height/2); //account for null space at top of tiles
-		
-		if (!player.changed) {
-		
-			if (player.direction.equals("right")) { 
-				translateY = -(player.y % 1)*tile_width; 
-				translateX = 0 ; 
-			}
-			if (player.direction.equals("left"))  { 
-				translateY = (player.y % 1)*tile_width;
-				translateX = 0 ; 
-			}
-			if (player.direction.equals("up"))    { 
-				translateY = 0;
-				translateX = (player.x % 1)*tile_height; 
-			}
-			if (player.direction.equals("down"))  { 
-				translateY = 0; 
-				translateX = -(player.x % 1)*tile_height; 
-			}
 			
-		}
-			
-		canvas.translate( translateY, translateX );
-		
-		//canvas.translate(-(player.y % 1)*tile_width, -(player.x % 1)*tile_height);
+		canvas.translate( -(camera.y % 1)*tile_width, -(camera.x % 1)*tile_height );
 
 		int screenX = -1; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
-		for (int x = camera.x; x < camera.x + screen_height + 1; x += 1, screenX += 1) {
+		for (int x = (int)camera.x; x < (int)camera.x + screen_height + 1; x += 1, screenX += 1) {
 			
 			int screenY = -1; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
-			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
+			for (int y = (int)camera.y; y < (int)camera.y + screen_width + 1; y += 1, screenY += 1) {
 
 				if (x == world.world_width || y == world.world_height) {
 				
@@ -152,9 +129,9 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 				
 					//LAYER 1:
 					if (world.world_map[x][y] != 0) {
-					
+						
 						//draw tile
-						canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*tile_width, null);
+						canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*	tile_width, null);
 						
 					}
 					
@@ -168,11 +145,11 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 		
 		screenX = 0; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
-		for (int x = camera.x; x < camera.x + screen_height + 1; x += 1, screenX += 1) {
+		for (int x = (int)camera.x; x < (int)camera.x + screen_height + 1; x += 1, screenX += 1) {
 			
 			int screenY = 0; //reset screenY each loop - this is where we will add an if statement to draw one row only
 			
-			for (int y = camera.y; y < camera.y + screen_width + 1; y += 1, screenY += 1) {
+			for (int y = (int)camera.y; y < (int)camera.y + screen_width + 1; y += 1, screenY += 1) {
 
 				if (x == world.world_width || y == world.world_height) {
 				

@@ -160,6 +160,19 @@ day 8:
 -forced SDK version for multiple touch to multiple view (split motionevents)
 -music!
 
+day 9:
+smooth scroll!!
++lots of new bugs
+code is getting unweildy!
+
+day10:
+troubleshoot smooth scroll
+
+day11:
+more troubleshooting smooth scroll
+visual debugging!! draw what you want to see
+fix smooth scroll by killing last 2 days of code and typing in 5 lines (translate against camera)
+
 todo:
 
 next:

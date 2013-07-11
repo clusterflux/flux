@@ -4,8 +4,8 @@ import android.util.Log;
 
 public class Camera {
 
-	public int x;
-	public int y;
+	public float x;
+	public float y;
 	
 	public Camera(int spawnX, int spawnY) {
 	
@@ -14,7 +14,7 @@ public class Camera {
 		
 	}
 	
-	public void move(int moveX, int moveY) {
+	public void move(float moveX, float moveY) {
 	
 		x += moveX;
 		y += moveY;

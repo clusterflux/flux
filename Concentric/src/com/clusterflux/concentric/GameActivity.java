@@ -221,8 +221,8 @@ public class GameActivity extends Activity {
 			
 			int newPlayerX = (int)Math.floor(player.x) + moveX;
 			int newPlayerY = (int)Math.floor(player.y) + moveY;
-			int newCameraX = camera.x + moveX;
-			int newCameraY = camera.y + moveY;
+			int newCameraX = (int)camera.x + moveX;
+			int newCameraY = (int)camera.y + moveY;
 		
 			boolean changed = player.changeDirection(direction);
 					
@@ -254,19 +254,8 @@ public class GameActivity extends Activity {
 							( moveY == -1 && newCameraY >= 0  && newPlayerY < world.world_width - 
 							( screen_height/2 + 1) )) 
 						{
-					
-							//but only update the camera if player has moved to next tile	
-							if (player.y % 1 == 0) {
-
-								camera.move(0, moveY);
-							
-							}
 						
-							if (player.x % 1 == 0) {
-							
-								camera.move(moveX, 0);
-							
-							}
+							camera.move(moveX*offset, moveY*offset);
 						
 						}
 					

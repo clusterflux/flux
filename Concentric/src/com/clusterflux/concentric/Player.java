@@ -10,6 +10,7 @@ public class Player {
 	public String direction = "right";
 	public int movement = 0;
 	boolean changed;
+	public String lastDirection;
 	
 	public Player(int spawnX, int spawnY) {
 	
@@ -30,6 +31,8 @@ public class Player {
 	}
 	
 	public boolean changeDirection(String newDirection) {
+	
+		lastDirection = direction;
 			
 		if (direction == newDirection) {
 		
