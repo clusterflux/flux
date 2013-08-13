@@ -173,6 +173,8 @@ more troubleshooting smooth scroll
 visual debugging!! draw what you want to see
 fix smooth scroll by killing last 2 days of code and typing in 5 lines (translate against camera)
 
+-test-
+
 todo:
 
 next:
