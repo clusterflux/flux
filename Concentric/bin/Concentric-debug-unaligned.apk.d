@@ -1,5 +1,5 @@
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\Concentric-debug-unaligned.apk : \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\Concentric.ap_ \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\classes.dex \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\src\com\clusterflux\concentric\draw_bitmap_to_canvas.snip \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\libs\android-support-v4.jar \
+/Users/shasha/Android/flux/Concentric/bin/Concentric-debug-unaligned.apk : \
+/Users/shasha/Android/flux/Concentric/bin/Concentric.ap_ \
+/Users/shasha/Android/flux/Concentric/bin/classes.dex \
+/Users/shasha/Android/flux/Concentric/src/com/clusterflux/concentric/draw_bitmap_to_canvas.snip \
+/Users/shasha/Android/flux/Concentric/libs/android-support-v4.jar \

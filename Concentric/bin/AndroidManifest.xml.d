@@ -1,2 +1,2 @@
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\bin\AndroidManifest.xml : \
-C:\Users\Shasha\Documents\GitHub\flux\Concentric\AndroidManifest.xml \
+/Users/shasha/Android/flux/Concentric/bin/AndroidManifest.xml : \
+/Users/shasha/Android/flux/Concentric/AndroidManifest.xml \
