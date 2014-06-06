@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Concentric</string>
+    <string name="app_name">Shelda</string>
 	<string name="world_selection">WORLD SELECTION</string>
 	<string name="generate_world">GENERATE WORLD</string>
 	<string name="game_activity">Game Activity</string>

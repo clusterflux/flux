@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import java.util.*;
 import java.math.*;
 import java.io.FileInputStream;
@@ -115,11 +116,11 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 
 		int screenX = -1; //reset screenX each loop - this is where we will add an if statement to draw one column only
 		
-		for (int x = (int)camera.x; x < (int)camera.x + screen_height + 1; x += 1, screenX += 1) {
+		for (int x = (int)camera.x; x < (int)camera.x + screen_height + 2; x += 1, screenX += 1) {
 			
 			int screenY = -1; //reset screenY each loop - this is where we will add an if statement to draw one row only
-			
-			for (int y = (int)camera.y; y < (int)camera.y + screen_width + 1; y += 1, screenY += 1) {
+        
+			for (int y = (int)camera.y; y < (int)camera.y + screen_width + 2; y += 1, screenY += 1) {
 
 				if (x == world.world_width || y == world.world_height) {
 				
@@ -131,7 +132,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					if (world.world_map[x][y] != 0) {
 						
 						//draw tile
-						canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height , screenX*	tile_width, null);
+						canvas.drawBitmap(TILE_MAP.get(world.world_map[x][y]), screenY*tile_height, screenX*tile_width, null);
+
 						
 					}
 					
@@ -169,16 +171,21 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 							else if (player.direction.equals("up")) { spriteY = 3; } 
 							else if (player.direction.equals("down")) { spriteY = 0; } 
 						
-							Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*	  	spriteY,(SPRITE.	getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(		 spriteY+1));
+							Rect src = new Rect((SPRITE.getHeight()/4)*spriteX, (SPRITE.getWidth()/3)*spriteY,(SPRITE.getHeight()/4)*(spriteX+1), (SPRITE.getWidth()/3)*(spriteY+1));
 						  
-							int Yoffset = 0;
-							int Xoffset = 0;
+							float Yoffset = player.y % 1;
+							float Xoffset = player.x % 1;
+                            Log.d("LOGCAT", "Player x,y = " + player.x + "," + player.y);
+                            Log.d("LOGCAT", "X,YOffset = " + Xoffset + "," + Yoffset);
 							
-							if (player.y % 1 != 0) { Yoffset = tile_height/2; }
-							if (player.x % 1 != 0) { Xoffset = tile_width/2; }
 							
-							Rect dest = new Rect(screenY*tile_height + Yoffset, screenX*tile_width + tile_width/4 + Xoffset, 
-								(screenY + 1)*tile_height + Yoffset, (screenX + 1)*tile_width + tile_width/3 + Xoffset);
+                            float bottom = screenY*tile_height + Yoffset*tile_height;
+                            float left = screenX*tile_width + tile_width/4 + Xoffset*tile_width;
+                            float top = (screenY + 1)*tile_height + Yoffset*tile_height;
+                            float right = (screenX + 1)*tile_width + tile_width/3 + Xoffset*tile_width;
+                            
+                            RectF dest = new RectF (bottom, left, top, right);
+							//RectF dest = new RectF(screenY*tile_height + Yoffset, screenX*tile_width + tile_width/4 + Xoffset, (screenY + 1)*tile_height + Yoffset, (screenX + 1)*tile_width + tile_width/3 + Xoffset);
 
 							canvas.drawBitmap(SPRITE, src, dest, null);
 							
@@ -241,7 +248,7 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 					if (world.world_map2[x][y] != 0) {
 
 						//draw tile
-						canvas.drawBitmap(TILE_MAP.get(world.world_map2[x][y]), screenY*tile_height,		screenX*tile_width - tile_width/2, null);
+						canvas.drawBitmap(TILE_MAP.get(world.world_map2[x][y]), screenY*tile_height, screenX*tile_width - tile_width/2, null);
 					
 						//draw shadows
 						if (x != world.world_width - 1 && y != 0) {

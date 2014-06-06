@@ -34,7 +34,7 @@ public final class R {
         public static final int dpad=0x7f020002;
         public static final int game_map=0x7f020003;
         public static final int grass=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
+        public static final int launcher=0x7f020005;
         public static final int monster=0x7f020006;
         public static final int shadow_east=0x7f020007;
         public static final int shadow_north=0x7f020008;

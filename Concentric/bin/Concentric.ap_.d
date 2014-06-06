@@ -4,7 +4,7 @@
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/dpad.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/game_map.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/grass.png \
-/Users/shasha/Android/flux/Concentric/res/drawable-hdpi/ic_launcher.png \
+/Users/shasha/Android/flux/Concentric/res/drawable-hdpi/launcher.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/monster.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/shadow_east.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/shadow_north.png \
@@ -19,9 +19,6 @@
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/stone.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/water.png \
 /Users/shasha/Android/flux/Concentric/res/drawable-hdpi/wood.png \
-/Users/shasha/Android/flux/Concentric/res/drawable-ldpi/ic_launcher.png \
-/Users/shasha/Android/flux/Concentric/res/drawable-mdpi/ic_launcher.png \
-/Users/shasha/Android/flux/Concentric/res/drawable-xhdpi/ic_launcher.png \
 /Users/shasha/Android/flux/Concentric/res/layout/game.xml \
 /Users/shasha/Android/flux/Concentric/res/layout/menu.xml \
 /Users/shasha/Android/flux/Concentric/res/layout/worldgeneration.xml \
@@ -34,7 +31,7 @@
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/dpad.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/game_map.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/grass.png \
-/Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/ic_launcher.png \
+/Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/launcher.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/monster.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/shadow_east.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/shadow_north.png \
@@ -49,7 +46,4 @@
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/stone.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/water.png \
 /Users/shasha/Android/flux/Concentric/bin/res/drawable-hdpi/wood.png \
-/Users/shasha/Android/flux/Concentric/bin/res/drawable-ldpi/ic_launcher.png \
-/Users/shasha/Android/flux/Concentric/bin/res/drawable-mdpi/ic_launcher.png \
-/Users/shasha/Android/flux/Concentric/bin/res/drawable-xhdpi/ic_launcher.png \
 /Users/shasha/Android/flux/Concentric/bin/AndroidManifest.xml \
