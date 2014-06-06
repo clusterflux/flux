@@ -22,10 +22,11 @@ public class Player {
 	public void move(float moveX, float moveY) {
 	
 	//Log.d("LOGCAT", "Player -> (" + moveX + "," + moveY + ")");
+    Log.d("LOGCAT", "Moving Player x,y = " + x + "," + y + ")");
+    Log.d("LOGCAT", "Moving Player dx,dy = " + moveX + "," + moveY + ")");
 
 		x += moveX;
 		y += moveY;
-		
 	Log.d("LOGCAT", "Moved Player. Player @  (" + x + "," + y + ")");
 			
 	}

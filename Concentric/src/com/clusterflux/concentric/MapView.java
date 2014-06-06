@@ -175,8 +175,8 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
 						  
 							float Yoffset = player.y % 1;
 							float Xoffset = player.x % 1;
-                            Log.d("LOGCAT", "Player x,y = " + player.x + "," + player.y);
-                            Log.d("LOGCAT", "X,YOffset = " + Xoffset + "," + Yoffset);
+                            //Log.d("LOGCAT", "Player x,y = " + player.x + "," + player.y);
+                            //Log.d("LOGCAT", "X,YOffset = " + Xoffset + "," + Yoffset);
 							
 							
                             float bottom = screenY*tile_height + Yoffset*tile_height;

@@ -173,6 +173,17 @@ more troubleshooting smooth scroll
 visual debugging!! draw what you want to see
 fix smooth scroll by killing last 2 days of code and typing in 5 lines (translate against camera)
 
+BACK AFTER 9 MONTHS!
+day 1: 
+configure new computer to work with old environment (relearn adb commands, fix build paths, etc)
+update 1/2 tile movement to 1/10 tile movement -> buggy
+
+day 2:
+wireless dab and ddms!
+new custom rom device needed logging unlocked
+fixed 1/10 tile movement -> minor bugs remaining (floating point issues)
+
+
 -test-
 
 todo:
@@ -180,8 +191,6 @@ todo:
 next:
 get split motionevents without sdk version forcing (which justs defaults it to on)
 animate mining/alternative to rpg maker sprites
-sprite pixel by pixel movement
-
 
 housekeeping:
 code is getting really messy
@@ -189,7 +198,8 @@ fix height/width naming discrepancies
 points and rects! redo camera, player, etc.
 
 research:
-add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview? <--- why did I think it would be? - how does this work with overlapping tiles?
+add canvas.translate to world drawing. only draw new tiles - maybe bad with surfaceview? <--- why did I think it would be? - how does this work with overlapping tiles? skip all tiles except player and mob last/new locations?
+sprite pixel by pixel movement - do we still need this?
 
 menu housekeeping:
 abstract out the view for world activity. worldview = view the generated world, choose to save it
@@ -199,7 +209,7 @@ abstract out touch listeners from gameactivity
 other :
 ability to change orientation via surfacechanged
 abstract sprite class
-move update method to MapThread? - this gets a seperate update method (mobs)
+move update method to MapThread? - this gets a separate update method (mobs)
 
 make a map of all the current code - is there a progam for this?
 
@@ -220,5 +230,6 @@ hiatus => thank past self for great comments
 hiatus+ => ball is rolling, bad stuff is obvious
 the code is getting big and unweildy
 at what point is it worthy of showing to people? - alpha!
+fix up your environment - wireless install and debugging!
 
 

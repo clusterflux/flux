@@ -217,7 +217,7 @@ public class GameActivity extends Activity {
 		
 		synchronized(mapView.holder) {
 		
-			float offset = 0.1f;
+			float offset = 0.125f;
 			
 			int newPlayerX = (int)Math.floor(player.x) + moveX;
 			int newPlayerY = (int)Math.floor(player.y) + moveY;
